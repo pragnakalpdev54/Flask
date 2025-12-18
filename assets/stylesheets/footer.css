@@ -17,7 +17,7 @@
 }
 
 .footer-right {
-  text-align: right;
+  text-align: left;   /* 👈 LEFT aligned now */
   line-height: 1.4;
 }
 
