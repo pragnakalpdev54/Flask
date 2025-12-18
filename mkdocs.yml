@@ -19,7 +19,7 @@ nav:
       - Level 1 – Foundations: LEVEL_1_FOUNDATIONS.md
       - Level 2 – Intermediate:
           - Part A – Core Concepts: LEVEL_2A_INTERMEDIATE.md
-          - Part B – Applied DRF: LEVEL_2B_INTERMEDIATE.md
+          - Part B – Applied Flask: LEVEL_2B_INTERMEDIATE.md
       - Level 3 – Authentication & Security: LEVEL_3_AUTHENTICATION.md
       - Level 4 – Scalable Systems: LEVEL_4_SCALABLE.md
       - Level 5 – Extensions & Advanced Topics: LEVEL_5_EXTENSIONS.md
