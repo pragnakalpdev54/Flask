@@ -10,6 +10,7 @@ theme:
     - navigation.instant
     - toc.integrate
     - content.code.copy
+    - navigation.footer
 
 nav:
   - Home: index.md
