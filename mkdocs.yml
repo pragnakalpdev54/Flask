@@ -1,0 +1,41 @@
+site_name: Flask Training Guide
+site_url: https://pragnakalpdev54.github.io/Flask/
+use_directory_urls: false
+
+theme:
+  name: material
+  features:
+    - navigation.sections
+    - navigation.expand
+    - navigation.instant
+    - toc.integrate
+    - content.code.copy
+
+nav:
+  - Home: index.md
+
+  - Course Levels:
+      - Level 0 – Beginner: LEVEL_0_BEGINNER.md
+      - Level 1 – Foundations: LEVEL_1_FOUNDATIONS.md
+      - Level 2 – Intermediate:
+          - Part A – Core Concepts: LEVEL_2A_INTERMEDIATE.md
+          - Part B – Applied DRF: LEVEL_2B_INTERMEDIATE.md
+      - Level 3 – Authentication & Security: LEVEL_3_AUTHENTICATION.md
+      - Level 4 – Scalable Systems: LEVEL_4_SCALABLE.md
+      - Level 5 – Extensions & Advanced Topics: LEVEL_5_EXTENSIONS.md
+
+markdown_extensions:
+  - toc:
+      permalink: true
+  - tables
+  - fenced_code
+  - admonition
+  - footnotes
+  - codehilite
+
+extra:
+  generator: false
+  copyright: >
+    © 2025 Ctrl+C Ctrl+V Devs<br>
+    Flask Training Guide<br>
+    <strong>Made by Rahul, Nikunj, Neel, Dhvanil, Mansi, Darshit</strong>
