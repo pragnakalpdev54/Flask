@@ -4,6 +4,7 @@ use_directory_urls: false
 
 theme:
   name: material
+  custom_dir: overrides
   features:
     - navigation.sections
     - navigation.expand
@@ -34,9 +35,12 @@ markdown_extensions:
   - footnotes
   - codehilite
 
+extra_css:
+  - assets/stylesheets/footer.css
+  
 extra:
   generator: false
-  copyright: >
-    © 2025 Ctrl+C Ctrl+V Devs<br>
-    Flask Training Guide<br>
-    <strong>Made by Rahul, Nikunj, Neel, Dhvanil, Mansi, Darshit</strong>
+
+  copyright: |
+    © 2025 Ctrl+C Ctrl+V Devs · Flask Training Guide  
+    **Made by Rahul, Nikunj, Neel, Dhvanil, Mansi, Darshit**
