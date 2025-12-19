@@ -1,4 +1,53 @@
 /* ============================================
+   PILL NAVIGATION (DESIGN 11) - MODERN STYLE
+   ============================================ */
+
+.pill-navigation {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  padding: 2rem 2rem 1rem 2rem;
+  margin: 0 auto;
+  max-width: 1200px;
+  width: 100%;
+}
+
+.pill-btn {
+  padding: 8px 14px;
+  border: 2px solid #5d6cc0;
+  background: white;
+  color: #5d6cc0;
+  border-radius: 50px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 13px;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.pill-btn:hover {
+  background: #5d6cc0;
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(93, 108, 192, 0.3);
+}
+
+.pill-arrow {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.pill-text {
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* ============================================
    MODERN MKDOCS FOOTER STYLES
    ============================================ */
 
@@ -119,6 +168,10 @@
   .contributors {
     justify-content: center;
   }
+
+  .pill-navigation {
+    padding: 1.5rem 1rem 1rem 1rem;
+  }
 }
 
 /* ============ MOBILE ============ */
@@ -138,11 +191,18 @@
   .contributors {
     justify-content: center;
   }
+
+  .pill-navigation {
+    padding: 1rem 0.5rem 0.5rem 0.5rem;
+  }
+
+  .pill-btn {
+    padding: 8px 16px;
+    font-size: 12px;
+  }
 }
 
 /* ============ HOVER EFFECT ============ */
 .md-footer:hover {
   background: linear-gradient(135deg, #334155 0%, #1e293b 100%);
 }
-
-
