@@ -8,13 +8,13 @@
       
       
       
-        <link rel="canonical" href="https://pragnakalpdev54.github.io/Flask/LEVEL_1_FOUNDATIONS.html">
+        <link rel="canonical" href="https://pragnakalpdev54.github.io/Flask/02_LEVEL_1_FOUNDATIONS.html">
       
       
-        <link rel="prev" href="LEVEL_0_BEGINNER.html">
+        <link rel="prev" href="01_LEVEL_0_BEGINNER.html">
       
       
-        <link rel="next" href="LEVEL_2A_INTERMEDIATE.html">
+        <link rel="next" href="03_TEST_TASK_1.html">
       
       
         
@@ -49,6 +49,8 @@
     
     
       <link rel="stylesheet" href="assets/stylesheets/footer.css">
+    
+      <link rel="stylesheet" href="assets/stylesheets/extra.css">
     
     <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -226,6 +228,95 @@
       
   
   
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Learning Guide
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Learning Guide
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="00_LEARNING_GUIDE.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
     
   
   
@@ -244,17 +335,17 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
         
           
-          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
             
   
   
   <span class="md-ellipsis">
     
   
-    Course Levels
+    Course Path
   
 
     
@@ -265,12 +356,12 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_2">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
             
   
-    Course Levels
+    Course Path
   
 
           </label>
@@ -283,7 +374,7 @@
   
   
     <li class="md-nav__item">
-      <a href="LEVEL_0_BEGINNER.html" class="md-nav__link">
+      <a href="01_LEVEL_0_BEGINNER.html" class="md-nav__link">
         
   
   
@@ -338,7 +429,7 @@
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <a href="LEVEL_1_FOUNDATIONS.html" class="md-nav__link md-nav__link--active">
+      <a href="02_LEVEL_1_FOUNDATIONS.html" class="md-nav__link md-nav__link--active">
         
   
   
@@ -405,10 +496,60 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#methods" class="md-nav__link">
+  <a href="#1-http-api-basics" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Methods
+        1. HTTP &amp; API Basics
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. HTTP &amp; API Basics">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#http-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        HTTP Methods
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#http-status-codes-the-response" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        HTTP Status Codes (The Response)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-how-to-test-the-browser-trap" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. How to Test (The Browser Trap)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-defining-routes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Defining Routes
       
     </span>
   </a>
@@ -455,10 +596,21 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#2-query-parameters-get" class="md-nav__link">
+  <a href="#3-the-request-object-summary" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2. Query Parameters (GET)
+        3. The request Object Summary
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-query-parameters-get" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Query Parameters (GET)
       
     </span>
   </a>
@@ -478,56 +630,6 @@
       
     </span>
   </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#structuring-with-blueprints" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Structuring with Blueprints
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Structuring with Blueprints">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#directory-structure" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Directory Structure
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#1-create-a-blueprint-routesuser_routespy" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        1. Create a Blueprint (routes/user_routes.py)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#2-register-it-in-apppy" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        2. Register it in app.py
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -560,6 +662,56 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#pagination-filtering-and-versioning" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pagination, Filtering, and Versioning
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Pagination, Filtering, and Versioning">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-basic-pagination-pattern" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Basic pagination pattern
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-filtering-and-searching" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Filtering and searching
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-api-versioning" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. API versioning
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#practice-problems" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -576,17 +728,6 @@
     <span class="md-ellipsis">
       
         Problem 1: Calculator API
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#problem-2-blueprint-organization" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Problem 2: Blueprint Organization
       
     </span>
   </a>
@@ -633,17 +774,6 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#question-2" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Question 2
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#question-3" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -674,6 +804,34 @@
   
   
   
+    <li class="md-nav__item">
+      <a href="03_TEST_TASK_1.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Test Task 1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
     
     
     
@@ -687,10 +845,10 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_3" >
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_4" >
         
           
-          <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_3_4" id="__nav_3_4_label" tabindex="0">
             
   
   
@@ -708,8 +866,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_2_3">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_4">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -726,7 +884,7 @@
   
   
     <li class="md-nav__item">
-      <a href="LEVEL_2A_INTERMEDIATE.html" class="md-nav__link">
+      <a href="04_LEVEL_2A_INTERMEDIATE.html" class="md-nav__link">
         
   
   
@@ -754,7 +912,7 @@
   
   
     <li class="md-nav__item">
-      <a href="LEVEL_2B_INTERMEDIATE.html" class="md-nav__link">
+      <a href="05_LEVEL_2B_INTERMEDIATE.html" class="md-nav__link">
         
   
   
@@ -790,7 +948,7 @@
   
   
     <li class="md-nav__item">
-      <a href="LEVEL_3_AUTHENTICATION.html" class="md-nav__link">
+      <a href="06_LEVEL_3_AUTHENTICATION.html" class="md-nav__link">
         
   
   
@@ -818,7 +976,35 @@
   
   
     <li class="md-nav__item">
-      <a href="LEVEL_4_SCALABLE.html" class="md-nav__link">
+      <a href="07_TEST_TASK_2.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Test Task 2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="08_LEVEL_4_SCALABLE.html" class="md-nav__link">
         
   
   
@@ -846,7 +1032,7 @@
   
   
     <li class="md-nav__item">
-      <a href="LEVEL_5_EXTENSIONS.html" class="md-nav__link">
+      <a href="09_LEVEL_5_EXTENSIONS.html" class="md-nav__link">
         
   
   
@@ -862,6 +1048,238 @@
   
 
       </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="10_TEST_TASK_3.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Test Task 3
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    API & Tooling Guides
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    API & Tooling Guides
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="CURL_GUIDE.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    cURL Guide
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Postman
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Postman
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="POSTMAN_GUIDE_PART1_BASICS.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Basics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="POSTMAN_GUIDE_PART2_ADVANCED.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Advanced
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
     </li>
   
 
@@ -892,6 +1310,12 @@
 
 
 <h1 id="level-1-flask-foundations-routing-requests">Level 1: Flask Foundations - Routing &amp; Requests<a class="headerlink" href="#level-1-flask-foundations-routing-requests" title="Permanent link">&para;</a></h1>
+<blockquote>
+<p><strong>Prerequisites</strong>: <a href="01_LEVEL_0_BEGINNER.html">Level 0: Beginner</a>
+<strong>Next Step</strong>: <a href="03_TEST_TASK_1.html">Test Task 1</a></p>
+<p>[!NOTE]
+<strong>No OOP Required</strong>: We still use standard Python functions here. No classes needed!</p>
+</blockquote>
 <h2 id="goal">Goal<a class="headerlink" href="#goal" title="Permanent link">&para;</a></h2>
 <p>In this level, we will learn how to handle different types of requests, work with data sent by clients, and organize our application using Blueprints.</p>
 <p><strong>Core Rules for this Level:</strong></p>
@@ -905,13 +1329,72 @@
 <li><a href="#routing-basics">Routing Basics</a></li>
 <li><a href="#handling-requests-the-input">Handling Requests (The Input)</a></li>
 <li><a href="#building-responses-the-output">Building Responses (The Output)</a></li>
-<li><a href="#structuring-with-blueprints">Structuring with Blueprints</a></li>
 <li><a href="#serving-static-files">Serving Static Files</a></li>
+<li><a href="#pagination-filtering-and-versioning">Pagination, Filtering, and Versioning</a></li>
 <li><a href="#practice-problems">Practice Problems</a></li>
 </ol>
 <h2 id="routing-basics">Routing Basics<a class="headerlink" href="#routing-basics" title="Permanent link">&para;</a></h2>
-<h3 id="methods">Methods<a class="headerlink" href="#methods" title="Permanent link">&para;</a></h3>
-<p>By default, a route only answers to GET. You must specify others.</p>
+<h3 id="1-http-api-basics">1. HTTP &amp; API Basics<a class="headerlink" href="#1-http-api-basics" title="Permanent link">&para;</a></h3>
+<p>Before writing code, let's understand the request types and status codes we handle.</p>
+<h4 id="http-methods">HTTP Methods<a class="headerlink" href="#http-methods" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>GET</strong>: Retrieve data (Read). Browsers send this by default. <strong>Never change data with a GET.</strong></li>
+<li><strong>POST</strong>: Create new data (Create). Used for submitting forms or JSON.</li>
+<li><strong>PUT</strong>: Update an existing resource completely (Replace).</li>
+<li><strong>PATCH</strong>: Update parts of an existing resource (Modify).</li>
+<li><strong>DELETE</strong>: Remove data (Delete).</li>
+</ul>
+<h4 id="http-status-codes-the-response">HTTP Status Codes (The Response)<a class="headerlink" href="#http-status-codes-the-response" title="Permanent link">&para;</a></h4>
+<p>Always return the correct status code so the client knows what happened.</p>
+<table>
+<thead>
+<tr>
+<th>Code</th>
+<th>Meaning</th>
+<th>Usage</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>200</td>
+<td>OK</td>
+<td>Standard success</td>
+</tr>
+<tr>
+<td>201</td>
+<td>Created</td>
+<td>Resource created successfully</td>
+</tr>
+<tr>
+<td>400</td>
+<td>Bad Request</td>
+<td>Client sent invalid JSON or missing fields</td>
+</tr>
+<tr>
+<td>404</td>
+<td>Not Found</td>
+<td>Resource does not exist</td>
+</tr>
+<tr>
+<td>500</td>
+<td>Server Error</td>
+<td>Something broke (Hide details from user!)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="2-how-to-test-the-browser-trap">2. How to Test (The Browser Trap)<a class="headerlink" href="#2-how-to-test-the-browser-trap" title="Permanent link">&para;</a></h3>
+<blockquote>
+<p>[!WARNING]
+<strong>You cannot test POST requests in your browser address bar!</strong></p>
+</blockquote>
+<p>When you type a URL in Chrome or Firefox, it <strong>always</strong> sends a <code>GET</code> request. If you try to visit a <code>POST</code>-only route, you will get a <code>405 Method Not Allowed</code> error.</p>
+<p><strong>Tools you need:</strong></p>
+<ol>
+<li><strong>Postman</strong> (Recommended): A GUI app to send any type of HTTP request.</li>
+<li><strong>cURL</strong>: A command-line tool. Example: <code>curl -X POST http://localhost:5000/books</code></li>
+</ol>
+<h3 id="3-defining-routes">3. Defining Routes<a class="headerlink" href="#3-defining-routes" title="Permanent link">&para;</a></h3>
+<p>By default, a route only answers to GET. You must explicitly specify other methods.</p>
 <div class="codehilite"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">flask</span><span class="w"> </span><span class="kn">import</span> <span class="n">Flask</span><span class="p">,</span> <span class="n">jsonify</span><span class="p">,</span> <span class="n">request</span>
 
 <span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
@@ -925,6 +1408,10 @@
     <span class="k">return</span> <span class="n">jsonify</span><span class="p">({</span><span class="s2">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;Create a book&quot;</span><span class="p">}),</span> <span class="mi">201</span>
 </code></pre></div>
 
+<blockquote>
+<p>[!TIP]
+<strong>Magic Box – Flask routing &amp; <code>request</code></strong>: Treat <code>Flask(__name__)</code>, <code>@app.route</code>, <code>jsonify(...)</code>, and the <code>request</code> object as Magic Boxes. You mainly need to know <em>where</em> to read data (<code>request.get_json()</code>, <code>request.args</code>) and <em>what</em> JSON to return.</p>
+</blockquote>
 <h3 id="dynamic-urls">Dynamic URLs<a class="headerlink" href="#dynamic-urls" title="Permanent link">&para;</a></h3>
 <p>Capture values from the URL.</p>
 <div class="codehilite"><pre><span></span><code><span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s2">&quot;/books/&lt;int:book_id&gt;&quot;</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;GET&quot;</span><span class="p">])</span>
@@ -951,7 +1438,45 @@
     <span class="k">return</span> <span class="n">jsonify</span><span class="p">({</span><span class="s2">&quot;status&quot;</span><span class="p">:</span> <span class="s2">&quot;created&quot;</span><span class="p">,</span> <span class="s2">&quot;username&quot;</span><span class="p">:</span> <span class="n">username</span><span class="p">}),</span> <span class="mi">201</span>
 </code></pre></div>
 
-<h3 id="2-query-parameters-get">2. Query Parameters (GET)<a class="headerlink" href="#2-query-parameters-get" title="Permanent link">&para;</a></h3>
+<h3 id="3-the-request-object-summary">3. The <code>request</code> Object Summary<a class="headerlink" href="#3-the-request-object-summary" title="Permanent link">&para;</a></h3>
+<p>Confused? Here is a cheat sheet:</p>
+<table>
+<thead>
+<tr>
+<th>Data Source</th>
+<th>Content-Type</th>
+<th>Usage</th>
+<th>Flask Accessor</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>JSON</strong></td>
+<td><code>application/json</code></td>
+<td>Modern APIs (POST/PUT)</td>
+<td><code>request.get_json()</code></td>
+</tr>
+<tr>
+<td><strong>URL Params</strong></td>
+<td>N/A</td>
+<td>Filtering/Sorting (GET)</td>
+<td><code>request.args.get('key')</code></td>
+</tr>
+<tr>
+<td><strong>Form Data</strong></td>
+<td><code>application/x-www-form-urlencoded</code></td>
+<td>HTML Forms</td>
+<td><code>request.form.get('key')</code></td>
+</tr>
+<tr>
+<td><strong>Path Vars</strong></td>
+<td>N/A</td>
+<td>Resource IDs</td>
+<td>Function Argument</td>
+</tr>
+</tbody>
+</table>
+<h3 id="4-query-parameters-get">4. Query Parameters (GET)<a class="headerlink" href="#4-query-parameters-get" title="Permanent link">&para;</a></h3>
 <p>Used for filtering or pagination (e.g., <code>/users?page=2&amp;role=admin</code>).</p>
 <div class="codehilite"><pre><span></span><code><span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s2">&quot;/users&quot;</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;GET&quot;</span><span class="p">])</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">list_users</span><span class="p">():</span>
@@ -963,43 +1488,7 @@
 </code></pre></div>
 
 <h2 id="building-responses-the-output">Building Responses (The Output)<a class="headerlink" href="#building-responses-the-output" title="Permanent link">&para;</a></h2>
-<p>Always return <code>jsonify</code> and a proper Status Code.</p>
-<table>
-<thead>
-<tr>
-<th>Code</th>
-<th>Meaning</th>
-<th>Usage</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>200</td>
-<td>OK</td>
-<td>Standard success</td>
-</tr>
-<tr>
-<td>201</td>
-<td>Created</td>
-<td>resource created successfully</td>
-</tr>
-<tr>
-<td>400</td>
-<td>Bad Request</td>
-<td>Client sent invalid JSON or missing fields</td>
-</tr>
-<tr>
-<td>404</td>
-<td>Not Found</td>
-<td>Resource does not exist</td>
-</tr>
-<tr>
-<td>500</td>
-<td>Server Error</td>
-<td>Something broke (Hide details from user!)</td>
-</tr>
-</tbody>
-</table>
+<p>Always return <code>jsonify</code> and a proper Status Code (see the table in <a href="#1-http--api-basics">HTTP &amp; API Basics</a>).</p>
 <div class="codehilite"><pre><span></span><code><span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s2">&quot;/orders&quot;</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;POST&quot;</span><span class="p">])</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">create_order</span><span class="p">():</span>
     <span class="n">data</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">get_json</span><span class="p">()</span>
@@ -1009,45 +1498,6 @@
         <span class="k">return</span> <span class="n">jsonify</span><span class="p">({</span><span class="s2">&quot;error&quot;</span><span class="p">:</span> <span class="s2">&quot;Missing &#39;item&#39; field&quot;</span><span class="p">}),</span> <span class="mi">400</span>
 
     <span class="k">return</span> <span class="n">jsonify</span><span class="p">({</span><span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">123</span><span class="p">,</span> <span class="s2">&quot;status&quot;</span><span class="p">:</span> <span class="s2">&quot;pending&quot;</span><span class="p">}),</span> <span class="mi">201</span>
-</code></pre></div>
-
-<h2 id="structuring-with-blueprints">Structuring with Blueprints<a class="headerlink" href="#structuring-with-blueprints" title="Permanent link">&para;</a></h2>
-<p>As your app grows, you cannot keep everything in <code>app.py</code>. <strong>Blueprints</strong> allow you to organize your routes into separate files (modules).</p>
-<h3 id="directory-structure">Directory Structure<a class="headerlink" href="#directory-structure" title="Permanent link">&para;</a></h3>
-<div class="codehilite"><pre><span></span><code>project/
-├── app.py
-└── routes/
-    ├── __init__.py
-    └── user_routes.py
-</code></pre></div>
-
-<h3 id="1-create-a-blueprint-routesuser_routespy">1. Create a Blueprint (<code>routes/user_routes.py</code>)<a class="headerlink" href="#1-create-a-blueprint-routesuser_routespy" title="Permanent link">&para;</a></h3>
-<div class="codehilite"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">flask</span><span class="w"> </span><span class="kn">import</span> <span class="n">Blueprint</span><span class="p">,</span> <span class="n">jsonify</span>
-
-<span class="c1"># Define the blueprint</span>
-<span class="n">user_bp</span> <span class="o">=</span> <span class="n">Blueprint</span><span class="p">(</span><span class="s2">&quot;users&quot;</span><span class="p">,</span> <span class="vm">__name__</span><span class="p">,</span> <span class="n">url_prefix</span><span class="o">=</span><span class="s2">&quot;/users&quot;</span><span class="p">)</span>
-
-<span class="nd">@user_bp</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;GET&quot;</span><span class="p">])</span>
-<span class="k">def</span><span class="w"> </span><span class="nf">get_users</span><span class="p">():</span>
-    <span class="k">return</span> <span class="n">jsonify</span><span class="p">({</span><span class="s2">&quot;users&quot;</span><span class="p">:</span> <span class="p">[]})</span>
-
-<span class="nd">@user_bp</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s2">&quot;/&lt;int:id&gt;&quot;</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;GET&quot;</span><span class="p">])</span>
-<span class="k">def</span><span class="w"> </span><span class="nf">get_user</span><span class="p">(</span><span class="nb">id</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">jsonify</span><span class="p">({</span><span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="nb">id</span><span class="p">})</span>
-</code></pre></div>
-
-<h3 id="2-register-it-in-apppy">2. Register it in <code>app.py</code><a class="headerlink" href="#2-register-it-in-apppy" title="Permanent link">&para;</a></h3>
-<div class="codehilite"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">flask</span><span class="w"> </span><span class="kn">import</span> <span class="n">Flask</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">routes.user_routes</span><span class="w"> </span><span class="kn">import</span> <span class="n">user_bp</span>
-
-<span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
-
-<span class="c1"># Register the blueprint</span>
-<span class="n">app</span><span class="o">.</span><span class="n">register_blueprint</span><span class="p">(</span><span class="n">user_bp</span><span class="p">)</span>
-<span class="c1"># Now routes are accessible at /users and /users/&lt;id&gt;</span>
-
-<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
-    <span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">debug</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </code></pre></div>
 
 <h2 id="serving-static-files">Serving Static Files<a class="headerlink" href="#serving-static-files" title="Permanent link">&para;</a></h2>
@@ -1068,14 +1518,69 @@
 </code></pre></div>
 
 <p>Your <code>index.html</code> should use JavaScript (<code>fetch</code> or <code>axios</code>) to call your API endpoints (e.g., <code>/users</code>) and display data.</p>
+<h2 id="pagination-filtering-and-versioning">Pagination, Filtering, and Versioning<a class="headerlink" href="#pagination-filtering-and-versioning" title="Permanent link">&para;</a></h2>
+<p>At some point your API will outgrow simple “return all rows” endpoints. You need a consistent way to <strong>page</strong>, <strong>filter</strong>, and <strong>version</strong> your APIs.</p>
+<h3 id="1-basic-pagination-pattern">1. Basic pagination pattern<a class="headerlink" href="#1-basic-pagination-pattern" title="Permanent link">&para;</a></h3>
+<p>Use <code>page</code> and <code>page_size</code> (or <code>limit</code> and <code>offset</code>) as query parameters:</p>
+<div class="codehilite"><pre><span></span><code><span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s2">&quot;/items&quot;</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;GET&quot;</span><span class="p">])</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">list_items</span><span class="p">():</span>
+    <span class="n">page</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">args</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;page&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">int</span><span class="p">)</span>
+    <span class="n">page_size</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">args</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;page_size&quot;</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">int</span><span class="p">)</span>
+
+    <span class="c1"># pretend this comes from your DB</span>
+    <span class="n">items</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="p">{</span><span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Item 1&quot;</span><span class="p">},</span>
+        <span class="p">{</span><span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Item 2&quot;</span><span class="p">},</span>
+    <span class="p">]</span>
+
+    <span class="k">return</span> <span class="n">jsonify</span><span class="p">({</span>
+        <span class="s2">&quot;items&quot;</span><span class="p">:</span> <span class="n">items</span><span class="p">,</span>
+        <span class="s2">&quot;page&quot;</span><span class="p">:</span> <span class="n">page</span><span class="p">,</span>
+        <span class="s2">&quot;page_size&quot;</span><span class="p">:</span> <span class="n">page_size</span><span class="p">,</span>
+        <span class="s2">&quot;total&quot;</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">items</span><span class="p">),</span>
+    <span class="p">})</span>
+</code></pre></div>
+
+<p>Recommended response envelope:</p>
+<ul>
+<li><code>items</code>: list of resources</li>
+<li><code>page</code>: current page</li>
+<li><code>page_size</code>: how many per page</li>
+<li><code>total</code>: total number of items</li>
+</ul>
+<h3 id="2-filtering-and-searching">2. Filtering and searching<a class="headerlink" href="#2-filtering-and-searching" title="Permanent link">&para;</a></h3>
+<p>Reuse query params for filters instead of inventing custom URLs:</p>
+<ul>
+<li><code>/users?role=admin</code></li>
+<li><code>/books?author_id=1&amp;price_min=10&amp;price_max=50</code></li>
+</ul>
+<p>Example:</p>
+<div class="codehilite"><pre><span></span><code><span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s2">&quot;/books&quot;</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;GET&quot;</span><span class="p">])</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">list_books</span><span class="p">():</span>
+    <span class="n">author_id</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">args</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;author_id&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">int</span><span class="p">)</span>
+    <span class="n">price_min</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">args</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;price_min&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+    <span class="n">price_max</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">args</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;price_max&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">jsonify</span><span class="p">({</span>
+        <span class="s2">&quot;author_id&quot;</span><span class="p">:</span> <span class="n">author_id</span><span class="p">,</span>
+        <span class="s2">&quot;price_min&quot;</span><span class="p">:</span> <span class="n">price_min</span><span class="p">,</span>
+        <span class="s2">&quot;price_max&quot;</span><span class="p">:</span> <span class="n">price_max</span><span class="p">,</span>
+    <span class="p">})</span>
+</code></pre></div>
+
+<h3 id="3-api-versioning">3. API versioning<a class="headerlink" href="#3-api-versioning" title="Permanent link">&para;</a></h3>
+<p>When you need to introduce <strong>breaking changes</strong>, do not silently change existing URLs. Add a version prefix:</p>
+<ul>
+<li><code>/api/v1/books</code></li>
+<li><code>/api/v2/books</code></li>
+</ul>
+<p>Later levels and Test Task 3 use prefixes like <code>/api/v1/authors</code> and <code>/api/v1/books</code>. You should follow the same idea in your own projects.</p>
 <h2 id="practice-problems">Practice Problems<a class="headerlink" href="#practice-problems" title="Permanent link">&para;</a></h2>
 <h3 id="problem-1-calculator-api">Problem 1: Calculator API<a class="headerlink" href="#problem-1-calculator-api" title="Permanent link">&para;</a></h3>
 <p>Create an endpoint <code>/calculate</code> that accepts a POST request with JSON:
 <code>{"operation": "add", "x": 10, "y": 5}</code>
 And returns: <code>{"result": 15}</code>.
 Support add, subtract, multiply, divide. Return 400 for invalid operations.</p>
-<h3 id="problem-2-blueprint-organization">Problem 2: Blueprint Organization<a class="headerlink" href="#problem-2-blueprint-organization" title="Permanent link">&para;</a></h3>
-<p>Refactor Problem 1 into a blueprint structure with a URL prefix <code>/math</code>.</p>
 <h3 id="problem-3-query-params">Problem 3: Query Params<a class="headerlink" href="#problem-3-query-params" title="Permanent link">&para;</a></h3>
 <p>Create a route <code>/search</code> that takes a query param <code>q</code>. If <code>q</code> is missing, return error 400. If present, return <code>{"query": q}</code>.</p>
 <h2 id="trivia">Trivia<a class="headerlink" href="#trivia" title="Permanent link">&para;</a></h2>
@@ -1086,14 +1591,6 @@ Support add, subtract, multiply, divide. Return 400 for invalid operations.</p>
 <li>[x] <code>request.get_json()</code></li>
 <li>[ ] <code>request.json_data</code></li>
 <li>[ ] <code>json.load(request)</code></li>
-</ul>
-<h3 id="question-2">Question 2<a class="headerlink" href="#question-2" title="Permanent link">&para;</a></h3>
-<p><strong>What is the purpose of a Blueprint?</strong></p>
-<ul>
-<li>[ ] To design the database</li>
-<li>[ ] To create HTML templates</li>
-<li>[x] To organize routes into modular components</li>
-<li>[ ] To handle authentication</li>
 </ul>
 <h3 id="question-3">Question 3<a class="headerlink" href="#question-3" title="Permanent link">&para;</a></h3>
 <p><strong>If a client sends invalid data, what status code should you return?</strong></p>
@@ -1125,21 +1622,73 @@ Support add, subtract, multiply, divide. Return 400 for invalid operations.</p>
         
       </main>
       
-        <footer class="md-footer">
-  <div class="md-footer-meta md-typeset">
-    <div class="md-footer-meta__inner md-grid footer-custom">
+        
 
+
+<nav class="md-footer__nav md-grid" aria-label="Footer navigation">
+
+  
+  <a href="01_LEVEL_0_BEGINNER.html"
+     class="footer-nav-card footer-nav-prev"
+     aria-label="Previous page">
+    <span class="nav-icon md-icon">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+    </span>
+    <div class="nav-text">
+      <small>Previous</small>
+      <strong class="md-ellipsis">
+        Level 0 – Beginner
+      </strong>
+    </div>
+  </a>
+  
+
+  
+  <a href="03_TEST_TASK_1.html"
+     class="footer-nav-card footer-nav-next"
+     aria-label="Next page">
+    <div class="nav-text">
+      <small>Next</small>
+      <strong class="md-ellipsis">
+        Test Task 1
+      </strong>
+    </div>
+    <span class="nav-icon md-icon">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+    </span>
+  </a>
+  
+
+</nav>
+
+
+
+
+<footer class="md-footer">
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner footer-custom">
+
+      <!-- Left -->
       <div class="footer-col footer-left">
         <strong>Flask Training Guide</strong>
       </div>
 
+      <!-- Center -->
       <div class="footer-col footer-center">
-        © 2025 Ctrl+C Ctrl+V Devs
+        <p>© 2026 Pragnakalp Techlabs</p>
       </div>
 
+      <!-- Right -->
       <div class="footer-col footer-right">
-        Made by<br>
-        Rahul · Nikunj · Neel · Dhvanil · Mansi · Darshit
+        <p class="footer-heading">Contributors</p>
+        <div class="contributors">
+          <span class="contributor">Rahul</span>
+          <span class="contributor">Nikunj</span>
+          <span class="contributor">Neel</span>
+          <span class="contributor">Dhvanil</span>
+          <span class="contributor">Mansi</span>
+          <span class="contributor">Darshit</span>
+        </div>
       </div>
 
     </div>
