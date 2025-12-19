@@ -1,39 +1,27 @@
 {# ======================================
-   MODERN PREVIOUS / NEXT NAVIGATION
+   MODERN PREVIOUS / NEXT NAVIGATION (DESIGN 11)
 ====================================== #}
 
 {% if page.previous_page or page.next_page %}
-<nav class="md-footer__nav md-grid" aria-label="Footer navigation">
-
+<nav class="md-footer__nav md-grid pill-navigation" aria-label="Footer navigation">
+  
   {% if page.previous_page %}
   <a href="{{ page.previous_page.url | url }}"
-     class="footer-nav-card footer-nav-prev"
+     class="pill-btn pill-prev"
      aria-label="Previous page">
-    <span class="nav-icon md-icon">
-      {% include ".icons/material/arrow-left.svg" %}
-    </span>
-    <div class="nav-text">
-      <small>Previous</small>
-      <strong class="md-ellipsis">
-        {{ page.previous_page.title }}
-      </strong>
-    </div>
+    <span class="pill-arrow">‹</span>
+    <span class="pill-text">PREVIOUS</span>
   </a>
+  {% else %}
+  <div></div>
   {% endif %}
 
   {% if page.next_page %}
   <a href="{{ page.next_page.url | url }}"
-     class="footer-nav-card footer-nav-next"
+     class="pill-btn pill-next"
      aria-label="Next page">
-    <div class="nav-text">
-      <small>Next</small>
-      <strong class="md-ellipsis">
-        {{ page.next_page.title }}
-      </strong>
-    </div>
-    <span class="nav-icon md-icon">
-      {% include ".icons/material/arrow-right.svg" %}
-    </span>
+    <span class="pill-text">NEXT</span>
+    <span class="pill-arrow">›</span>
   </a>
   {% endif %}
 

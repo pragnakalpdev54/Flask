@@ -16,9 +16,6 @@ theme:
 nav:
   - Home: index.md
 
-  - Learning Guide:
-      - Overview: 00_LEARNING_GUIDE.md
-
   - Course Path:
       - Level 0 – Beginner: 01_LEVEL_0_BEGINNER.md
 
