@@ -1,5 +1,11 @@
 # Level 2B: Intermediate - Serialization & Error Handling
 
+> **Prerequisites**: [Level 2A: Databases](04_LEVEL_2A_INTERMEDIATE.md)
+> **Next Level**: [Level 3: Authentication](06_LEVEL_3_AUTHENTICATION.md)
+
+> [!NOTE]
+> **OOP Level**: Low. Schemas are classes, but they are just **templates for data shapes**. You declare fields, and Marshmallow does the magic. You do not need to understand advanced OOP concepts to use them.
+
 ## Goal
 
 In this level, we make our API robust. We will use **Marshmallow** for validation (incoming data) and serialization (outgoing data). We will also strictly implement **Global Error Handling** so users never see standard internal server errors.
@@ -38,6 +44,7 @@ Schemas usually sit near your models or in a `schemas/` folder.
 
 ```python
 from flask_marshmallow import Marshmallow
+from marshmallow import ValidationError
 from models import User
 
 ma = Marshmallow()
@@ -46,12 +53,15 @@ class UserSchema(ma.SQLAlchemyAutoSchema):
     class Meta:
         model = User
         load_instance = True  # Optional: deserialize to model instances
-        # exclude = ('password_hash',) # Hiding fields
+        exclude = ("password_hash",)  # Never expose password hashes
 
 # Initialize schemas
 user_schema = UserSchema()
 users_schema = UserSchema(many=True)
 ```
+
+> [!TIP]
+> **Magic Box – Schemas & `ma`**: Treat `ma = Marshmallow()` and `class UserSchema(...)` as Magic Boxes that know how to turn your models into JSON and validate input. Focus on which fields you declare and what errors you return, not on how Marshmallow works internally.
 
 ## Validation (Input)
 
@@ -69,7 +79,11 @@ def create_user():
         return jsonify(err.messages), 400
         
     # Proceed to service...
-    user = UserService.create_user(data['username'], data['email'])
+    user = UserService.create_user(
+        username=data["username"],
+        email=data["email"],
+        password_hash=data["password_hash"],
+    )
 ```
 
 ## Serialization (Output)
@@ -104,6 +118,7 @@ Instead of `try-except` in every route, use `errorhandler`.
 
 ```python
 # errors.py
+
 class AppError(Exception):
     def __init__(self, message, status_code=400):
         super().__init__(message)

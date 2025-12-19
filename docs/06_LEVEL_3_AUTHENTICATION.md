@@ -1,5 +1,11 @@
 # Level 3: Authentication & Security
 
+> **Prerequisites**: [Level 2B: Serialization](05_LEVEL_2B_INTERMEDIATE.md)
+> **Next Step**: [Test Task 2](07_TEST_TASK_2.md)
+
+> [!NOTE]
+> **OOP Level**: Medium. We use a class for `AuthService` as a **namespace for auth functions**, and decorators like `@jwt_required` which are advanced functions (not OOP). The complexity in this level is **security**, not object-oriented design.
+
 ## Goal
 
 In this level, we secure our API. Since we are building a stateless JSON API, we will use **JWT (JSON Web Tokens)** instead of Session-based auth (Flask-Login). We will also implement a strict **Authentication Service**.
@@ -45,6 +51,9 @@ pw_hash = bcrypt.generate_password_hash('s3cret').decode('utf-8')
 is_valid = bcrypt.check_password_hash(pw_hash, 's3cret')
 ```
 
+> [!TIP]
+> **Magic Box – Password Hashing (`bcrypt`)**: `bcrypt.generate_password_hash(...)` and `bcrypt.check_password_hash(...)` are crypto Magic Boxes. You only need to know *when* to call them (on registration and login), not how hashing works internally.
+
 ## JWT Basics
 
 We use `flask-jwt-extended` for handling tokens.
@@ -72,6 +81,9 @@ def create_app():
     # ...
 ```
 
+> [!TIP]
+> **Magic Box – JWTs**: `JWTManager`, `create_access_token`, and `@jwt_required()` are Magic Boxes that handle token creation and verification. Focus on which routes require a token and what payload you store in it, not on the cryptography details.
+
 ## The Auth Service
 
 We must isolate authentication logic.
@@ -92,10 +104,10 @@ class AuthService:
             raise AppError("Email already exists", 400)
             
         # 2. Hash password
-        hashed_pw = bcrypt.generate_password_hash(password).decode('utf-8')
+        password_hash = bcrypt.generate_password_hash(password).decode('utf-8')
         
         # 3. Create User
-        user = User(username=username, email=email, password=hashed_pw)
+        user = User(username=username, email=email, password_hash=password_hash)
         db.session.add(user)
         db.session.commit()
         
@@ -107,7 +119,7 @@ class AuthService:
         user = User.query.filter_by(email=email).first()
         
         # 2. Check Password
-        if not user or not bcrypt.check_password_hash(user.password, password):
+        if not user or not bcrypt.check_password_hash(user.password_hash, password):
             raise AppError("Invalid credentials", 401)
             
         # 3. Generate Token

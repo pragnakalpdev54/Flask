@@ -1,5 +1,11 @@
 # Level 0: Complete Beginner - Python & Web Fundamentals for Flask
 
+> **Prerequisites**: None. This is where your journey begins!
+> **Next Level**: [Level 1: Foundations](02_LEVEL_1_FOUNDATIONS.md)
+
+> [!NOTE]
+> **No OOP Required**: You do *not* need to know about Python Classes or Objects to start this level. We use simple functions.
+
 ## Goal
 
 Before diving into Flask, you need to understand the fundamentals. This level covers Python basics for web development, web concepts, and environment setup. By the end, you'll be ready to start building your first Flask API.
@@ -148,6 +154,9 @@ def home():
 if __name__ == "__main__":
     app.run(debug=True)
 ```
+
+> [!TIP]
+> **Magic Box – Flask & `jsonify`**: You do not need to understand how `Flask`, `@app.route`, or `jsonify` work internally yet. Treat this pattern as a reusable starting point and focus on the JSON you return.
 
 ### Run it
 

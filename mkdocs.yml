@@ -16,15 +16,32 @@ theme:
 nav:
   - Home: index.md
 
-  - Course Levels:
-      - Level 0 – Beginner: LEVEL_0_BEGINNER.md
-      - Level 1 – Foundations: LEVEL_1_FOUNDATIONS.md
+  - Learning Guide:
+      - Overview: 00_LEARNING_GUIDE.md
+
+  - Course Path:
+      - Level 0 – Beginner: 01_LEVEL_0_BEGINNER.md
+
+      - Level 1 – Foundations: 02_LEVEL_1_FOUNDATIONS.md
+      - Test Task 1: 03_TEST_TASK_1.md
+
       - Level 2 – Intermediate:
-          - Part A – Core Concepts: LEVEL_2A_INTERMEDIATE.md
-          - Part B – Applied Flask: LEVEL_2B_INTERMEDIATE.md
-      - Level 3 – Authentication & Security: LEVEL_3_AUTHENTICATION.md
-      - Level 4 – Scalable Systems: LEVEL_4_SCALABLE.md
-      - Level 5 – Extensions & Advanced Topics: LEVEL_5_EXTENSIONS.md
+          - Part A – Core Concepts: 04_LEVEL_2A_INTERMEDIATE.md
+          - Part B – Applied Flask: 05_LEVEL_2B_INTERMEDIATE.md
+
+      - Level 3 – Authentication & Security: 06_LEVEL_3_AUTHENTICATION.md
+      - Test Task 2: 07_TEST_TASK_2.md
+
+      - Level 4 – Scalable Systems: 08_LEVEL_4_SCALABLE.md
+
+      - Level 5 – Extensions & Advanced Topics: 09_LEVEL_5_EXTENSIONS.md
+      - Test Task 3: 10_TEST_TASK_3.md
+
+  - API & Tooling Guides:
+      - cURL Guide: CURL_GUIDE.md
+      - Postman:
+          - Basics: POSTMAN_GUIDE_PART1_BASICS.md
+          - Advanced: POSTMAN_GUIDE_PART2_ADVANCED.md
 
 markdown_extensions:
   - toc:
@@ -37,10 +54,4 @@ markdown_extensions:
 
 extra_css:
   - assets/stylesheets/footer.css
-  
-extra:
-  generator: false
-
-  copyright: |
-    © 2025 Ctrl+C Ctrl+V Devs · Flask Training Guide  
-    **Made by Rahul, Nikunj, Neel, Dhvanil, Mansi, Darshit**
+  - assets/stylesheets/extra.css
