@@ -99,7 +99,7 @@ Error (400) - Invalid UUID format
 
 4. Update User
 Endpoint
-PUT /users/<uuid>
+PATCH /users/<uuid>
 
 Request Body
 {

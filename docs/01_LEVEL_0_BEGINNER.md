@@ -158,6 +158,145 @@ if __name__ == "__main__":
 > [!TIP]
 > **Magic Box – Flask & `jsonify`**: You do not need to understand how `Flask`, `@app.route`, or `jsonify` work internally yet. Treat this pattern as a reusable starting point and focus on the JSON you return.
 
+## Understanding Flask Basics
+
+Before we run the application, let's understand what's happening in those last two lines.
+
+### Why `if __name__ == "__main__":`?
+
+This is a standard Python pattern. Here's what it means:
+
+```python
+if __name__ == "__main__":
+    app.run(debug=True)
+```
+
+**Explanation:**
+
+- `__name__` is a special Python variable. When you run a file directly (e.g., `python app.py`), Python sets `__name__` to `"__main__"`.
+- If you **import** this file from another file (e.g., `from app import app`), then `__name__` will be the module name (`"app"`), not `"__main__"`.
+
+**Why does this matter?**
+
+We only want to start the Flask development server when we run the file directly, **not** when we import it. This is important because:
+
+1. **Testing**: When you write tests, you import your app without running the server.
+2. **Production**: Production servers (like Gunicorn or uWSGI) import your app and run it their own way.
+
+**In simple terms:** This line says "Only start the development server if this file is being run directly."
+
+### Understanding `app.run()` Parameters
+
+The `app.run()` method starts Flask's built-in development server. Here are the most important parameters:
+
+```python
+app.run(
+    host='127.0.0.1',  # What network interface to bind to
+    port=5000,         # What port to listen on
+    debug=True         # Enable/disable debug mode
+)
+```
+
+#### 1. `host` - Network Interface
+
+**Default:** `'127.0.0.1'` (localhost only)
+
+```python
+# Only accessible from your own computer
+app.run(host='127.0.0.1')  # or just 'localhost'
+
+# Accessible from other devices on your network (e.g., testing on your phone)
+app.run(host='0.0.0.0')
+```
+
+> [!WARNING]
+> **Security**: Only use `host='0.0.0.0'` in development on trusted networks. Never in production!
+
+**When to use each:**
+
+- `127.0.0.1` (default): Development on your own machine only
+- `0.0.0.0`: Testing from other devices (phone, tablet) on your local network
+
+#### 2. `port` - Port Number
+
+**Default:** `5000`
+
+```python
+# Use default port 5000
+app.run()  # Accessible at http://127.0.0.1:5000
+
+# Use custom port
+app.run(port=8080)  # Accessible at http://127.0.0.1:8080
+```
+
+**Why change the port?**
+
+- Port 5000 is already in use by another application
+- Your company/project has a standard port number
+- You're running multiple Flask apps simultaneously
+
+#### 3. `debug` - Debug Mode
+
+**Default:** `False` (disabled)
+
+```python
+# Development: Enable debug mode
+app.run(debug=True)
+
+# Production: NEVER enable debug mode
+app.run(debug=False)
+```
+
+**What does `debug=True` do?**
+
+| Feature | Behavior |
+|---------|----------|
+| **Auto-reload** | Server restarts automatically when you change code |
+| **Error Details** | Shows detailed error pages with stack traces in browser |
+| **Interactive Debugger** | Allows you to inspect variables in the browser when errors occur |
+
+> [!CAUTION]
+> **NEVER use `debug=True` in production!** It exposes sensitive information and allows code execution through the browser debugger. This is a major security risk.
+
+### Complete Example with All Parameters
+
+```python
+from flask import Flask, jsonify
+
+app = Flask(__name__)
+
+@app.route("/")
+def home():
+    return jsonify({"message": "Hello, Flask!"})
+
+if __name__ == "__main__":
+    # Development configuration
+    app.run(
+        host='127.0.0.1',  # Localhost only
+        port=5000,          # Default Flask port
+        debug=True          # Enable auto-reload and detailed errors
+    )
+```
+
+### Development vs Production
+
+**Development (what we use in this course):**
+
+```python
+if __name__ == "__main__":
+    app.run(debug=True)
+```
+
+**Production (real-world deployment):**
+
+```bash
+# Use a production server like Gunicorn
+gunicorn -w 4 -b 0.0.0.0:8000 app:app
+```
+
+> [!NOTE]
+> Flask's built-in server (`app.run()`) is **only for development**. For production, you need a proper WSGI server like Gunicorn, uWSGI, or Waitress. We'll cover this in later levels.
+
 ### Run it
 
 ```bash

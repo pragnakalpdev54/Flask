@@ -116,6 +116,9 @@ curl -X POST http://127.0.0.1:5000/api/tasks/ \
   -d "completed=false"
 ```
 
+> [!IMPORTANT]
+> **Windows PowerShell Users**: The syntax above uses Unix/Linux/Mac conventions. See the [Windows PowerShell section](#windows-powershell-syntax) below for correct syntax on Windows.
+
 ### PUT Request
 
 Full update of a resource:
@@ -143,6 +146,97 @@ Deleting a resource:
 ```bash
 curl -X DELETE http://127.0.0.1:5000/api/tasks/1/
 ```
+
+## Windows PowerShell Syntax
+
+> [!WARNING]
+> **PowerShell uses different syntax than Unix shells!** Copy-pasting Unix examples will fail.
+
+### Key Differences
+
+| Feature | Unix/Linux/Mac | Windows PowerShell |
+|---------|----------------|---------------------|
+| Line continuation | `\` backslash | `` ` `` backtick |
+| JSON quotes | Single quotes `'` | Escaped double quotes |
+| Variables | `$VAR` | `$env:VAR` |
+
+### GET Request (Same on Windows)
+
+```powershell
+# GET works the same
+curl http://127.0.0.1:5000/api/tasks/
+```
+
+### POST Request with JSON
+
+**Option 1: Single Line (Recommended for Beginners)**
+
+```powershell
+curl -X POST http://127.0.0.1:5000/api/tasks/ -H "Content-Type: application/json" -d "{`"title`":`"Learn Flask`",`"completed`":false}"
+```
+
+**Option 2: Multi-line with Backtick**
+
+```powershell
+curl -X POST http://127.0.0.1:5000/api/tasks/ `
+  -H "Content-Type: application/json" `
+  -d "{`"title`":`"Learn Flask`",`"completed`":false}"
+```
+
+**Option 3: Using Here-String (Cleanest)**
+
+```powershell
+$json = @"
+{
+  "title": "Learn Flask",
+  "desc": "Complete the guide",
+  "completed": false
+}
+"@
+
+curl -X POST http://127.0.0.1:5000/api/tasks/ `
+  -H "Content-Type: application/json" `
+  -d $json
+```
+
+### PUT Request
+
+```powershell
+curl -X PUT http://127.0.0.1:5000/api/tasks/1/ `
+  -H "Content-Type: application/json" `
+  -d "{`"title`":`"Updated Task`",`"completed`":true}"
+```
+
+### PATCH Request
+
+```powershell
+curl -X PATCH http://127.0.0.1:5000/api/tasks/1/ `
+  -H "Content-Type: application/json" `
+  -d "{`"completed`":true}"
+```
+
+### DELETE Request (Same on Windows)
+
+```powershell
+curl -X DELETE http://127.0.0.1:5000/api/tasks/1/
+```
+
+### JWT Authentication
+
+```powershell
+# Get token
+$response = curl -X POST http://127.0.0.1:5000/auth/login `
+  -H "Content-Type: application/json" `
+  -d "{`"email`":`"user@example.com`",`"password`":`"pass123`"}" | ConvertFrom-Json
+
+$token = $response.access_token
+
+# Use token
+curl -H "Authorization: Bearer $token" http://127.0.0.1:5000/api/tasks/
+```
+
+> [!TIP]
+> **Quick Tip**: Use the **here-string** method (`@" ... "@`) for complex JSON in PowerShell. It's much cleaner than escaping quotes!
 
 ## Headers and Content Types
 

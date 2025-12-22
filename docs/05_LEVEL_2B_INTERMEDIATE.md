@@ -68,7 +68,7 @@ users_schema = UserSchema(many=True)
 Use the schema to validate incoming JSON before it reaches your Service Layer.
 
 ```python
-@user_bp.route('/', methods=['POST'])
+@app.route('/users', methods=['POST'])
 def create_user():
     json_data = request.get_json()
     
@@ -91,7 +91,7 @@ def create_user():
 Never manually build dictionaries like `{'id': user.id, ...}`. Use the schema.
 
 ```python
-@user_bp.route('/', methods=['GET'])
+@app.route('/users', methods=['GET'])
 def get_users():
     users = UserService.get_all_users()
     
@@ -99,7 +99,7 @@ def get_users():
     result = users_schema.dump(users)
     return jsonify(result), 200
 
-@user_bp.route('/<int:id>', methods=['GET'])
+@app.route('/users/<int:id>', methods=['GET'])
 def get_user(id):
     user = UserService.get_user_by_id(id)
     
