@@ -52,6 +52,8 @@
     
       <link rel="stylesheet" href="assets/stylesheets/extra.css">
     
+      <link rel="stylesheet" href="assets/stylesheets/sidebar.css">
+    
     <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
@@ -228,60 +230,6 @@
       
   
   
-    
-  
-  
-  
-    
-    
-    
-    
-      
-        
-        
-      
-    
-    
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
-        
-          
-          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
-            
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Course Path
-  
-
-    
-  </span>
-  
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_2">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    Course Path
-  
-
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
   
   
     <li class="md-nav__item">
@@ -304,10 +252,9 @@
     </li>
   
 
-              
-            
-              
-                
+    
+      
+      
   
   
     
@@ -468,6 +415,89 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#4-complete-guide-to-http-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Complete Guide to HTTP Methods
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Complete Guide to HTTP Methods">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#get-retrieve-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GET - Retrieve Data
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#post-create-new-resource" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        POST - Create New Resource
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#put-replace-entire-resource" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PUT - Replace Entire Resource
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#patch-partial-update" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PATCH - Partial Update
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#delete-remove-resource" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        DELETE - Remove Resource
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-quick-reference-when-to-use-which-method" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Quick Reference: When to Use Which Method
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#dynamic-urls" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -541,6 +571,150 @@
       
     </span>
   </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#error-handling-and-status-codes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Error Handling and Status Codes
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Error Handling and Status Codes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#understanding-http-status-codes-detailed" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Understanding HTTP Status Codes (Detailed)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Understanding HTTP Status Codes (Detailed)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#200-ok-success" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        200 OK - Success
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#201-created-resource-created" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        201 Created - Resource Created
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#400-bad-request-client-error" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        400 Bad Request - Client Error
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#404-not-found-resource-doesnt-exist" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        404 Not Found - Resource Doesn't Exist
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#500-internal-server-error-something-went-wrong" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        500 Internal Server Error - Something Went Wrong
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#handling-invalid-json" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Handling Invalid JSON
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#complete-error-handling-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Complete Error Handling Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#using-try-except-blocks-effectively" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Using Try-Except Blocks Effectively
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#quick-reference-error-handling-checklist" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Quick Reference: Error Handling Checklist
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#common-mistakes-to-avoid" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Common Mistakes to Avoid
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -707,10 +881,9 @@
     </li>
   
 
-              
-            
-              
-                
+    
+      
+      
   
   
   
@@ -735,61 +908,9 @@
     </li>
   
 
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-    
     
       
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
       
-        
-        
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_4" >
-        
-          
-          <label class="md-nav__link" for="__nav_2_4" id="__nav_2_4_label" tabindex="0">
-            
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Level 2 – Intermediate
-  
-
-    
-  </span>
-  
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_4_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_2_4">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    Level 2 – Intermediate
-  
-
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
   
   
   
@@ -802,7 +923,7 @@
   <span class="md-ellipsis">
     
   
-    Part A – Core Concepts
+    Level 2A – Core Concepts
   
 
     
@@ -814,10 +935,9 @@
     </li>
   
 
-              
-            
-              
-                
+    
+      
+      
   
   
   
@@ -830,7 +950,7 @@
   <span class="md-ellipsis">
     
   
-    Part B – Applied Flask
+    Level 2B – Applied Flask
   
 
     
@@ -842,18 +962,9 @@
     </li>
   
 
-              
-            
-          </ul>
-        </nav>
+    
       
-    </li>
-  
-
-              
-            
-              
-                
+      
   
   
   
@@ -878,10 +989,9 @@
     </li>
   
 
-              
-            
-              
-                
+    
+      
+      
   
   
   
@@ -906,10 +1016,9 @@
     </li>
   
 
-              
-            
-              
-                
+    
+      
+      
   
   
   
@@ -934,10 +1043,9 @@
     </li>
   
 
-              
-            
-              
-                
+    
+      
+      
   
   
   
@@ -962,10 +1070,9 @@
     </li>
   
 
-              
-            
-              
-                
+    
+      
+      
   
   
   
@@ -990,11 +1097,30 @@
     </li>
   
 
-              
-            
-          </ul>
-        </nav>
+    
       
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="PATTERN_CHEATSHEET.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quick Reference Guide
+  
+
+    
+  </span>
+  
+  
+
+      </a>
     </li>
   
 
@@ -1005,33 +1131,15 @@
   
   
   
-    
-    
-    
-    
-      
+    <li class="md-nav__item">
+      <a href="POSTMAN_GUIDE_PART1_BASICS.html" class="md-nav__link">
         
-        
-      
-    
-    
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
-      
-        
-        
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
-        
-          
-          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
-            
   
   
   <span class="md-ellipsis">
     
   
-    API & Tooling Guides
+    Postman Basics
   
 
     
@@ -1039,22 +1147,40 @@
   
   
 
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_3">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    API & Tooling Guides
+      </a>
+    </li>
   
 
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="POSTMAN_GUIDE_PART2_ADVANCED.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Postman Advanced
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
   
   
   
@@ -1076,129 +1202,6 @@
   
 
       </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-    
-    
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_2" >
-        
-          
-          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
-            
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Postman
-  
-
-    
-  </span>
-  
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_3_2">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    Postman
-  
-
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="POSTMAN_GUIDE_PART1_BASICS.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Basics
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="POSTMAN_GUIDE_PART2_ADVANCED.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Advanced
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
     </li>
   
 
@@ -1228,7 +1231,7 @@
 <strong>No OOP Required</strong>: We still use standard Python functions here. No classes needed!</p>
 </blockquote>
 <h2 id="goal">Goal<a class="headerlink" href="#goal" title="Permanent link">&para;</a></h2>
-<p>In this level, we will learn how to handle different types of requests, work with data sent by clients, and organize our application using Blueprints.</p>
+<p>In this level, we will learn how to handle different types of requests, work with data sent by clients, and build well-structured APIs.</p>
 <p><strong>Core Rules for this Level:</strong></p>
 <ol>
 <li><strong>API First</strong>: We only speak JSON.</li>
@@ -1323,15 +1326,226 @@
 <p>[!TIP]
 <strong>Magic Box – Flask routing &amp; <code>request</code></strong>: Treat <code>Flask(__name__)</code>, <code>@app.route</code>, <code>jsonify(...)</code>, and the <code>request</code> object as Magic Boxes. You mainly need to know <em>where</em> to read data (<code>request.get_json()</code>, <code>request.args</code>) and <em>what</em> JSON to return.</p>
 </blockquote>
-<h3 id="dynamic-urls">Dynamic URLs<a class="headerlink" href="#dynamic-urls" title="Permanent link">&para;</a></h3>
-<p>Capture values from the URL.</p>
-<div class="codehilite"><pre><span></span><code><span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s2">&quot;/books/&lt;int:book_id&gt;&quot;</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;GET&quot;</span><span class="p">])</span>
+<h3 id="4-complete-guide-to-http-methods">4. Complete Guide to HTTP Methods<a class="headerlink" href="#4-complete-guide-to-http-methods" title="Permanent link">&para;</a></h3>
+<p>Let's see all the HTTP methods with practical examples. We'll build a simple Book API to demonstrate each method.</p>
+<h4 id="get-retrieve-data">GET - Retrieve Data<a class="headerlink" href="#get-retrieve-data" title="Permanent link">&para;</a></h4>
+<p><strong>Use when:</strong> You want to read/fetch data without changing anything.</p>
+<div class="codehilite"><pre><span></span><code><span class="c1"># Get all books</span>
+<span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s2">&quot;/books&quot;</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;GET&quot;</span><span class="p">])</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">get_books</span><span class="p">():</span>
+    <span class="n">books</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="p">{</span><span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;Flask Guide&quot;</span><span class="p">,</span> <span class="s2">&quot;author&quot;</span><span class="p">:</span> <span class="s2">&quot;John Doe&quot;</span><span class="p">},</span>
+        <span class="p">{</span><span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;Python Basics&quot;</span><span class="p">,</span> <span class="s2">&quot;author&quot;</span><span class="p">:</span> <span class="s2">&quot;Jane Smith&quot;</span><span class="p">}</span>
+    <span class="p">]</span>
+    <span class="k">return</span> <span class="n">jsonify</span><span class="p">({</span><span class="s2">&quot;books&quot;</span><span class="p">:</span> <span class="n">books</span><span class="p">}),</span> <span class="mi">200</span>
+
+<span class="c1"># Get a single book by ID</span>
+<span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s2">&quot;/books/&lt;int:book_id&gt;&quot;</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;GET&quot;</span><span class="p">])</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">get_book</span><span class="p">(</span><span class="n">book_id</span><span class="p">):</span>
-    <span class="c1"># book_id is passed as an integer argument</span>
-    <span class="k">return</span> <span class="n">jsonify</span><span class="p">({</span><span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="n">book_id</span><span class="p">,</span> <span class="s2">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;Sample Book&quot;</span><span class="p">})</span>
+    <span class="c1"># In a real app, fetch from database</span>
+    <span class="n">book</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="n">book_id</span><span class="p">,</span> <span class="s2">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;Flask Guide&quot;</span><span class="p">,</span> <span class="s2">&quot;author&quot;</span><span class="p">:</span> <span class="s2">&quot;John Doe&quot;</span><span class="p">}</span>
+    <span class="k">return</span> <span class="n">jsonify</span><span class="p">(</span><span class="n">book</span><span class="p">),</span> <span class="mi">200</span>
 </code></pre></div>
 
-<p><em>Converters</em>: <code>string</code> (default), <code>int</code>, <code>float</code>, <code>path</code>, <code>uuid</code>.</p>
+<p><strong>Key points:</strong></p>
+<ul>
+<li>GET requests <strong>never</strong> change data</li>
+<li>Query parameters (<code>?page=1&amp;sort=title</code>) for filtering/pagination</li>
+<li>Always return 200 OK on success</li>
+</ul>
+<h4 id="post-create-new-resource">POST - Create New Resource<a class="headerlink" href="#post-create-new-resource" title="Permanent link">&para;</a></h4>
+<p><strong>Use when:</strong> You want to create a brand new resource.</p>
+<div class="codehilite"><pre><span></span><code><span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s2">&quot;/books&quot;</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;POST&quot;</span><span class="p">])</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">create_book</span><span class="p">():</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">get_json</span><span class="p">()</span>
+
+    <span class="c1"># Validation</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">data</span> <span class="ow">or</span> <span class="s1">&#39;title&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">data</span> <span class="ow">or</span> <span class="s1">&#39;author&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">jsonify</span><span class="p">({</span><span class="s2">&quot;error&quot;</span><span class="p">:</span> <span class="s2">&quot;Missing title or author&quot;</span><span class="p">}),</span> <span class="mi">400</span>
+
+    <span class="c1"># In a real app, save to database and get generated ID</span>
+    <span class="n">new_book</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">123</span><span class="p">,</span>  <span class="c1"># Would be auto-generated by DB</span>
+        <span class="s2">&quot;title&quot;</span><span class="p">:</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;title&#39;</span><span class="p">],</span>
+        <span class="s2">&quot;author&quot;</span><span class="p">:</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;author&#39;</span><span class="p">]</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="n">jsonify</span><span class="p">({</span><span class="s2">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;Book created&quot;</span><span class="p">,</span> <span class="s2">&quot;book&quot;</span><span class="p">:</span> <span class="n">new_book</span><span class="p">}),</span> <span class="mi">201</span>
+</code></pre></div>
+
+<p><strong>Key points:</strong></p>
+<ul>
+<li>Always return <strong>201 Created</strong> on success (not 200)</li>
+<li>Data comes from request body as JSON</li>
+<li>Generate/assign ID server-side (never trust client-provided IDs)</li>
+</ul>
+<h4 id="put-replace-entire-resource">PUT - Replace Entire Resource<a class="headerlink" href="#put-replace-entire-resource" title="Permanent link">&para;</a></h4>
+<p><strong>Use when:</strong> You want to completely replace an existing resource with new data.</p>
+<div class="codehilite"><pre><span></span><code><span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s2">&quot;/books/&lt;int:book_id&gt;&quot;</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;PUT&quot;</span><span class="p">])</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">update_book_full</span><span class="p">(</span><span class="n">book_id</span><span class="p">):</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">get_json</span><span class="p">()</span>
+
+    <span class="c1"># PUT requires ALL fields to be present</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">data</span> <span class="ow">or</span> <span class="s1">&#39;title&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">data</span> <span class="ow">or</span> <span class="s1">&#39;author&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">jsonify</span><span class="p">({</span><span class="s2">&quot;error&quot;</span><span class="p">:</span> <span class="s2">&quot;PUT requires title AND author&quot;</span><span class="p">}),</span> <span class="mi">400</span>
+
+    <span class="c1"># In a real app, check if book exists first</span>
+    <span class="c1"># If not found: return 404</span>
+
+    <span class="c1"># Replace the entire resource</span>
+    <span class="n">updated_book</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="n">book_id</span><span class="p">,</span>
+        <span class="s2">&quot;title&quot;</span><span class="p">:</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;title&#39;</span><span class="p">],</span>
+        <span class="s2">&quot;author&quot;</span><span class="p">:</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;author&#39;</span><span class="p">]</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="n">jsonify</span><span class="p">({</span><span class="s2">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;Book replaced&quot;</span><span class="p">,</span> <span class="s2">&quot;book&quot;</span><span class="p">:</span> <span class="n">updated_book</span><span class="p">}),</span> <span class="mi">200</span>
+</code></pre></div>
+
+<p><strong>Key points:</strong></p>
+<ul>
+<li><strong>Replaces</strong> the entire resource (all fields must be provided)</li>
+<li>Missing fields would be removed/set to defaults</li>
+<li>Return 404 if resource doesn't exist</li>
+<li>Return 200 OK on success</li>
+</ul>
+<p><strong>Example:</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="c1">// Before: {&quot;id&quot;: 1, &quot;title&quot;: &quot;Old Title&quot;, &quot;author&quot;: &quot;Old Author&quot;, &quot;year&quot;: 2020}</span>
+<span class="c1">// PUT with: {&quot;title&quot;: &quot;New Title&quot;, &quot;author&quot;: &quot;New Author&quot;}</span>
+<span class="c1">// After: {&quot;id&quot;: 1, &quot;title&quot;: &quot;New Title&quot;, &quot;author&quot;: &quot;New Author&quot;}</span>
+<span class="c1">// Notice: &#39;year&#39; field is gone!</span>
+</code></pre></div>
+
+<h4 id="patch-partial-update">PATCH - Partial Update<a class="headerlink" href="#patch-partial-update" title="Permanent link">&para;</a></h4>
+<p><strong>Use when:</strong> You want to update only specific fields of a resource.</p>
+<div class="codehilite"><pre><span></span><code><span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s2">&quot;/books/&lt;int:book_id&gt;&quot;</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;PATCH&quot;</span><span class="p">])</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">update_book_partial</span><span class="p">(</span><span class="n">book_id</span><span class="p">):</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">get_json</span><span class="p">()</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">data</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">jsonify</span><span class="p">({</span><span class="s2">&quot;error&quot;</span><span class="p">:</span> <span class="s2">&quot;No data provided&quot;</span><span class="p">}),</span> <span class="mi">400</span>
+
+    <span class="c1"># In a real app, fetch existing book from DB</span>
+    <span class="n">existing_book</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="n">book_id</span><span class="p">,</span>
+        <span class="s2">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;Original Title&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;author&quot;</span><span class="p">:</span> <span class="s2">&quot;Original Author&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;year&quot;</span><span class="p">:</span> <span class="mi">2020</span>
+    <span class="p">}</span>
+
+    <span class="c1"># Check if book exists</span>
+    <span class="c1"># if not found: return 404</span>
+
+    <span class="c1"># Update only the fields that were sent</span>
+    <span class="k">if</span> <span class="s1">&#39;title&#39;</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
+        <span class="n">existing_book</span><span class="p">[</span><span class="s1">&#39;title&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;title&#39;</span><span class="p">]</span>
+    <span class="k">if</span> <span class="s1">&#39;author&#39;</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
+        <span class="n">existing_book</span><span class="p">[</span><span class="s1">&#39;author&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;author&#39;</span><span class="p">]</span>
+    <span class="k">if</span> <span class="s1">&#39;year&#39;</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
+        <span class="n">existing_book</span><span class="p">[</span><span class="s1">&#39;year&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;year&#39;</span><span class="p">]</span>
+
+    <span class="k">return</span> <span class="n">jsonify</span><span class="p">({</span><span class="s2">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;Book updated&quot;</span><span class="p">,</span> <span class="s2">&quot;book&quot;</span><span class="p">:</span> <span class="n">existing_book</span><span class="p">}),</span> <span class="mi">200</span>
+</code></pre></div>
+
+<p><strong>Key points:</strong></p>
+<ul>
+<li>Only updates fields that are provided</li>
+<li>Other fields remain unchanged</li>
+<li>More flexible than PUT</li>
+<li>Most commonly used for updates in modern APIs</li>
+</ul>
+<p><strong>Example:</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="c1">// Before: {&quot;id&quot;: 1, &quot;title&quot;: &quot;Old Title&quot;, &quot;author&quot;: &quot;Old Author&quot;, &quot;year&quot;: 2020}</span>
+<span class="c1">// PATCH with: {&quot;title&quot;: &quot;New Title&quot;}</span>
+<span class="c1">// After: {&quot;id&quot;: 1, &quot;title&quot;: &quot;New Title&quot;, &quot;author&quot;: &quot;Old Author&quot;, &quot;year&quot;: 2020}</span>
+<span class="c1">// Notice: &#39;author&#39; and &#39;year&#39; are preserved!</span>
+</code></pre></div>
+
+<h4 id="delete-remove-resource">DELETE - Remove Resource<a class="headerlink" href="#delete-remove-resource" title="Permanent link">&para;</a></h4>
+<p><strong>Use when:</strong> You want to permanently remove a resource.</p>
+<div class="codehilite"><pre><span></span><code><span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s2">&quot;/books/&lt;int:book_id&gt;&quot;</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;DELETE&quot;</span><span class="p">])</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">delete_book</span><span class="p">(</span><span class="n">book_id</span><span class="p">):</span>
+    <span class="c1"># In a real app, check if book exists</span>
+    <span class="c1"># If not found: return 404</span>
+
+    <span class="c1"># Delete from database</span>
+    <span class="c1"># db.session.delete(book)</span>
+    <span class="c1"># db.session.commit()</span>
+
+    <span class="k">return</span> <span class="n">jsonify</span><span class="p">({</span><span class="s2">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;Book deleted successfully&quot;</span><span class="p">}),</span> <span class="mi">200</span>
+</code></pre></div>
+
+<p><strong>Alternative:</strong> You can also return <strong>204 No Content</strong> with no response body:</p>
+<div class="codehilite"><pre><span></span><code><span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s2">&quot;/books/&lt;int:book_id&gt;&quot;</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;DELETE&quot;</span><span class="p">])</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">delete_book</span><span class="p">(</span><span class="n">book_id</span><span class="p">):</span>
+    <span class="c1"># Delete logic here</span>
+    <span class="k">return</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="mi">204</span>  <span class="c1"># No content</span>
+</code></pre></div>
+
+<p><strong>Key points:</strong></p>
+<ul>
+<li>Return 200 OK with a message, <strong>or</strong> 204 No Content with empty body</li>
+<li>Return 404 if resource doesn't exist</li>
+<li>DELETE is <strong>idempotent</strong> (calling it multiple times has the same effect)</li>
+</ul>
+<h3 id="5-quick-reference-when-to-use-which-method">5. Quick Reference: When to Use Which Method<a class="headerlink" href="#5-quick-reference-when-to-use-which-method" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Purpose</th>
+<th>Body Required</th>
+<th>Idempotent*</th>
+<th>Success Code</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>GET</strong></td>
+<td>Retrieve data</td>
+<td>No</td>
+<td>Yes</td>
+<td>200</td>
+</tr>
+<tr>
+<td><strong>POST</strong></td>
+<td>Create new</td>
+<td>Yes</td>
+<td>No</td>
+<td>201</td>
+</tr>
+<tr>
+<td><strong>PUT</strong></td>
+<td>Replace entire resource</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>200</td>
+</tr>
+<tr>
+<td><strong>PATCH</strong></td>
+<td>Update partial</td>
+<td>Yes</td>
+<td>No**</td>
+<td>200</td>
+</tr>
+<tr>
+<td><strong>DELETE</strong></td>
+<td>Remove</td>
+<td>No</td>
+<td>Yes</td>
+<td>200 or 204</td>
+</tr>
+</tbody>
+</table>
+<p>*Idempotent = calling it multiple times has the same effect as calling it once</p>
+<p><strong>Common Mistakes to Avoid:</strong></p>
+<ol>
+<li>❌ Using GET to create/update/delete data</li>
+<li>❌ Using POST for updates (use PUT or PATCH)</li>
+<li>❌ Returning 200 OK when creating resources (use 201 Created)</li>
+<li>❌ Using PUT when you only want to update one field (use PATCH)</li>
+</ol>
+<h3 id="dynamic-urls">Dynamic URLs<a class="headerlink" href="#dynamic-urls" title="Permanent link">&para;</a></h3>
 <h2 id="handling-requests-the-input">Handling Requests (The Input)<a class="headerlink" href="#handling-requests-the-input" title="Permanent link">&para;</a></h2>
 <p>In an API, we mostly care about <strong>JSON Body</strong> and <strong>Query Parameters</strong>.</p>
 <h3 id="1-json-body-postput">1. JSON Body (POST/PUT)<a class="headerlink" href="#1-json-body-postput" title="Permanent link">&para;</a></h3>
@@ -1411,6 +1625,310 @@
     <span class="k">return</span> <span class="n">jsonify</span><span class="p">({</span><span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">123</span><span class="p">,</span> <span class="s2">&quot;status&quot;</span><span class="p">:</span> <span class="s2">&quot;pending&quot;</span><span class="p">}),</span> <span class="mi">201</span>
 </code></pre></div>
 
+<h2 id="error-handling-and-status-codes">Error Handling and Status Codes<a class="headerlink" href="#error-handling-and-status-codes" title="Permanent link">&para;</a></h2>
+<p>Proper error handling is <strong>critical</strong> for building production-ready APIs. This section prepares you for Test Task 1 and real-world development.</p>
+<h3 id="understanding-http-status-codes-detailed">Understanding HTTP Status Codes (Detailed)<a class="headerlink" href="#understanding-http-status-codes-detailed" title="Permanent link">&para;</a></h3>
+<p>We saw a brief table earlier. Now let's understand each error code with practical examples.</p>
+<h4 id="200-ok-success">200 OK - Success<a class="headerlink" href="#200-ok-success" title="Permanent link">&para;</a></h4>
+<p><strong>Use when:</strong> The request succeeded and you're returning data.</p>
+<div class="codehilite"><pre><span></span><code><span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s2">&quot;/users/&lt;int:user_id&gt;&quot;</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;GET&quot;</span><span class="p">])</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">get_user</span><span class="p">(</span><span class="n">user_id</span><span class="p">):</span>
+    <span class="n">user</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="n">user_id</span><span class="p">,</span> <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Alice&quot;</span><span class="p">}</span>
+    <span class="k">return</span> <span class="n">jsonify</span><span class="p">(</span><span class="n">user</span><span class="p">),</span> <span class="mi">200</span>
+</code></pre></div>
+
+<h4 id="201-created-resource-created">201 Created - Resource Created<a class="headerlink" href="#201-created-resource-created" title="Permanent link">&para;</a></h4>
+<p><strong>Use when:</strong> A new resource was successfully created.</p>
+<div class="codehilite"><pre><span></span><code><span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s2">&quot;/users&quot;</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;POST&quot;</span><span class="p">])</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">create_user</span><span class="p">():</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">get_json</span><span class="p">()</span>
+    <span class="c1"># Create logic here</span>
+    <span class="k">return</span> <span class="n">jsonify</span><span class="p">({</span><span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">123</span><span class="p">,</span> <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]}),</span> <span class="mi">201</span>
+</code></pre></div>
+
+<h4 id="400-bad-request-client-error">400 Bad Request - Client Error<a class="headerlink" href="#400-bad-request-client-error" title="Permanent link">&para;</a></h4>
+<p><strong>Use when:</strong> The client sent invalid/malformed data or missing required fields.</p>
+<p><strong>Common scenarios:</strong></p>
+<ul>
+<li>Missing required fields</li>
+<li>Invalid JSON format</li>
+<li>Invalid data types</li>
+<li>Validation failures</li>
+<li>Invalid UUID/ID format</li>
+</ul>
+<div class="codehilite"><pre><span></span><code><span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s2">&quot;/users&quot;</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;POST&quot;</span><span class="p">])</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">create_user</span><span class="p">():</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">get_json</span><span class="p">()</span>
+
+    <span class="c1"># Scenario 1: No JSON body</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">data</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">jsonify</span><span class="p">({</span><span class="s2">&quot;error&quot;</span><span class="p">:</span> <span class="s2">&quot;Request body is required&quot;</span><span class="p">}),</span> <span class="mi">400</span>
+
+    <span class="c1"># Scenario 2: Missing required fields</span>
+    <span class="k">if</span> <span class="s1">&#39;name&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">jsonify</span><span class="p">({</span><span class="s2">&quot;error&quot;</span><span class="p">:</span> <span class="s2">&quot;Missing &#39;name&#39; field&quot;</span><span class="p">}),</span> <span class="mi">400</span>
+
+    <span class="k">if</span> <span class="s1">&#39;email&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">jsonify</span><span class="p">({</span><span class="s2">&quot;error&quot;</span><span class="p">:</span> <span class="s2">&quot;Missing &#39;email&#39; field&quot;</span><span class="p">}),</span> <span class="mi">400</span>
+
+    <span class="c1"># Scenario 3: Invalid data type</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;age&#39;</span><span class="p">),</span> <span class="nb">int</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">jsonify</span><span class="p">({</span><span class="s2">&quot;error&quot;</span><span class="p">:</span> <span class="s2">&quot;Age must be an integer&quot;</span><span class="p">}),</span> <span class="mi">400</span>
+
+    <span class="c1"># Success</span>
+    <span class="k">return</span> <span class="n">jsonify</span><span class="p">({</span><span class="s2">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;User created&quot;</span><span class="p">}),</span> <span class="mi">201</span>
+</code></pre></div>
+
+<p><strong>Example: Invalid UUID Format</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">uuid</span>
+
+<span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s2">&quot;/users/&lt;user_id&gt;&quot;</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;GET&quot;</span><span class="p">])</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">get_user</span><span class="p">(</span><span class="n">user_id</span><span class="p">):</span>
+    <span class="c1"># Validate UUID format</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">uuid</span><span class="o">.</span><span class="n">UUID</span><span class="p">(</span><span class="n">user_id</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">jsonify</span><span class="p">({</span><span class="s2">&quot;error&quot;</span><span class="p">:</span> <span class="s2">&quot;Invalid UUID format&quot;</span><span class="p">}),</span> <span class="mi">400</span>
+
+    <span class="c1"># Proceed with valid UUID</span>
+    <span class="n">user</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="n">user_id</span><span class="p">,</span> <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Alice&quot;</span><span class="p">}</span>
+    <span class="k">return</span> <span class="n">jsonify</span><span class="p">(</span><span class="n">user</span><span class="p">),</span> <span class="mi">200</span>
+</code></pre></div>
+
+<h4 id="404-not-found-resource-doesnt-exist">404 Not Found - Resource Doesn't Exist<a class="headerlink" href="#404-not-found-resource-doesnt-exist" title="Permanent link">&para;</a></h4>
+<p><strong>Use when:</strong> The requested resource (user, product, etc.) cannot be found.</p>
+<div class="codehilite"><pre><span></span><code><span class="c1"># Mock database</span>
+<span class="n">users</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">{</span><span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;a1b2c3&quot;</span><span class="p">,</span> <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Alice&quot;</span><span class="p">},</span>
+    <span class="p">{</span><span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;d4e5f6&quot;</span><span class="p">,</span> <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Bob&quot;</span><span class="p">}</span>
+<span class="p">]</span>
+
+<span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s2">&quot;/users/&lt;user_id&gt;&quot;</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;GET&quot;</span><span class="p">])</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">get_user</span><span class="p">(</span><span class="n">user_id</span><span class="p">):</span>
+    <span class="c1"># Search for user</span>
+    <span class="n">user</span> <span class="o">=</span> <span class="nb">next</span><span class="p">((</span><span class="n">u</span> <span class="k">for</span> <span class="n">u</span> <span class="ow">in</span> <span class="n">users</span> <span class="k">if</span> <span class="n">u</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">user_id</span><span class="p">),</span> <span class="kc">None</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">user</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">jsonify</span><span class="p">({</span><span class="s2">&quot;error&quot;</span><span class="p">:</span> <span class="s2">&quot;User not found&quot;</span><span class="p">}),</span> <span class="mi">404</span>
+
+    <span class="k">return</span> <span class="n">jsonify</span><span class="p">(</span><span class="n">user</span><span class="p">),</span> <span class="mi">200</span>
+</code></pre></div>
+
+<p><strong>DELETE example:</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s2">&quot;/users/&lt;user_id&gt;&quot;</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;DELETE&quot;</span><span class="p">])</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">delete_user</span><span class="p">(</span><span class="n">user_id</span><span class="p">):</span>
+    <span class="n">user</span> <span class="o">=</span> <span class="nb">next</span><span class="p">((</span><span class="n">u</span> <span class="k">for</span> <span class="n">u</span> <span class="ow">in</span> <span class="n">users</span> <span class="k">if</span> <span class="n">u</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">user_id</span><span class="p">),</span> <span class="kc">None</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">user</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">jsonify</span><span class="p">({</span><span class="s2">&quot;error&quot;</span><span class="p">:</span> <span class="s2">&quot;User not found&quot;</span><span class="p">}),</span> <span class="mi">404</span>
+
+    <span class="n">users</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">user</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">jsonify</span><span class="p">({</span><span class="s2">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;User deleted successfully&quot;</span><span class="p">}),</span> <span class="mi">200</span>
+</code></pre></div>
+
+<h4 id="500-internal-server-error-something-went-wrong">500 Internal Server Error - Something Went Wrong<a class="headerlink" href="#500-internal-server-error-something-went-wrong" title="Permanent link">&para;</a></h4>
+<p><strong>Use when:</strong> An unexpected error occurs on the server (database crash, file system error, etc.).</p>
+<blockquote>
+<p>[!IMPORTANT]
+<strong>Never expose internal error details to clients!</strong> This is a security risk. Log the full error server-side, but return a generic message to the client.</p>
+</blockquote>
+<div class="codehilite"><pre><span></span><code><span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s2">&quot;/users&quot;</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;GET&quot;</span><span class="p">])</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">get_users</span><span class="p">():</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="c1"># Simulating file read that might fail</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;users.json&quot;</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+            <span class="n">users</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">jsonify</span><span class="p">({</span><span class="s2">&quot;users&quot;</span><span class="p">:</span> <span class="n">users</span><span class="p">}),</span> <span class="mi">200</span>
+
+    <span class="k">except</span> <span class="ne">FileNotFoundError</span><span class="p">:</span>
+        <span class="c1"># Log the error internally</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;ERROR: users.json not found!&quot;</span><span class="p">)</span>
+
+        <span class="c1"># Return generic error to client</span>
+        <span class="k">return</span> <span class="n">jsonify</span><span class="p">({</span><span class="s2">&quot;error&quot;</span><span class="p">:</span> <span class="s2">&quot;Internal server error&quot;</span><span class="p">}),</span> <span class="mi">500</span>
+
+    <span class="k">except</span> <span class="n">json</span><span class="o">.</span><span class="n">JSONDecodeError</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;ERROR: Invalid JSON in users.json&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">jsonify</span><span class="p">({</span><span class="s2">&quot;error&quot;</span><span class="p">:</span> <span class="s2">&quot;Internal server error&quot;</span><span class="p">}),</span> <span class="mi">500</span>
+</code></pre></div>
+
+<h3 id="handling-invalid-json">Handling Invalid JSON<a class="headerlink" href="#handling-invalid-json" title="Permanent link">&para;</a></h3>
+<p>When <code>request.get_json()</code> fails because the client sent malformed JSON:</p>
+<div class="codehilite"><pre><span></span><code><span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s2">&quot;/users&quot;</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;POST&quot;</span><span class="p">])</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">create_user</span><span class="p">():</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">get_json</span><span class="p">()</span>
+    <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">jsonify</span><span class="p">({</span><span class="s2">&quot;error&quot;</span><span class="p">:</span> <span class="s2">&quot;Invalid JSON&quot;</span><span class="p">}),</span> <span class="mi">400</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">data</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">jsonify</span><span class="p">({</span><span class="s2">&quot;error&quot;</span><span class="p">:</span> <span class="s2">&quot;Request body is required&quot;</span><span class="p">}),</span> <span class="mi">400</span>
+
+    <span class="c1"># Process valid JSON</span>
+    <span class="k">return</span> <span class="n">jsonify</span><span class="p">({</span><span class="s2">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;User created&quot;</span><span class="p">}),</span> <span class="mi">201</span>
+</code></pre></div>
+
+<p><strong>Better approach using Flask's built-in handling:</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s2">&quot;/users&quot;</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;POST&quot;</span><span class="p">])</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">create_user</span><span class="p">():</span>
+    <span class="c1"># Flask automatically returns 400 for malformed JSON if force=False (default)</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">get_json</span><span class="p">()</span>
+
+    <span class="k">if</span> <span class="n">data</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">jsonify</span><span class="p">({</span><span class="s2">&quot;error&quot;</span><span class="p">:</span> <span class="s2">&quot;Invalid or missing JSON&quot;</span><span class="p">}),</span> <span class="mi">400</span>
+
+    <span class="c1"># Proceed with valid data</span>
+    <span class="k">return</span> <span class="n">jsonify</span><span class="p">({</span><span class="s2">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;User created&quot;</span><span class="p">}),</span> <span class="mi">201</span>
+</code></pre></div>
+
+<h3 id="complete-error-handling-example">Complete Error Handling Example<a class="headerlink" href="#complete-error-handling-example" title="Permanent link">&para;</a></h3>
+<p>Here's a complete example showing all the error handling patterns you've learned, using a product inventory system:</p>
+<div class="codehilite"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">flask</span><span class="w"> </span><span class="kn">import</span> <span class="n">Flask</span><span class="p">,</span> <span class="n">jsonify</span><span class="p">,</span> <span class="n">request</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
+
+<span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+
+<span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s2">&quot;/products/&lt;int:product_id&gt;&quot;</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;GET&quot;</span><span class="p">])</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">get_product</span><span class="p">(</span><span class="n">product_id</span><span class="p">):</span>
+    <span class="c1"># Error 1: Validate product_id is positive</span>
+    <span class="k">if</span> <span class="n">product_id</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">jsonify</span><span class="p">({</span><span class="s2">&quot;error&quot;</span><span class="p">:</span> <span class="s2">&quot;Invalid product ID&quot;</span><span class="p">}),</span> <span class="mi">400</span>
+
+    <span class="c1"># Error 2: Load products from file</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;inventory.json&quot;</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+            <span class="n">data</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+            <span class="n">products</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;products&quot;</span><span class="p">,</span> <span class="p">[])</span>
+    <span class="k">except</span> <span class="ne">FileNotFoundError</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">jsonify</span><span class="p">({</span><span class="s2">&quot;error&quot;</span><span class="p">:</span> <span class="s2">&quot;Internal server error&quot;</span><span class="p">}),</span> <span class="mi">500</span>
+    <span class="k">except</span> <span class="n">json</span><span class="o">.</span><span class="n">JSONDecodeError</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">jsonify</span><span class="p">({</span><span class="s2">&quot;error&quot;</span><span class="p">:</span> <span class="s2">&quot;Internal server error&quot;</span><span class="p">}),</span> <span class="mi">500</span>
+
+    <span class="c1"># Error 3: Product not found</span>
+    <span class="n">product</span> <span class="o">=</span> <span class="nb">next</span><span class="p">((</span><span class="n">p</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">products</span> <span class="k">if</span> <span class="n">p</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">product_id</span><span class="p">),</span> <span class="kc">None</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">product</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">jsonify</span><span class="p">({</span><span class="s2">&quot;error&quot;</span><span class="p">:</span> <span class="s2">&quot;Product not found&quot;</span><span class="p">}),</span> <span class="mi">404</span>
+
+    <span class="c1"># Success</span>
+    <span class="k">return</span> <span class="n">jsonify</span><span class="p">(</span><span class="n">product</span><span class="p">),</span> <span class="mi">200</span>
+
+
+<span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s2">&quot;/products&quot;</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;POST&quot;</span><span class="p">])</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">create_product</span><span class="p">():</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">get_json</span><span class="p">()</span>
+
+    <span class="c1"># Error 1: No data</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">data</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">jsonify</span><span class="p">({</span><span class="s2">&quot;error&quot;</span><span class="p">:</span> <span class="s2">&quot;Request body required&quot;</span><span class="p">}),</span> <span class="mi">400</span>
+
+    <span class="c1"># Error 2: Missing required fields</span>
+    <span class="k">if</span> <span class="s1">&#39;name&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">data</span> <span class="ow">or</span> <span class="s1">&#39;price&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">jsonify</span><span class="p">({</span><span class="s2">&quot;error&quot;</span><span class="p">:</span> <span class="s2">&quot;Missing name or price&quot;</span><span class="p">}),</span> <span class="mi">400</span>
+
+    <span class="c1"># Error 3: Invalid data type</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;price&#39;</span><span class="p">],</span> <span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">))</span> <span class="ow">or</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;price&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">jsonify</span><span class="p">({</span><span class="s2">&quot;error&quot;</span><span class="p">:</span> <span class="s2">&quot;Price must be a positive number&quot;</span><span class="p">}),</span> <span class="mi">400</span>
+
+    <span class="c1"># Success - create product</span>
+    <span class="n">new_product</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">123</span><span class="p">,</span>  <span class="c1"># Would be generated</span>
+        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">],</span>
+        <span class="s2">&quot;price&quot;</span><span class="p">:</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;price&#39;</span><span class="p">]</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">jsonify</span><span class="p">(</span><span class="n">new_product</span><span class="p">),</span> <span class="mi">201</span>
+</code></pre></div>
+
+<p><strong>This example demonstrates:</strong></p>
+<ul>
+<li>Validation errors (400)</li>
+<li>File operation errors (500)</li>
+<li>Resource not found errors (404)</li>
+<li>Proper try-except blocks</li>
+<li>Clean error messages</li>
+</ul>
+<p>You can apply these same patterns to any API you build, including Test Task 1!</p>
+<h3 id="using-try-except-blocks-effectively">Using Try-Except Blocks Effectively<a class="headerlink" href="#using-try-except-blocks-effectively" title="Permanent link">&para;</a></h3>
+<p><strong>Pattern for file operations:</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="k">try</span><span class="p">:</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;data.json&quot;</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+<span class="k">except</span> <span class="ne">FileNotFoundError</span><span class="p">:</span>
+    <span class="c1"># File doesn&#39;t exist - maybe first run</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;users&quot;</span><span class="p">:</span> <span class="p">[]}</span>
+<span class="k">except</span> <span class="n">json</span><span class="o">.</span><span class="n">JSONDecodeError</span><span class="p">:</span>
+    <span class="c1"># File is corrupted</span>
+    <span class="k">return</span> <span class="n">jsonify</span><span class="p">({</span><span class="s2">&quot;error&quot;</span><span class="p">:</span> <span class="s2">&quot;Internal server error&quot;</span><span class="p">}),</span> <span class="mi">500</span>
+<span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="c1"># Unexpected error</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Unexpected error: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">jsonify</span><span class="p">({</span><span class="s2">&quot;error&quot;</span><span class="p">:</span> <span class="s2">&quot;Internal server error&quot;</span><span class="p">}),</span> <span class="mi">500</span>
+</code></pre></div>
+
+<p><strong>Pattern for validation:</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">validate_user_data</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Helper function to validate user data. Returns error message or None.&quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">data</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s2">&quot;Request body is required&quot;</span>
+
+    <span class="k">if</span> <span class="s1">&#39;name&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s2">&quot;Missing &#39;name&#39; field&quot;</span>
+
+    <span class="k">if</span> <span class="s1">&#39;email&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s2">&quot;Missing &#39;email&#39; field&quot;</span>
+
+    <span class="k">if</span> <span class="s1">&#39;age&#39;</span> <span class="ow">in</span> <span class="n">data</span> <span class="ow">and</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;age&#39;</span><span class="p">],</span> <span class="nb">int</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s2">&quot;Age must be an integer&quot;</span>
+
+    <span class="k">return</span> <span class="kc">None</span>  <span class="c1"># No errors</span>
+
+<span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s2">&quot;/users&quot;</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;POST&quot;</span><span class="p">])</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">create_user</span><span class="p">():</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">get_json</span><span class="p">()</span>
+
+    <span class="n">error</span> <span class="o">=</span> <span class="n">validate_user_data</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">error</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">jsonify</span><span class="p">({</span><span class="s2">&quot;error&quot;</span><span class="p">:</span> <span class="n">error</span><span class="p">}),</span> <span class="mi">400</span>
+
+    <span class="c1"># Proceed with valid data</span>
+    <span class="k">return</span> <span class="n">jsonify</span><span class="p">({</span><span class="s2">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;User created&quot;</span><span class="p">}),</span> <span class="mi">201</span>
+</code></pre></div>
+
+<h3 id="quick-reference-error-handling-checklist">Quick Reference: Error Handling Checklist<a class="headerlink" href="#quick-reference-error-handling-checklist" title="Permanent link">&para;</a></h3>
+<p>Before submitting Test Task 1, ensure you handle:</p>
+<ul>
+<li>[ ] <strong>400</strong>: Missing request body</li>
+<li>[ ] <strong>400</strong>: Missing required fields</li>
+<li>[ ] <strong>400</strong>: Invalid JSON format</li>
+<li>[ ] <strong>400</strong>: Invalid UUID format (for URL parameters)</li>
+<li>[ ] <strong>404</strong>: User/resource not found</li>
+<li>[ ] <strong>500</strong>: File read/write errors</li>
+<li>[ ] <strong>500</strong>: Unexpected exceptions</li>
+</ul>
+<h3 id="common-mistakes-to-avoid">Common Mistakes to Avoid<a class="headerlink" href="#common-mistakes-to-avoid" title="Permanent link">&para;</a></h3>
+<ol>
+<li>❌ <strong>Exposing internal errors</strong></li>
+</ol>
+<p><code>python
+   # BAD - Don't do this!
+   return jsonify({"error": str(exception)}), 500</code></p>
+<ol>
+<li>❌ <strong>Not validating required fields</strong></li>
+</ol>
+<p><code>python
+   # BAD - Will crash if 'name' is missing
+   name = data['name']</code></p>
+<ol>
+<li>❌ <strong>Using wrong status codes</strong></li>
+</ol>
+<p><code>python
+   # BAD - Resource created should be 201, not 200
+   return jsonify({"message": "Created"}), 200</code></p>
+<ol>
+<li>❌ <strong>Not handling file operations safely</strong></li>
+</ol>
+<p><code>python
+   # BAD - What if file doesn't exist?
+   data = json.load(open("users.json"))</code></p>
 <h2 id="serving-static-files">Serving Static Files<a class="headerlink" href="#serving-static-files" title="Permanent link">&para;</a></h2>
 <p>Since we <strong>do not use Jinja templates</strong>, we handle UI by serving static HTML/JS files that consume our JSON API.</p>
 <p>Place files in a <code>static</code> folder:</p>
@@ -1567,7 +2085,7 @@ Support add, subtract, multiply, divide. Return 400 for invalid operations.</p>
 
       <!-- Left -->
       <div class="footer-col footer-left">
-        <strong>Flask Training Guide</strong>
+        <strong>DRF Training Guide</strong>
       </div>
 
       <!-- Center -->

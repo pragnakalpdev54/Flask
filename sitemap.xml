@@ -2,62 +2,66 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://pragnakalpdev54.github.io/Flask/index.html</loc>
-         <lastmod>2025-12-19</lastmod>
+         <lastmod>2025-12-22</lastmod>
     </url>
     <url>
          <loc>https://pragnakalpdev54.github.io/Flask/00_LEARNING_GUIDE.html</loc>
-         <lastmod>2025-12-19</lastmod>
+         <lastmod>2025-12-22</lastmod>
     </url>
     <url>
          <loc>https://pragnakalpdev54.github.io/Flask/01_LEVEL_0_BEGINNER.html</loc>
-         <lastmod>2025-12-19</lastmod>
+         <lastmod>2025-12-22</lastmod>
     </url>
     <url>
          <loc>https://pragnakalpdev54.github.io/Flask/02_LEVEL_1_FOUNDATIONS.html</loc>
-         <lastmod>2025-12-19</lastmod>
+         <lastmod>2025-12-22</lastmod>
     </url>
     <url>
          <loc>https://pragnakalpdev54.github.io/Flask/03_TEST_TASK_1.html</loc>
-         <lastmod>2025-12-19</lastmod>
+         <lastmod>2025-12-22</lastmod>
     </url>
     <url>
          <loc>https://pragnakalpdev54.github.io/Flask/04_LEVEL_2A_INTERMEDIATE.html</loc>
-         <lastmod>2025-12-19</lastmod>
+         <lastmod>2025-12-22</lastmod>
     </url>
     <url>
          <loc>https://pragnakalpdev54.github.io/Flask/05_LEVEL_2B_INTERMEDIATE.html</loc>
-         <lastmod>2025-12-19</lastmod>
+         <lastmod>2025-12-22</lastmod>
     </url>
     <url>
          <loc>https://pragnakalpdev54.github.io/Flask/06_LEVEL_3_AUTHENTICATION.html</loc>
-         <lastmod>2025-12-19</lastmod>
+         <lastmod>2025-12-22</lastmod>
     </url>
     <url>
          <loc>https://pragnakalpdev54.github.io/Flask/07_TEST_TASK_2.html</loc>
-         <lastmod>2025-12-19</lastmod>
+         <lastmod>2025-12-22</lastmod>
     </url>
     <url>
          <loc>https://pragnakalpdev54.github.io/Flask/08_LEVEL_4_SCALABLE.html</loc>
-         <lastmod>2025-12-19</lastmod>
+         <lastmod>2025-12-22</lastmod>
     </url>
     <url>
          <loc>https://pragnakalpdev54.github.io/Flask/09_LEVEL_5_EXTENSIONS.html</loc>
-         <lastmod>2025-12-19</lastmod>
+         <lastmod>2025-12-22</lastmod>
     </url>
     <url>
          <loc>https://pragnakalpdev54.github.io/Flask/10_TEST_TASK_3.html</loc>
-         <lastmod>2025-12-19</lastmod>
+         <lastmod>2025-12-22</lastmod>
     </url>
     <url>
          <loc>https://pragnakalpdev54.github.io/Flask/CURL_GUIDE.html</loc>
-         <lastmod>2025-12-19</lastmod>
+         <lastmod>2025-12-22</lastmod>
+    </url>
+    <url>
+         <loc>https://pragnakalpdev54.github.io/Flask/PATTERN_CHEATSHEET.html</loc>
+         <lastmod>2025-12-22</lastmod>
     </url>
     <url>
          <loc>https://pragnakalpdev54.github.io/Flask/POSTMAN_GUIDE_PART1_BASICS.html</loc>
-         <lastmod>2025-12-19</lastmod>
+         <lastmod>2025-12-22</lastmod>
     </url>
     <url>
          <loc>https://pragnakalpdev54.github.io/Flask/POSTMAN_GUIDE_PART2_ADVANCED.html</loc>
-         <lastmod>2025-12-19</lastmod>
+         <lastmod>2025-12-22</lastmod>
     </url>
 </urlset>

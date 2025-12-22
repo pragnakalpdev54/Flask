@@ -1,40 +1,41 @@
 /* ============================================
-   PILL NAVIGATION (DESIGN 11) - MODERN STYLE
+   PILL NAVIGATION (DESIGN 11) - COMPACT STYLE
    ============================================ */
 
 .pill-navigation {
   display: flex;
-  justify-content: space-between;
-  gap: 12px;
-  flex-wrap: wrap;
-  padding: 2rem 2rem 1rem 2rem;
+  justify-content: center;
+  gap: 3rem;              /* larger spacing between buttons */
+  flex-wrap: nowrap;      /* keep buttons in one row */
+  padding: 2.5rem 2rem 1.5rem 2rem;
   margin: 0 auto;
-  max-width: 1200px;
-  width: 100%;
 }
 
 .pill-btn {
-  padding: 8px 14px;
+  padding: 12px 28px;     /* more spacious padding */
   border: 2px solid #5d6cc0;
   background: white;
   color: #5d6cc0;
   border-radius: 50px;
   cursor: pointer;
   font-weight: 600;
-  font-size: 13px;
+  font-size: 13px;        /* elegant size */
   transition: all 0.3s ease;
   text-decoration: none;
   display: inline-flex;
   align-items: center;
-  gap: 6px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  gap: 8px;               /* space between arrow and text */
+  box-shadow: 0 2px 8px rgba(93, 108, 192, 0.15);
+  white-space: nowrap;    /* prevent text wrapping */
+  width: auto;            /* remove full width */
+  flex-shrink: 0;         /* prevent shrinking */
 }
 
 .pill-btn:hover {
   background: #5d6cc0;
   color: white;
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(93, 108, 192, 0.3);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(93, 108, 192, 0.4);
 }
 
 .pill-arrow {
@@ -144,25 +145,16 @@
   text-decoration: underline;
 }
 
-/* ============ TABLET ============ */
-@media screen and (max-width: 768px) {
+/* ============ TABLET (1024px and above) ============ */
+@media screen and (max-width: 1024px) {
   .footer-custom {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(2, 1fr);
     gap: 2rem;
-  }
-
-  .footer-left {
-    grid-column: 1;
-  }
-
-  .footer-center {
-    grid-column: 2;
   }
 
   .footer-right {
     grid-column: 1 / -1;
     text-align: center;
-    margin-top: 0.5rem;
   }
 
   .contributors {
@@ -171,11 +163,17 @@
 
   .pill-navigation {
     padding: 1.5rem 1rem 1rem 1rem;
+    gap: 2.5rem;
+  }
+
+  .pill-btn {
+    padding: 10px 24px;
+    font-size: 12px;
   }
 }
 
-/* ============ MOBILE ============ */
-@media screen and (max-width: 640px) {
+/* ============ MEDIUM TABLET (768px) ============ */
+@media screen and (max-width: 768px) {
   .footer-custom {
     grid-template-columns: 1fr;
     gap: 1.5rem;
@@ -193,16 +191,102 @@
   }
 
   .pill-navigation {
-    padding: 1rem 0.5rem 0.5rem 0.5rem;
+    padding: 1.25rem 0.75rem 0.75rem 0.75rem;
+    gap: 1.5rem;
   }
 
   .pill-btn {
-    padding: 8px 16px;
+    padding: 10px 20px;
     font-size: 12px;
+  }
+}
+
+/* ============ MOBILE (640px) ============ */
+@media screen and (max-width: 640px) {
+  .footer-custom {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    text-align: center;
+  }
+
+  .footer-left,
+  .footer-center,
+  .footer-right {
+    text-align: center;
+  }
+
+  .contributors {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .pill-navigation {
+    padding: 1rem 0.5rem 0.75rem 0.5rem;
+    gap: 1rem;
+    flex-wrap: nowrap;     /* keep in one row */
+    overflow-x: auto;      /* allow scrolling if needed */
+  }
+
+  .pill-btn {
+    padding: 9px 16px;
+    font-size: 11px;
+    flex-shrink: 0;        /* prevent shrinking */
+  }
+}
+
+/* ============ SMALL MOBILE (480px) ============ */
+@media screen and (max-width: 480px) {
+  .pill-navigation {
+    gap: 0.75rem;
+    padding: 0.75rem 0.25rem 0.5rem 0.25rem;
+  }
+
+  .pill-btn {
+    padding: 8px 12px;
+    font-size: 10px;
+  }
+
+  .pill-text {
+    font-size: 0.85rem;
   }
 }
 
 /* ============ HOVER EFFECT ============ */
 .md-footer:hover {
   background: linear-gradient(135deg, #334155 0%, #1e293b 100%);
+}
+
+/* ============================================
+   SIDEBAR FIX FOR MOBILE
+   ============================================ */
+
+/* Fix sidebar toggle on mobile */
+@media screen and (max-width: 1220px) {
+  .md-nav__toggle {
+    display: none;
+  }
+
+  .md-nav__toggle ~ .md-nav__list {
+    display: block !important;
+  }
+
+  /* Allow closing sidebar on mobile */
+  .md-header__title {
+    cursor: pointer;
+  }
+
+  .md-sidebar {
+    position: fixed;
+    width: 260px;
+    height: 100%;
+    top: 56px;
+    left: 0;
+    z-index: 50;
+    background: var(--md-default-bg-color);
+    overflow-y: auto;
+  }
+
+  .md-sidebar--secondary {
+    display: none;
+  }
 }
