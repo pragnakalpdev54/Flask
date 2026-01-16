@@ -1,6 +1,6 @@
 # Flask Test Task 3 – Scalable Architecture & Blueprints
 
-> **STOP**: Do not attempt this task until you have completed [Level 5: Extensions](09_LEVEL_5_EXTENSIONS.md).
+> **Prerequisite**: [Level 4: Scalable Structure](08_LEVEL_4_SCALABLE.md).
 
 ## Objective
 

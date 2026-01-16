@@ -800,9 +800,285 @@ Create an endpoint `/calculate` that accepts a POST request with JSON:
 And returns: `{"result": 15}`.
 Support add, subtract, multiply, divide. Return 400 for invalid operations.
 
+### Problem 2: Calculator API (Extended)
+
+Build on the calculator from earlier. Create a `/calculate` endpoint that:
+
+1. Takes JSON: `{"operation": "add", "x": 10, "y": 5}`
+2. Returns: `{"result": 15}`
+3. Supports: `add`, `subtract`, `multiply`, `divide`
+4. Returns 400 for invalid operations
+
+**Starter code**:
+
+```python
+from flask import Flask, request
+
+app = Flask(__name__)
+
+@app.route('/calculate', methods=['POST'])
+def calculate():
+    data = request.get_json()
+    
+    if not data or 'operation' not in data:
+        return jsonify({"error": "Missing operation"}), 400
+    
+    operation = data['operation']
+    x = data.get('x', 0)
+    y = data.get('y', 0)
+    
+    if operation == 'add':
+        result = x + y
+    elif operation == 'subtract':
+        result = x - y
+    elif operation == 'multiply':
+        result = x * y
+    elif operation == 'divide':
+        if y == 0:
+            return jsonify({"error": "Cannot divide by zero"}), 400
+        result = x / y
+    else:
+        return jsonify({"error": "Invalid operation"}), 400
+    
+    return jsonify({"result": result}), 200
+
+if __name__ == '__main__':
+    app.run(debug=True)
+```
+
 ### Problem 3: Query Params
 
 Create a route `/search` that takes a query param `q`. If `q` is missing, return error 400. If present, return `{"query": q}`.
+
+## Common Pitfalls Quiz
+
+Test your understanding of common mistakes juniors make with Flask routing and request handling:
+
+### Pitfall 1: Using Wrong HTTP Method
+
+**Question**: Why does this update endpoint fail when called correctly?
+
+```python
+@app.route('/users/<int:id>', methods=['GET'])
+def update_user(id):
+    data = request.get_json()
+    # Update logic here
+    return jsonify({"message": "Updated"}), 200
+```
+
+Client sends: `PATCH /users/1` with JSON body
+
+<details>
+<summary>Click to see answer</summary>
+
+**Answer**: The route only accepts **GET** requests, but updating data should use **PATCH** or **PUT**.
+
+**Fix**:
+
+```python
+@app.route('/users/<int:id>', methods=['PATCH'])  # Or ['PUT']
+def update_user(id):
+    data = request.get_json()
+    # Update logic here
+    return jsonify({"message": "Updated"}), 200
+```
+
+**Remember**:
+
+* GET = Read
+* POST = Create
+* PUT/PATCH = Update
+* DELETE = Delete
+
+</details>
+
+### Pitfall 2: Not Validating Request Data
+
+**Question**: What's wrong with this code?
+
+```python
+@app.route('/users', methods=['POST'])
+def create_user():
+    data = request.get_json()
+    name = data['name']  # What if 'name' doesn't exist?
+    email = data['email']  # What if data is None?
+    # ... create user ...
+    return jsonify({"message": "Created"}), 201
+```
+
+<details>
+<summary>Click to see answer</summary>
+
+**Answer**: No validation! This will crash if:
+
+1. Client doesn't send JSON (data is None)
+2. Client sends JSON but missing 'name' or 'email' fields
+
+**Fix**:
+
+```python
+@app.route('/users', methods=['POST'])
+def create_user():
+    data = request.get_json()
+    
+    # Validate data exists
+    if not data:
+        return jsonify({"error": "Request body required"}), 400
+    
+    # Validate required fields
+    if 'name' not in data:
+        return jsonify({"error": "Missing 'name' field"}), 400
+    
+    if 'email' not in data:
+        return jsonify({"error": "Missing 'email' field"}), 400
+    
+    # Now safe to access
+    name = data['name']
+    email = data['email']
+    # ... create user ...
+    return jsonify({"message": "Created"}), 201
+```
+
+**Better approach using .get()**:
+
+```python
+name = data.get('name')
+if not name:
+    return jsonify({"error": "Missing 'name' field"}), 400
+```
+
+</details>
+
+### Pitfall 3: Not Handling File Errors
+
+**Question**: What happens if `users.json` doesn't exist?
+
+```python
+@app.route('/users', methods=['GET'])
+def get_users():
+    with open('users.json', 'r') as f:
+        data = json.load(f)
+    return jsonify(data), 200
+```
+
+<details>
+<summary>Click to see answer</summary>
+
+**Answer**: `FileNotFoundError` crash! User sees HTML error page instead of JSON.
+
+**Fix**:
+
+```python
+import json
+
+@app.route('/users', methods=['GET'])
+def get_users():
+    try:
+        with open('users.json', 'r') as f:
+            data = json.load(f)
+        return jsonify(data), 200
+    except FileNotFoundError:
+        # File doesn't exist yet, return empty list
+        return jsonify({"users": []}), 200
+    except json.JSONDecodeError:
+        # File is corrupted
+        return jsonify({"error": "Internal server error"}), 500
+```
+
+</details>
+
+### Pitfall 4: Forgetting to Validate UUID Format
+
+**Question**: What happens when a user visits `/users/invalid-id`?
+
+```python
+import uuid
+
+@app.route('/users/<user_id>', methods=['GET'])
+def get_user(user_id):
+    users = load_users()  # Load from file
+    user = next((u for u in users if u['id'] == user_id), None)
+    
+    if not user:
+        return jsonify({"error": "User not found"}), 404
+    
+    return jsonify(user), 200
+```
+
+<details>
+<summary>Click to see answer</summary>
+
+**Answer**: It returns 404 even for invalid UUIDs, which is misleading. The client should get 400 (Bad Request) for invalid format.
+
+**Fix**:
+
+```python
+import uuid
+
+@app.route('/users/<user_id>', methods=['GET'])
+def get_user(user_id):
+    # Validate UUID format first
+    try:
+        uuid.UUID(user_id)
+    except ValueError:
+        return jsonify({"error": "Invalid UUID format"}), 400
+    
+    users = load_users()
+    user = next((u for u in users if u['id'] == user_id), None)
+    
+    if not user:
+        return jsonify({"error": "User not found"}), 404
+    
+    return jsonify(user), 200
+```
+
+**Why this matters**: Proper error codes help clients debug:
+
+* 400 = Client sent bad data (invalid UUID)
+* 404 = valid UUID but user doesn't exist
+
+</details>
+
+### Pitfall 5: Using  GET with request.get_json()
+
+**Question**: Why is data always None?
+
+ in```python
+@app.route('/search', methods=['GET'])
+def search():
+    data = request.get_json()
+    query = data.get('query')  # None!
+    return jsonify({"query": query})
+
+```
+
+<details>
+<summary>Click to see answer</summary>
+
+**Answer**: **GET requests don't have request bodies!** Use query parameters instead.
+
+**Fix**:
+
+```python
+@app.route('/search', methods=['GET'])
+def search():
+    # Use request.args for query parameters
+    query = request.args.get('query')
+    
+    if not query:
+        return jsonify({"error": "Missing 'query' parameter"}), 400
+    
+    return jsonify({"query": query})
+```
+
+**Call like**: `GET /search?query=flask`
+
+**Remember**:
+
+* GET = Use `request.args` (query params)
+* POST/PUT/PATCH = Use `request.get_json()` (body)
+
+</details>
 
 ## Trivia
 

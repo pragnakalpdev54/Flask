@@ -55,17 +55,17 @@ curl --version
 
 ### Windows
 
-**Option 1: Windows 10/11 (Built-in)**
+#### Option 1: Windows 10/11 (Built-in)
 
 - cURL is included in Windows 10 version 1803 and later
 - Open PowerShell or Command Prompt and type: `curl --version`
 
-**Option 2: Download**
+#### Option 2: Download
 
 - Download from [curl.se/windows/](https://curl.se/windows/)
 - Or use Git Bash (includes cURL)
 
-**Option 3: Using Chocolatey**
+#### Option 3: Using Chocolatey
 
 ```bash
 choco install curl
@@ -169,13 +169,13 @@ curl http://127.0.0.1:5000/api/tasks/
 
 ### POST Request with JSON
 
-**Option 1: Single Line (Recommended for Beginners)**
+#### Option 1: Single Line (Recommended for Beginners)
 
 ```powershell
 curl -X POST http://127.0.0.1:5000/api/tasks/ -H "Content-Type: application/json" -d "{`"title`":`"Learn Flask`",`"completed`":false}"
 ```
 
-**Option 2: Multi-line with Backtick**
+#### Option 2: Multi-line with Backtick
 
 ```powershell
 curl -X POST http://127.0.0.1:5000/api/tasks/ `
@@ -183,7 +183,7 @@ curl -X POST http://127.0.0.1:5000/api/tasks/ `
   -d "{`"title`":`"Learn Flask`",`"completed`":false}"
 ```
 
-**Option 3: Using Here-String (Cleanest)**
+#### Option 3: Using Here-String (Cleanest)
 
 ```powershell
 $json = @"

@@ -173,6 +173,55 @@ def get_me():
     return jsonify({"username": user.username, "email": user.email})
 ```
 
+## Common Pitfalls Quiz
+
+Test your understanding of authentication and security:
+
+### Pitfall 1: Storing Plain Passwords
+
+**Question**: What's wrong with this registration?
+
+```python
+user = User(username=data['username'], password=data['password'])  # DANGEROUS!
+```
+
+<details>
+<summary>Click to see answer</summary>
+
+**Answer**: **NEVER store plain passwords!** Always hash them with bcrypt.
+
+**Fix**: `password_hash = bcrypt.generate_password_hash(password).decode('utf-8')`
+
+</details>
+
+### Pitfall 2: Forgetting @jwt_required()
+
+**Question**: Why can anyone access this endpoint?
+
+```python
+@app.route('/admin/users')
+def get_all_users():
+    return jsonify(users)  # No @jwt_required()!
+```
+
+<details>
+<summary>Click to see answer</summary>
+
+**Answer**: Add `@jwt_required()` decorator to protect endpoints.
+
+</details>
+
+### Pitfall 3: Weak JWT Secret
+
+**Question**: `app.config['JWT_SECRET_KEY'] = 'secret'` - what's wrong?
+
+<details>
+<summary>Click to see answer</summary>
+
+**Answer**: Use strong, random secrets from environment variables, never hardcode!
+
+</details>
+
 ## Practice Problems
 
 ### Problem 1: Integration
@@ -189,7 +238,27 @@ Implement the `login` route using the `AuthService`. Test it with Postman:
 
 ### Problem 3: Protected Route
 
-Create a route `/secret` that returns `{"message": "Top Secret"}`. Add `@jwt_required()`. Try accessing it without a token (401) and with a token (200).
+Create a route `/secret` that returns `{"message": "Top Secret"}`. This should only be accessible to authenticated users.
+
+**Starter code**:
+
+```python
+from flask import Flask, jsonify
+from flask_jwt_extended import get_jwt_identity
+
+app = Flask(__name__)
+
+@app.route('/secret', methods=['GET'])
+def secret_route():
+    current_user = get_jwt_identity()
+    return jsonify({"message": "Top Secret", "user": current_user}), 200
+```
+
+Test it:
+
+1. Try accessing `/secret` without a token - what happens?
+2. Try accessing `/secret` with a valid token
+3. What's missing?
 
 ## Trivia
 

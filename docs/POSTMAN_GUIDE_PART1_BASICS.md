@@ -118,7 +118,7 @@ sudo mv Postman /opt/
 sudo ln -s /opt/Postman/Postman /usr/local/bin/postman
 ```
 
-3. Create a desktop entry (optional):
+1. Create a desktop entry (optional):
 
 ```bash
 # Create desktop entry file
@@ -1107,7 +1107,7 @@ pm.environment.set("access_token", response.access);
 pm.environment.set("refresh_token", response.refresh);
 ```
 
-2. **Use Token in Next Request**
+1. **Use Token in Next Request**
 
 In **Authorization** tab:
 

@@ -33,7 +33,8 @@ Install dependencies:
 pip install flask-sqlalchemy flask-migrate psycopg2-binary
 ```
 
-*(We use psycopg2 for PostgreSQL, but strict ORM usage means we can switch easily)*
+> [!NOTE]
+> We use psycopg2 for PostgreSQL, but strict ORM usage means we can switch easily.
 
 ### Configuration
 
@@ -91,15 +92,15 @@ from extensions import db, migrate
 
 def create_app():
     app = Flask(__name__)
-    
+
     # Configure your DB URI
     app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///app.db'  # or postgresql://...
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False  # Recommended
-    
+
     # Initialize extensions with app
     db.init_app(app)
     migrate.init_app(app, db)
-    
+
     return app
 
 if __name__ == "__main__":
@@ -115,7 +116,7 @@ from extensions import db  # Import db from extensions, not app!
 
 class User(db.Model):
     __tablename__ = 'users'
-    
+
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(80), unique=True, nullable=False)
     email = db.Column(db.String(120), unique=True, nullable=False)
@@ -132,17 +133,15 @@ Update your `app.py`:
 # app.py
 from flask import Flask
 from extensions import db, migrate
+from models import User  # Import models so migrations detect them
 
 def create_app():
     app = Flask(__name__)
     app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///app.db'
-    
+
     db.init_app(app)
     migrate.init_app(app, db)
-    
-    # CRITICAL: Import models here so migrations detect them
-    from models import User  # Import all your models
-    
+
     return app
 ```
 
@@ -161,7 +160,7 @@ from extensions import db
 
 class User(db.Model):
     __tablename__ = 'users'
-    
+
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(80), unique=True, nullable=False)
     email = db.Column(db.String(120), unique=True, nullable=False)
@@ -186,21 +185,21 @@ from extensions import db
 
 class Author(db.Model):
     __tablename__ = 'authors'
-    
+
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(100), unique=True, nullable=False)
     bio = db.Column(db.String(500))
-    
+
     # One-to-Many: One author has many books
     books = db.relationship('Book', backref='author', cascade='all, delete-orphan')
 
 class Book(db.Model):
     __tablename__ = 'books'
-    
+
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(200), nullable=False)
     price = db.Column(db.Float, nullable=False)
-    
+
     # Foreign Key: Links to Author table
     author_id = db.Column(db.Integer, db.ForeignKey('authors.id'), nullable=False)
 ```
@@ -332,7 +331,7 @@ flask db upgrade
 
 Let's say you want to add a `phone_number` field to your User model.
 
-**Step 1: Modify your model**
+#### Step 1: Modify your model
 
 ```python
 # models.py
@@ -343,7 +342,7 @@ class User(db.Model):
     phone_number = db.Column(db.String(20))  # New field!
 ```
 
-**Step 2: Generate migration**
+#### Step 2: Generate migration
 
 ```bash
 flask db migrate -m "Add phone number to users"
@@ -356,7 +355,7 @@ INFO  [alembic.autogenerate.compare] Detected added column 'users.phone_number'
 Generating /path/to/migrations/versions/abc123_add_phone_number_to_users.py ... done
 ```
 
-**Step 3: Apply migration**
+#### Step 3: Apply migration
 
 ```bash
 flask db upgrade
@@ -557,7 +556,7 @@ if user:
     # Modify attributes
     user.email = "newemail@example.com"
     user.is_active = False
-    
+
     # Commit changes
     db.session.commit()
 ```
@@ -670,12 +669,12 @@ def create_user():
     # Business logic in route!
     if User.query.filter_by(email=data['email']).first():
         return jsonify({"error": "Email exists"}), 400
-    
+
     # DB access in route!
     new_user = User(username=data['username'], email=data['email'])
     db.session.add(new_user)
     db.session.commit()
-    
+
     return jsonify({"id": new_user.id}), 201
 ```
 
@@ -700,12 +699,12 @@ class UserService:
         # Validation Logic
         if User.query.filter_by(email=email).first():
             return None, "Email already exists"
-            
+
         # DB Logic
         new_user = User(username=username, email=email, password_hash=password_hash)
         db.session.add(new_user)
         db.session.commit()
-        
+
         return new_user, None
 
     @staticmethod
@@ -727,17 +726,17 @@ app = Flask(__name__)
 @app.route('/users', methods=['POST'])
 def create_user():
     data = request.get_json()
-    
+
     # Route just delegates to Service
     user, error = UserService.create_user(
         username=data['username'],
         email=data['email'],
         password_hash=data['password'],  # In real app, hash this first!
     )
-    
+
     if error:
         return jsonify({"error": error}), 400
-    
+
     return jsonify({"id": user.id, "message": "Created"}), 201
 
 
@@ -764,12 +763,12 @@ def create_user(username, email, password_hash):
     # Validation Logic
     if User.query.filter_by(email=email).first():
         return None, "Email already exists"
-        
+
     # DB Logic
     new_user = User(username=username, email=email, password_hash=password_hash)
     db.session.add(new_user)
     db.session.commit()
-    
+
     return new_user, None
 
 
@@ -791,17 +790,17 @@ app = Flask(__name__)
 @app.route('/users', methods=['POST'])
 def create_user_endpoint():
     data = request.get_json()
-    
+
     # Route just delegates to service function
     user, error = create_user(
         username=data['username'],
         email=data['email'],
         password_hash=data['password'],
     )
-    
+
     if error:
         return jsonify({"error": error}), 400
-    
+
     return jsonify({"id": user.id, "message": "Created"}), 201
 
 
@@ -820,12 +819,103 @@ def get_users_endpoint():
 2. **Testing**: You can test `UserService` without faking HTTP requests.
 3. **Maintainability**: Routes stay simple and clean.
 
+## Refactoring: The Right Way
+
+When you have existing code with fat routes (business logic and database calls in routes), here's how to refactor it properly:
+
+### Step-by-Step Refactoring Process
+
+1. **Identify the Logic**: Find all business logic and database operations in your routes
+2. **Extract to Service**: Move that logic to a service method
+3. **Update Route**: Make the route call the service method
+4. **Test**: Verify the behavior remains the same
+
+### Example: Refactoring a Create Endpoint
+
+**Before (Fat Route):**
+
+```python
+@app.route('/users', methods=['POST'])
+def create_user():
+    data = request.get_json()
+    # Validation in route
+    if User.query.filter_by(email=data['email']).first():
+        return jsonify({"error": "Email exists"}), 400
+    # DB logic in route
+    new_user = User(username=data['username'], email=data['email'])
+    db.session.add(new_user)
+    db.session.commit()
+    return jsonify({"id": new_user.id}), 201
+```
+
+**After (Thin Route + Service):**
+
+```python
+# In services/user_service.py
+class UserService:
+    @staticmethod
+    def create_user(username, email):
+        if User.query.filter_by(email=email).first():
+            return None, "Email already exists"
+        new_user = User(username=username, email=email)
+        db.session.add(new_user)
+        db.session.commit()
+        return new_user, None
+
+# In app.py
+@app.route('/users', methods=['POST'])
+def create_user():
+    data = request.get_json()
+    user, error = UserService.create_user(
+        username=data['username'],
+        email=data['email']
+    )
+    if error:
+        return jsonify({"error": error}), 400
+    return jsonify({"id": user.id}), 201
+```
+
+### Key Refactoring Principles
+
+* **One Step at a Time**: Refactor one route at a time, test, then move to the next
+* **Preserve Behavior**: The API should work exactly the same after refactoring
+* **Keep It Simple**: Don't over-engineer - extract logic, don't add complexity
+
 ## Practice Problems
 
 ### Problem 1: Book Model
 
-Create a `Book` model with `title`, `author`, and `isbn` (unique).
-Run migrations.
+Create a `Book` model with the following fields:
+
+- `title` (String, required)
+- `author` (String, required)
+- `isbn` (String, unique)
+
+#### Step 1: Create the Model
+
+Create `models.py` (or add to existing):
+
+```python
+# models.py
+from extensions import db
+
+class Book(db.Model):
+    __tablename__ = 'books'
+
+    id = db.Column(db.Integer, primary_key=True)
+    title = db.Column(db.String(200), nullable=False)
+    author = db.Column(db.String(100), nullable=False)
+    isbn = db.Column(db.String(13), unique=True, nullable=False)
+```
+
+#### Step 2: Run Migrations
+
+```bash
+flask db migrate -m "Add Book model"
+flask db upgrade
+```
+
+Verify the migration was created and the table exists.
 
 ### Problem 2: Book Service
 
@@ -835,6 +925,33 @@ Create a `BookService` with methods:
 - `get_books_by_author(author)`
 
 Ensure `add_book` raises an error if ISBN already exists.
+
+**Starter code**:
+
+```python
+# services/book_service.py
+from models import Book
+from extensions import db
+
+class BookService:
+    @staticmethod
+    def add_book(title, author, isbn):
+        # Check if ISBN exists
+        existing = Book.query.filter_by(isbn=isbn).first()
+        if existing:
+            return None, "Book with this ISBN already exists"
+
+        # Create book
+        book = Book(title=title, author=author, isbn=isbn)
+        db.session.add(book)
+        # Hint: Something is missing here...
+
+        return book, None
+
+    @staticmethod
+    def get_books_by_author(author):
+        return Book.query.filter_by(author=author).all()
+```
 
 ### Problem 3: Refactor Calculator to Use Service Pattern
 
@@ -891,18 +1008,18 @@ app = Flask(__name__)
 @app.route("/calculate", methods=["POST"])
 def calculate():
     data = request.get_json()
-    
+
     # Validation
     if not data:
         return jsonify({"error": "Request body required"}), 400
-    
+
     operation = data.get("operation")
     x = data.get("x")
     y = data.get("y")
-    
+
     if not all([operation, x is not None, y is not None]):
         return jsonify({"error": "Missing operation, x, or y"}), 400
-    
+
     # Call the service
     try:
         result = CalculationService.calculate(operation, x, y)
@@ -946,17 +1063,17 @@ app = Flask(__name__)
 @app.route("/calculate", methods=["POST"])
 def calculate_endpoint():
     data = request.get_json()
-    
+
     if not data:
         return jsonify({"error": "Request body required"}), 400
-    
+
     operation = data.get("operation")
     x = data.get("x")
     y = data.get("y")
-    
+
     if not all([operation, x is not None, y is not None]):
         return jsonify({"error": "Missing operation, x, or y"}), 400
-    
+
     try:
         result = calculate(operation, x, y)
         return jsonify({"result": result}), 200
@@ -966,6 +1083,233 @@ def calculate_endpoint():
 
 > [!NOTE]
 > Both solutions are correct! The class-based approach is the industry standard for larger projects, but the function-based approach works perfectly fine. Choose whichever you're more comfortable with.
+
+## Common Pitfalls Quiz
+
+Test your understanding of database and architecture mistakes:
+
+### Pitfall 1: Forgetting db.session.commit()
+
+**Question**: Why doesn't the user get created?
+
+```python
+from models import User
+from extensions import db
+
+@app.route('/users', methods=['POST'])
+def create_user():
+    data = request.get_json()
+    user = User(username=data['username'], email=data['email'])
+    db.session.add(user)
+    # Missing commit!
+    return jsonify({"message": "Created"}), 201
+```
+
+<details>
+<summary>Click to see answer</summary>
+
+**Answer**: Changes are only written to the database when you call `db.session.commit()`. Without it, changes stay in memory and are lost.
+
+**Fix**:
+
+```python
+@app.route('/users', methods=['POST'])
+def create_user():
+    data = request.get_json()
+    user = User(username=data['username'], email=data['email'])
+    db.session.add(user)
+    db.session.commit()  # Actually save to database!
+    return jsonify({"message": "Created"}), 201
+```
+
+**Remember**: SQLAlchemy uses a "Unit of Work" pattern:
+
+1. `db.session.add()` - Stage changes
+2. `db.session.commit()` - Write to database
+
+</details>
+
+### Pitfall 2: Running flask db init Multiple Times
+
+**Question**: What happens?
+
+```bash
+$ flask db init
+# Creates migrations/ folder
+$ flask db init  # Run again by mistake
+Error: Directory migrations already exists
+```
+
+<details>
+<summary>Click to see answer</summary>
+
+**Answer**: `flask db init` should only be run **ONCE** per project. It creates the `migrations/` folder structure.
+
+**If you need to start fresh**:
+
+```bash
+# Delete everything and start over (DEVELOPMENT ONLY!)
+rm -rf migrations/
+rm app.db
+flask db init
+flask db migrate -m "Initial migration"
+flask db upgrade
+```
+
+**Remember**:
+
+- `flask db init` - Once per project
+- `flask db migrate` - Every time models change
+- `flask db upgrade` - After migrate, and when deploying
+
+</details>
+
+### Pitfall 3: Forgetting to Import Models
+
+**Question**: Why does `flask db migrate` say "No changes detected"?
+
+```python
+# app.py
+from flask import Flask
+from extensions import db, migrate
+
+def create_app():
+    app = Flask(__name__)
+    db.init_app(app)
+    migrate.init_app(app, db)
+    # Forgot to import models!
+    return app
+
+# models.py
+class User(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    username = db.Column(db.String(80))
+```
+
+<details>
+<summary>Click to see answer</summary>
+
+**Answer**: Flask-Migrate can't detect models you haven't imported! If Python doesn't load the model class, Alembic doesn't know it exists.
+
+**Fix**:
+
+```python
+# app.py
+from flask import Flask
+from extensions import db, migrate
+from models import User  # Import all models!
+
+def create_app():
+    app = Flask(__name__)
+    db.init_app(app)
+    migrate.init_app(app, db)
+    return app
+```
+
+</details>
+
+### Pitfall 4: Putting Database Logic in Routes
+
+**Question**: What's wrong with this architecture?
+
+```python
+@app.route('/users', methods=['POST'])
+def create_user():
+    data = request.get_json()
+
+    # Business logic in route!
+    if User.query.filter_by(email=data['email']).first():
+        return jsonify({"error": "Email exists"}), 400
+
+    # Database calls in route!
+    user = User(username=data['username'], email=data['email'])
+    db.session.add(user)
+    db.session.commit()
+
+    return jsonify({"id": user.id}), 201
+```
+
+<details>
+<summary>Click to see answer</summary>
+
+**Answer**: **FAT ROUTES ARE BAD!** This violates the Service Layer pattern. Routes should only handle HTTP, not business logic or database calls.
+
+**Fix with Service Layer**:
+
+```python
+# services/user_service.py
+class UserService:
+    @staticmethod
+    def create_user(username, email):
+        if User.query.filter_by(email=email).first():
+            return None, "Email exists"
+
+        user = User(username=username, email=email)
+        db.session.add(user)
+        db.session.commit()
+        return user, None
+
+# app.py
+@app.route('/users', methods=['POST'])
+def create_user():
+    data = request.get_json()
+    user, error = UserService.create_user(data['username'], data['email'])
+
+    if error:
+        return jsonify({"error": error}), 400
+    return jsonify({"id": user.id}), 201
+```
+
+</details>
+
+### Pitfall 5: Circular Import Hell
+
+**Question**: Why does this crash with ImportError?
+
+```python
+# app.py
+from extensions import db
+from models import User
+
+app = Flask(__name__)
+db.init_app(app)
+
+# models.py
+from app import db  # Circular import!
+
+class User(db.Model):
+    pass
+```
+
+<details>
+<summary>Click to see answer</summary>
+
+**Answer**: Circular import! `app.py` imports `models.py`, and `models.py` tries to import `app.py`.
+
+**Fix with extensions.py**:
+
+```python
+# extensions.py
+from flask_sqlalchemy import SQLAlchemy
+db = SQLAlchemy()
+
+# models.py
+from extensions import db  # Import from extensions!
+
+class User(db.Model):
+    pass
+
+# app.py
+from extensions import db
+from models import User
+
+def create_app():
+    app = Flask(__name__)
+    db.init_app(app)
+    return app
+```
+
+</details>
 
 ## Trivia
 

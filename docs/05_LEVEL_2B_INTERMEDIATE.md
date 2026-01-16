@@ -176,13 +176,250 @@ def create_app():
 
 Create a `BookSchema` for your Book model. Configure it to auto-generate from the SQLAlchemy model.
 
-### Problem 2: Validate Implementation
+### Problem 2: Serialize User List
+
+Create an endpoint `/api/users` that returns all users as JSON using Marshmallow.
+
+**Starter code**:
+
+```python
+from flask import Flask, jsonify
+from models import User
+from schemas import UserSchema
+
+app = Flask(__name__)
+
+user_schema = UserSchema()
+users_schema = UserSchema(many=True)
+
+@app.route('/api/users', methods=['GET'])
+def get_users():
+    users = User.query.all()
+    # Serialize the users
+    result = users_schema.load(users)  # Is this correct?
+    return jsonify(result), 200
+```
+
+### Problem 3: Validate Implementation
 
 Update your `create_book` route to use `book_schema.load()`. Try sending invalid data (missing title) and confirm you get a 400 JSON response with validation errors.
 
-### Problem 3: 404 Handler
+### Problem 4: 404 Handler
 
 Implement a global 404 handler that returns `{"error": "This endpoint does not exist"}`. Use Postman to trigger it.
+
+## Common Pitfalls Quiz
+
+Test your understanding of serialization and validation:
+
+### Pitfall 1: Exposing Sensitive Fields
+
+**Question**: What's wrong with this schema?
+
+```python
+from marshmallow import Schema, fields
+
+class UserSchema(ma.SQLAlchemyAutoSchema):
+    class Meta:
+        model = User
+        load_instance = True
+        # No exclusions!
+```
+
+<details>
+<summary>Click to see answer</summary>
+
+**Answer**: This exposes **password_hash** in API responses! Anyone can see hashed passwords.
+
+**Fix**:
+
+```python
+class UserSchema(ma.SQLAlchemyAutoSchema):
+    class Meta:
+        model = User
+        load_instance = True
+        exclude = ("password_hash",)  # Never expose passwords!
+```
+
+**Critical security rule**: NEVER expose:
+
+- `password_hash`
+- `password`
+- API keys
+- Tokens
+- Internal IDs you don't want users to know
+
+</details>
+
+### Pitfall 2: Confusing load() vs dump()
+
+**Question**: Why does this crash?
+
+```python
+@app.route('/users', methods=['GET'])
+def get_users():
+    users = User.query.all()
+    result = user_schema.load(users)  # Wrong method!
+    return jsonify(result), 200
+```
+
+<details>
+<summary>Click to see answer</summary>
+
+**Answer**: `load()` is for **input** (JSON → Object), `dump()` is for **output** (Object → JSON). You're trying to load when you should dump!
+
+**Fix**:
+
+```python
+@app.route('/users', methods=['GET'])
+def get_users():
+    users = User.query.all()
+    result = users_schema.dump(users)  # dump = serialize for output
+    return jsonify(result), 200
+```
+
+**Remember**:
+
+- `schema.load(json_data)` - Validate input, deserialize
+- `schema.dump(model_object)` - Serialize for output
+
+</details>
+
+### Pitfall 3: Not Catching ValidationError
+
+**Question**: What happens when a user sends invalid data?
+
+```python
+from marshmallow import ValidationError
+
+@app.route('/users', methods=['POST'])
+def create_user():
+    data = request.get_json()
+    validated = user_schema.load(data)  # What if validation fails?
+    # ... create user ...
+    return jsonify({"message": "Created"}), 201
+```
+
+<details>
+<summary>Click to see answer</summary>
+
+**Answer**: If validation fails, Marshmallow raises `ValidationError`, which crashes your app with a 500 error instead of returning proper 400.
+
+**Fix**:
+
+```python
+from marshmallow import ValidationError
+
+@ app.route('/users', methods=['POST'])
+def create_user():
+    data = request.get_json()
+    
+    try:
+        validated = user_schema.load(data)
+    except ValidationError as err:
+        return jsonify(err.messages), 400  # Return validation errors
+    
+    # ... create user ...
+    return jsonify({"message": "Created"}), 201
+```
+
+**Better with global handler**:
+
+```python
+@app.errorhandler(ValidationError)
+def handle_validation_error(e):
+    return jsonify(e.messages), 400
+```
+
+</details>
+
+### Pitfall 4: Exposing Internal Errors
+
+**Question**: What's wrong with this error handler?
+
+```python
+@app.errorhandler(500)
+def handle_500(e):
+    return jsonify({"error": str(e)}), 500  # Exposing internal details!
+```
+
+<details>
+<summary>Click to see answer</summary>
+
+**Answer**: **NEVER expose internal errors to users!** This leaks:
+
+- Database schema details
+- File paths
+- Stack traces
+- Library versions
+
+Attackers use this information!
+
+**Fix**:
+
+```python
+@app.errorhandler(500)
+def handle_500(e):
+    # Log internally
+    app.logger.error(f"Internal error: {e}")
+    
+    # Return generic message to user
+    return jsonify({"error": "Internal server error"}), 500
+```
+
+</details>
+
+### Pitfall 5: Wrong Schema for Different Operations
+
+**Question**: How do you handle different requirements for registration vs login?
+
+```python
+# Registration needs: username, email, password
+# Login needs: email, password (no username)
+# Using same schema for both?
+
+class UserSchema(ma.Schema):
+    username = fields.String(required=True)
+    email = fields.String(required=True)
+    password = fields.String(required=True)
+```
+
+<details>
+<summary>Click to see answer</summary>
+
+**Answer**: Use **different schemas** for different operations!
+
+**Fix**:
+
+```python
+class UserRegistrationSchema(ma.Schema):
+    username = fields.String(required=True)
+    email = fields.String(required=True)
+    password = fields.String(required=True)
+
+class UserLoginSchema(ma.Schema):
+    email = fields.String(required=True)
+    password = fields.String(required=True)
+    # No username needed for login
+
+class UserResponseSchema(ma.SQLAlchemyAutoSchema):
+    class Meta:
+        model = User
+        exclude = ("password_hash",)  # Never return password
+
+# Use appropriate schema
+@app.route('/register', methods=['POST'])
+def register():
+    data = UserRegistrationSchema().load(request.get_json())
+    # ...
+
+@app.route('/login', methods=['POST'])
+def login():
+    data = UserLoginSchema().load(request.get_json())
+    # ...
+```
+
+</details>
 
 ## Trivia
 

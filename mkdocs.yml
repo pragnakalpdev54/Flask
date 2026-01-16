@@ -23,8 +23,8 @@ nav:
   - Level 3 – Authentication & Security: 06_LEVEL_3_AUTHENTICATION.md
   - Test Task 2: 07_TEST_TASK_2.md
   - Level 4 – Scalable Systems: 08_LEVEL_4_SCALABLE.md
-  - Level 5 – Extensions & Advanced Topics: 09_LEVEL_5_EXTENSIONS.md
   - Test Task 3: 10_TEST_TASK_3.md
+  - Error Tracking: ERROR_TRACKING.md
   - Quick Reference Guide: PATTERN_CHEATSHEET.md
   - Postman Basics: POSTMAN_GUIDE_PART1_BASICS.md
   - Postman Advanced: POSTMAN_GUIDE_PART2_ADVANCED.md

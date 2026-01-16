@@ -32,14 +32,14 @@ class UserService:
         # Check if exists
         if User.query.filter_by(email=email).first():
             return None, "Email already exists"
-        
+
         # Create and save
         user = User(username=username, email=email, password_hash=password_hash)
         db.session.add(user)
         db.session.commit()
-        
+
         return user, None
-    
+
     @staticmethod
     def get_user_by_id(user_id):
         """Get user by ID."""
@@ -47,7 +47,7 @@ class UserService:
         if not user:
             return None, "User not found"
         return user, None
-    
+
     @staticmethod
     def get_all_users():
         """Get all users."""
@@ -64,17 +64,17 @@ from services.user_service import UserService
 @app.route('/users', methods=['POST'])
 def create_user():
     data = request.get_json()
-    
+
     # Call service method
     user, error = UserService.create_user(
         username=data['username'],
         email=data['email'],
         password_hash=data['password']
     )
-    
+
     if error:
         return jsonify({"error": error}), 400
-    
+
     return jsonify({"id": user.id, "username": user.username}), 201
 
 @app.route('/users', methods=['GET'])
@@ -95,12 +95,12 @@ def create_user(username, email, password_hash):
     # Check if exists
     if User.query.filter_by(email=email).first():
         return None, "Email already exists"
-    
+
     # Create and save
     user = User(username=username, email=email, password_hash=password_hash)
     db.session.add(user)
     db.session.commit()
-    
+
     return user, None
 
 def get_user_by_id(user_id):
@@ -125,17 +125,17 @@ from services.user_functions import create_user, get_user_by_id, get_all_users
 @app.route('/users', methods=['POST'])
 def create_user_endpoint():
     data = request.get_json()
-    
+
     # Call service function
     user, error = create_user(
         username=data['username'],
         email=data['email'],
         password_hash=data['password']
     )
-    
+
     if error:
         return jsonify({"error": error}), 400
-    
+
     return jsonify({"id": user.id, "username": user.username}), 201
 
 @app.route('/users', methods=['GET'])
@@ -181,22 +181,22 @@ from extensions import db, migrate, jwt, ma, bcrypt
 
 def create_app():
     app = Flask(__name__)
-    
+
     # Config
     app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///app.db'
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
     app.config['JWT_SECRET_KEY'] = 'your-secret-key'
-    
+
     # Initialize extensions
     db.init_app(app)
     migrate.init_app(app, db)
     jwt.init_app(app)
     ma.init_app(app)
     bcrypt.init_app(app)
-    
+
     # Import models (AFTER init, INSIDE function)
     from models import User
-    
+
     return app
 
 if __name__ == '__main__':
@@ -216,21 +216,21 @@ from extensions import db
 
 class Author(db.Model):
     __tablename__ = 'authors'
-    
+
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(100), unique=True, nullable=False)
     bio = db.Column(db.String(500))
-    
+
     # One-to-Many relationship
     books = db.relationship('Book', backref='author', cascade='all, delete-orphan')
 
 class Book(db.Model):
     __tablename__ = 'books'
-    
+
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(200), nullable=False)
     price = db.Column(db.Float, nullable=False)
-    
+
     # Foreign Key
     author_id = db.Column(db.Integer, db.ForeignKey('authors.id'), nullable=False)
 ```
@@ -242,13 +242,13 @@ class Book(db.Model):
 @app.route('/authors/<int:id>', methods=['GET'])
 def get_author(id):
     author = Author.query.get_or_404(id)
-    
+
     return jsonify({
         "id": author.id,
         "name": author.name,
         "bio": author.bio,
         "books": [
-            {"id": b.id, "title": b.title, "price": b.price} 
+            {"id": b.id, "title": b.title, "price": b.price}
             for b in author.books
         ]
     }), 200
@@ -285,11 +285,11 @@ from routes.auth_routes import auth_bp
 
 def create_app():
     app = Flask(__name__)
-    
+
     # Register blueprints
     app.register_blueprint(user_bp)
     app.register_blueprint(auth_bp)
-    
+
     return app
 ```
 
@@ -366,22 +366,22 @@ from errors import AppError
 
 def create_app():
     app = Flask(__name__)
-    
+
     @app.errorhandler(AppError)
     def handle_app_error(e):
         return jsonify({"error": e.message}), e.status_code
-    
+
     @app.errorhandler(404)
     def handle_404(e):
         return jsonify({"error": "Resource not found"}), 404
-    
+
     @app.errorhandler(500)
     def handle_500(e):
         # Log error internally
         app.logger.error(f"Server error: {e}")
         # Return generic message to user
         return jsonify({"error": "Internal server error"}), 500
-    
+
     return app
 ```
 

@@ -1,7 +1,7 @@
 # Level 4: Scalable Structure & The Application Factory
 
 > **Prerequisites**: [Test Task 2](07_TEST_TASK_2.md)
-> **Next Level**: [Level 5: Extensions](09_LEVEL_5_EXTENSIONS.md)
+> **Next Step**: [Test Task 3 (Conclusion)](10_TEST_TASK_3.md)
 
 > [!NOTE]
 > **OOP Level**: Medium. The "Application Factory" (`create_app`) is a function that creates an object (`app`). You still do not write new classes here—this level is about **project structure and imports**, not advanced OOP.
@@ -197,6 +197,41 @@ class ProdConfig(Config):
 
 Then pass it to the factory: `create_app(DevConfig)`
 
+## Common Pitfalls Quiz
+
+### Pitfall 1: Circular Imports in Blueprints
+
+**Question**: Why ImportError?
+
+```python
+# app.py imports blueprint
+from routes.user_routes import user_bp
+# routes.py imports app
+from app import app  # Circular!
+```
+
+<details>
+<summary>Click to see answer</summary>
+
+**Answer**: Use extensions.py to break the cycle!
+
+</details>
+
+### Pitfall 2: Forgetting to Register Blueprints
+
+**Question**: Why is /users giving 404?
+
+```python
+# Created blueprint but never called app.register_blueprint(user_bp)
+```
+
+<details>
+<summary>Click to see answer</summary>
+
+**Answer**: Must register: `app.register_blueprint(user_bp)`
+
+</details>
+
 ## Practice Problems
 
 ### Problem 1: Refactor to Factory
@@ -207,6 +242,28 @@ Take your code from Level 3.
 2. Move global `app` var to `create_app` in `app/__init__.py`.
 3. Create `wsgi.py`.
 4. Run it!
+
+**Starter code for app/**init**.py**:
+
+```python
+# app/__init__.py  
+from flask import Flask
+from extensions import db, jwt
+from routes.user_routes import user_bp
+
+def create_app():
+    app = Flask(__name__)
+    app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///app.db'
+    app.config['JWT_SECRET_KEY'] = 'your-secret-key'
+    
+    # Initialize extensions
+    db.init_app(app)
+    jwt.init_app(app)
+    
+    # Note: Is something missing here with the blueprint?
+    
+    return app
+```
 
 ### Problem 2: Circular Import Fix
 

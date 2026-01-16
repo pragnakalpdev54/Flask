@@ -319,6 +319,202 @@ Open your browser or Postman and go to `http://127.0.0.1:5000/`.
 > **Note**: Notice we used `jsonify`. This is a helper that converts Python dictionaries to proper JSON responses with the correct Content-Type header (`application/json`).  
 > **Rule**: Always return JSON. Never return raw strings or HTML for APIs.
 
+## The Flask Debugger: Your Best Friend
+
+Before you start building real applications, you need to know how to debug when things go wrong. The Flask debugger is an incredibly powerful tool that will save you hours of frustration.
+
+### What is the Flask Debugger?
+
+When you set `debug=True`, Flask activates several helpful features:
+
+1. **Auto-reload**: Server restarts when you change code
+2. **Detailed error pages**: Shows exactly where errors occur
+3. **Interactive debugger**: Lets you inspect variables and run Python code in your browser when errors happen
+
+> [!CAUTION]
+> **NEVER use `debug=True` in production!** The interactive debugger allows anyone to execute Python code on your server. This is a **critical security vulnerability**.
+
+### Triggering the Debugger
+
+Let's see the debugger in action by creating an intentional error.
+
+**Step 1: Create a route with an error**
+
+```python
+from flask import Flask, jsonify
+
+app = Flask(__name__)
+
+@app.route("/")
+def home():
+    return jsonify({"message": "Hello, Flask!"})
+
+@app.route("/broken")
+def broken_endpoint():
+    # This will cause an error
+    numbers = [1, 2, 3]
+    result = numbers[10]  # IndexError: list index out of range
+    return jsonify({"result": result})
+
+if __name__ == "__main__":
+    app.run(debug=True)
+```
+
+**Step 2: Run your app and visit the broken endpoint**
+
+```bash
+python app.py
+```
+
+Navigate to `http://127.0.0.1:5000/broken` in your browser.
+
+### Understanding the Error Page
+
+When the error occurs, you'll see a detailed error page with:
+
+1. **The error type and message**: `IndexError: list index out of range`
+2. **The traceback**: Shows the exact line where the error occurred
+3. **Interactive console**: A small terminal icon next to each stack frame
+
+### Using the Interactive Console
+
+This is where the magic happens:
+
+1. **Click the terminal icon** next to any line in the traceback
+2. **A console appears** where you can type Python code
+3. **Inspect variables**: Type `numbers` to see `[1, 2, 3]`
+4. **Test fixes**: Try `numbers[0]` to see what would work
+
+**Example interaction:**
+
+```python
+>>> numbers
+[1, 2, 3]
+>>> len(numbers)
+3
+>>> numbers[2]  # This works
+3
+>>> numbers[10]  # This is what caused the error
+Traceback (most recent call last):
+  ...
+IndexError: list index out of range
+```
+
+### Common Debugging Scenarios
+
+#### Scenario 1: Variable Not What You Expected
+
+```python
+@app.route("/calculate", methods=["POST"])
+def calculate():
+    data = request.get_json()
+    result = data["x"] + data["y"]  # Error if x or y is string
+    return jsonify({"result": result})
+```
+
+If this errors, use the debugger to check:
+
+- `data` - Is it a dict or None?
+- `data["x"]` - Is it a number or a string?
+- `type(data["x"])` - Confirm the type
+
+#### Scenario 2: Understanding Data Flow
+
+```python
+@app.route("/users/<int:user_id>")
+def get_user(user_id):
+    users = [{"id": 1, "name": "Alice"}, {"id": 2, "name": "Bob"}]
+    user = next((u for u in users if u["id"] == user_id), None)
+    # What if user is None?
+    return jsonify({"name": user["name"]})  # Error if user is None
+```
+
+In the debugger:
+
+- Check `user_id` value
+- Check `user` - Is it None or a dict?
+- Test the fix: `user["name"] if user else "Not Found"`
+
+### Debug Mode Best Practices
+
+**DO:**
+
+- ✅ Use `debug=True` during development
+- ✅ Read the full traceback from bottom to top
+- ✅ Use the interactive console to test fixes
+- ✅ Check variable types and values when confused
+
+**DON'T:**
+
+- ❌ Leave `debug=True` in production
+- ❌ Ignore error messages - they tell you exactly what's wrong
+- ❌ Skip reading the traceback
+- ❌ Expose the debugger to the internet
+
+### Debugging Without the Interactive Debugger
+
+If you're running in a terminal or can't use the browser debugger, use `print()` statements:
+
+```python
+@app.route("/process")
+def process_data():
+    data = request.get_json()
+    print(f"DEBUG: Received data: {data}")  # Check what you received
+    
+    result = data.get("value", 0) * 2
+    print(f"DEBUG: Calculated result: {result}")  # Check calculation
+    
+    return jsonify({"result": result})
+```
+
+> [!TIP]
+> Use descriptive print statements with prefixes like "DEBUG:" so you can easily find them in logs and remove them later.
+
+### Production Debugging Strategy
+
+In production (with `debug=False`):
+
+1. **Log errors** instead of displaying them:
+
+```python
+import logging
+
+if __name__ == "__main__":
+    if not app.debug:
+        logging.basicConfig(filename='app.log', level=logging.ERROR)
+    app.run()
+```
+
+1. **Use proper error handlers** (you'll learn this in Level 2B):
+
+```python
+@app.errorhandler(500)
+def handle_500(e):
+    app.logger.error(f"Server error: {e}")
+    return jsonify({"error": "Internal server error"}), 500
+```
+
+### Quick Reference: Debug Mode
+
+| Feature | debug=True | debug=False (Production) |
+|---------|------------|--------------------------|
+| **Auto-reload** | ✅ Yes | ❌ No |
+| **Detailed errors** | ✅ Show stack trace | ❌ Generic error |
+| **Interactive debugger** | ✅ Available | ❌ Disabled |
+| **Security** | ⚠️ **Unsafe** | ✅ Safe |
+| **Performance** | Slower | Faster |
+
+### Try It Yourself
+
+Before moving on to Practice Problems, create an intentional error in your Flask app and:
+
+1. Visit the error page
+2. Click the console icon
+3. Inspect at least one variable
+4. Fix the error and refresh
+
+This skill will be **essential** for Test Task 1 and beyond!
+
 ## Practice Problems
 
 ### Problem 1: Setup
@@ -331,6 +527,153 @@ Open your browser or Postman and go to `http://127.0.0.1:5000/`.
 
 1. Add a new route `/ping` to your `app.py`.
 2. It should return `{"pong": true}`.
+
+## Common Pitfalls Quiz
+
+Test your understanding by identifying what's wrong with these common mistakes juniors make:
+
+### Pitfall 1: Testing POST in Browser
+
+**Question**: Why does this not work?
+
+```
+You open Chrome and type: http://127.0.0.1:5000/users
+The route is defined as: @app.route('/users', methods=['POST'])
+You get: 405 Method Not Allowed
+```
+
+<details>
+<summary>Click to see answer</summary>
+
+**Answer**: Browsers send **GET** requests when you type a URL in the address bar. This route only accepts POST. You need to use **Postman** or `curl` to send POST requests.
+
+**Fix**: Use Postman or change the methods to `methods=['GET', 'POST']` if you want both.
+
+</details>
+
+### Pitfall 2: Forgetting jsonify()
+
+**Question**: What's wrong with this code?
+
+```python
+@app.route('/hello')
+def hello():
+    return {"message": "Hello"}  # Returns a Python dict directly
+```
+
+<details>
+<summary>Click to see answer</summary>
+
+**Answer**: While Flask can automatically convert dicts to JSON in newer versions, it's **bad practice** and won't set the proper `Content-Type: application/json` header in older versions.
+
+**Fix**: Always use `jsonify()`:
+
+```python
+from flask import jsonify
+
+@app.route('/hello')
+def hello():
+    return jsonify({"message": "Hello"})
+```
+
+</details>
+
+### Pitfall 3: Debug Mode in Production
+
+**Question**: What's wrong with this deployment code?
+
+```python
+# deploy.py
+if __name__== "__main__":
+    app.run(host='0.0.0.0', port=80, debug=True)
+```
+
+<details>
+<summary>Click to see answer</summary>
+
+**Answer**: **NEVER use `debug=True` in production!** This:
+
+- Exposes sensitive code and variables via the interactive debugger
+- Allows attackers to execute Python code on your server
+- Is a **critical security vulnerability**
+
+**Fix**:
+
+```python
+# For production, use a WSGI server like Gunicorn:
+# gunicorn -w 4 app:app
+
+# If you must use app.run(), at least set debug=False:
+if __name__ == "__main__":
+    app.run(host='0.0.0.0', port=80, debug=False)
+```
+
+</details>
+
+### Pitfall 4: Not Activating Virtual Environment
+
+**Question**: Why doesn't Flask work?
+
+```bash
+$ python app.py
+Traceback (most recent call last):
+  File "app.py", line 1, in <module>
+    from flask import Flask
+ModuleNotFoundError: No module named 'flask'
+```
+
+But you installed it with `pip install flask`...
+
+<details>
+<summary>Click to see answer</summary>
+
+**Answer**: You forgot to **activate your virtual environment**!
+
+**Fix**:
+
+```bash
+# macOS/Linux
+source venv/bin/activate
+
+# Windows
+venv\Scripts\activate
+
+# Then run:
+python app.py
+```
+
+You'll know it's activated when you see `(venv)` in your terminal prompt.
+
+</details>
+
+### Pitfall 5: Wrong Status Code for Creation
+
+**Question**: What's wrong with this create endpoint?
+
+```python
+@app.route('/users', methods=['POST'])
+def create_user():
+    data = request.get_json()
+    # ... create user logic ...
+    return jsonify({"message": "User created"}), 200
+```
+
+<details>
+<summary>Click to see answer</summary>
+
+**Answer**: When creating a resource, you should return **201 Created**, not 200 OK.
+
+**Fix**:
+
+```python
+@app.route('/users', methods=['POST'])
+def create_user():
+    data = request.get_json()
+    # ... create user logic ...
+    return jsonify({"message": "User created"}), 201  # 201 Created
+```
+
+</details>
 
 ## Trivia
 
