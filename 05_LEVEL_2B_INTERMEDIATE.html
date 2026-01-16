@@ -540,10 +540,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#problem-2-validate-implementation" class="md-nav__link">
+  <a href="#problem-2-serialize-user-list" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Problem 2: Validate Implementation
+        Problem 2: Serialize User List
       
     </span>
   </a>
@@ -551,10 +551,93 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#problem-3-404-handler" class="md-nav__link">
+  <a href="#problem-3-validate-implementation" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Problem 3: 404 Handler
+        Problem 3: Validate Implementation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#problem-4-404-handler" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Problem 4: 404 Handler
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#common-pitfalls-quiz" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Common Pitfalls Quiz
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Common Pitfalls Quiz">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pitfall-1-exposing-sensitive-fields" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pitfall 1: Exposing Sensitive Fields
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pitfall-2-confusing-load-vs-dump" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pitfall 2: Confusing load() vs dump()
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pitfall-3-not-catching-validationerror" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pitfall 3: Not Catching ValidationError
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pitfall-4-exposing-internal-errors" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pitfall 4: Exposing Internal Errors
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pitfall-5-wrong-schema-for-different-operations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pitfall 5: Wrong Schema for Different Operations
       
     </span>
   </a>
@@ -712,14 +795,14 @@
   
   
     <li class="md-nav__item">
-      <a href="09_LEVEL_5_EXTENSIONS.html" class="md-nav__link">
+      <a href="10_TEST_TASK_3.html" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Level 5 – Extensions & Advanced Topics
+    Test Task 3
   
 
     
@@ -739,14 +822,14 @@
   
   
     <li class="md-nav__item">
-      <a href="10_TEST_TASK_3.html" class="md-nav__link">
+      <a href="ERROR_TRACKING.html" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Test Task 3
+    Error Tracking
   
 
     
@@ -1035,10 +1118,238 @@
 <h2 id="practice-problems">Practice Problems<a class="headerlink" href="#practice-problems" title="Permanent link">&para;</a></h2>
 <h3 id="problem-1-book-schema">Problem 1: Book Schema<a class="headerlink" href="#problem-1-book-schema" title="Permanent link">&para;</a></h3>
 <p>Create a <code>BookSchema</code> for your Book model. Configure it to auto-generate from the SQLAlchemy model.</p>
-<h3 id="problem-2-validate-implementation">Problem 2: Validate Implementation<a class="headerlink" href="#problem-2-validate-implementation" title="Permanent link">&para;</a></h3>
+<h3 id="problem-2-serialize-user-list">Problem 2: Serialize User List<a class="headerlink" href="#problem-2-serialize-user-list" title="Permanent link">&para;</a></h3>
+<p>Create an endpoint <code>/api/users</code> that returns all users as JSON using Marshmallow.</p>
+<p><strong>Starter code</strong>:</p>
+<div class="codehilite"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">flask</span><span class="w"> </span><span class="kn">import</span> <span class="n">Flask</span><span class="p">,</span> <span class="n">jsonify</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">models</span><span class="w"> </span><span class="kn">import</span> <span class="n">User</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">schemas</span><span class="w"> </span><span class="kn">import</span> <span class="n">UserSchema</span>
+
+<span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+
+<span class="n">user_schema</span> <span class="o">=</span> <span class="n">UserSchema</span><span class="p">()</span>
+<span class="n">users_schema</span> <span class="o">=</span> <span class="n">UserSchema</span><span class="p">(</span><span class="n">many</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;/api/users&#39;</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;GET&#39;</span><span class="p">])</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">get_users</span><span class="p">():</span>
+    <span class="n">users</span> <span class="o">=</span> <span class="n">User</span><span class="o">.</span><span class="n">query</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+    <span class="c1"># Serialize the users</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">users_schema</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">users</span><span class="p">)</span>  <span class="c1"># Is this correct?</span>
+    <span class="k">return</span> <span class="n">jsonify</span><span class="p">(</span><span class="n">result</span><span class="p">),</span> <span class="mi">200</span>
+</code></pre></div>
+
+<h3 id="problem-3-validate-implementation">Problem 3: Validate Implementation<a class="headerlink" href="#problem-3-validate-implementation" title="Permanent link">&para;</a></h3>
 <p>Update your <code>create_book</code> route to use <code>book_schema.load()</code>. Try sending invalid data (missing title) and confirm you get a 400 JSON response with validation errors.</p>
-<h3 id="problem-3-404-handler">Problem 3: 404 Handler<a class="headerlink" href="#problem-3-404-handler" title="Permanent link">&para;</a></h3>
+<h3 id="problem-4-404-handler">Problem 4: 404 Handler<a class="headerlink" href="#problem-4-404-handler" title="Permanent link">&para;</a></h3>
 <p>Implement a global 404 handler that returns <code>{"error": "This endpoint does not exist"}</code>. Use Postman to trigger it.</p>
+<h2 id="common-pitfalls-quiz">Common Pitfalls Quiz<a class="headerlink" href="#common-pitfalls-quiz" title="Permanent link">&para;</a></h2>
+<p>Test your understanding of serialization and validation:</p>
+<h3 id="pitfall-1-exposing-sensitive-fields">Pitfall 1: Exposing Sensitive Fields<a class="headerlink" href="#pitfall-1-exposing-sensitive-fields" title="Permanent link">&para;</a></h3>
+<p><strong>Question</strong>: What's wrong with this schema?</p>
+<div class="codehilite"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">marshmallow</span><span class="w"> </span><span class="kn">import</span> <span class="n">Schema</span><span class="p">,</span> <span class="n">fields</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">UserSchema</span><span class="p">(</span><span class="n">ma</span><span class="o">.</span><span class="n">SQLAlchemyAutoSchema</span><span class="p">):</span>
+    <span class="k">class</span><span class="w"> </span><span class="nc">Meta</span><span class="p">:</span>
+        <span class="n">model</span> <span class="o">=</span> <span class="n">User</span>
+        <span class="n">load_instance</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="c1"># No exclusions!</span>
+</code></pre></div>
+
+<details>
+<summary>Click to see answer</summary>
+
+**Answer**: This exposes **password_hash** in API responses! Anyone can see hashed passwords.
+
+**Fix**:
+
+
+<div class="codehilite"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">UserSchema</span><span class="p">(</span><span class="n">ma</span><span class="o">.</span><span class="n">SQLAlchemyAutoSchema</span><span class="p">):</span>
+    <span class="k">class</span><span class="w"> </span><span class="nc">Meta</span><span class="p">:</span>
+        <span class="n">model</span> <span class="o">=</span> <span class="n">User</span>
+        <span class="n">load_instance</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="n">exclude</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;password_hash&quot;</span><span class="p">,)</span>  <span class="c1"># Never expose passwords!</span>
+</code></pre></div>
+
+
+
+**Critical security rule**: NEVER expose:
+
+- `password_hash`
+- `password`
+- API keys
+- Tokens
+- Internal IDs you don't want users to know
+
+</details>
+
+<h3 id="pitfall-2-confusing-load-vs-dump">Pitfall 2: Confusing load() vs dump()<a class="headerlink" href="#pitfall-2-confusing-load-vs-dump" title="Permanent link">&para;</a></h3>
+<p><strong>Question</strong>: Why does this crash?</p>
+<div class="codehilite"><pre><span></span><code><span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;/users&#39;</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;GET&#39;</span><span class="p">])</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">get_users</span><span class="p">():</span>
+    <span class="n">users</span> <span class="o">=</span> <span class="n">User</span><span class="o">.</span><span class="n">query</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">user_schema</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">users</span><span class="p">)</span>  <span class="c1"># Wrong method!</span>
+    <span class="k">return</span> <span class="n">jsonify</span><span class="p">(</span><span class="n">result</span><span class="p">),</span> <span class="mi">200</span>
+</code></pre></div>
+
+<details>
+<summary>Click to see answer</summary>
+
+**Answer**: `load()` is for **input** (JSON → Object), `dump()` is for **output** (Object → JSON). You're trying to load when you should dump!
+
+**Fix**:
+
+
+<div class="codehilite"><pre><span></span><code><span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;/users&#39;</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;GET&#39;</span><span class="p">])</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">get_users</span><span class="p">():</span>
+    <span class="n">users</span> <span class="o">=</span> <span class="n">User</span><span class="o">.</span><span class="n">query</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">users_schema</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">users</span><span class="p">)</span>  <span class="c1"># dump = serialize for output</span>
+    <span class="k">return</span> <span class="n">jsonify</span><span class="p">(</span><span class="n">result</span><span class="p">),</span> <span class="mi">200</span>
+</code></pre></div>
+
+
+
+**Remember**:
+
+- `schema.load(json_data)` - Validate input, deserialize
+- `schema.dump(model_object)` - Serialize for output
+
+</details>
+
+<h3 id="pitfall-3-not-catching-validationerror">Pitfall 3: Not Catching ValidationError<a class="headerlink" href="#pitfall-3-not-catching-validationerror" title="Permanent link">&para;</a></h3>
+<p><strong>Question</strong>: What happens when a user sends invalid data?</p>
+<div class="codehilite"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">marshmallow</span><span class="w"> </span><span class="kn">import</span> <span class="n">ValidationError</span>
+
+<span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;/users&#39;</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;POST&#39;</span><span class="p">])</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">create_user</span><span class="p">():</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">get_json</span><span class="p">()</span>
+    <span class="n">validated</span> <span class="o">=</span> <span class="n">user_schema</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>  <span class="c1"># What if validation fails?</span>
+    <span class="c1"># ... create user ...</span>
+    <span class="k">return</span> <span class="n">jsonify</span><span class="p">({</span><span class="s2">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;Created&quot;</span><span class="p">}),</span> <span class="mi">201</span>
+</code></pre></div>
+
+<details>
+<summary>Click to see answer</summary>
+
+**Answer**: If validation fails, Marshmallow raises `ValidationError`, which crashes your app with a 500 error instead of returning proper 400.
+
+**Fix**:
+
+
+<div class="codehilite"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">marshmallow</span><span class="w"> </span><span class="kn">import</span> <span class="n">ValidationError</span>
+
+<span class="o">@</span> <span class="n">app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;/users&#39;</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;POST&#39;</span><span class="p">])</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">create_user</span><span class="p">():</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">get_json</span><span class="p">()</span>
+
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">validated</span> <span class="o">=</span> <span class="n">user_schema</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+    <span class="k">except</span> <span class="n">ValidationError</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">jsonify</span><span class="p">(</span><span class="n">err</span><span class="o">.</span><span class="n">messages</span><span class="p">),</span> <span class="mi">400</span>  <span class="c1"># Return validation errors</span>
+
+    <span class="c1"># ... create user ...</span>
+    <span class="k">return</span> <span class="n">jsonify</span><span class="p">({</span><span class="s2">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;Created&quot;</span><span class="p">}),</span> <span class="mi">201</span>
+</code></pre></div>
+
+
+
+**Better with global handler**:
+
+
+<div class="codehilite"><pre><span></span><code><span class="nd">@app</span><span class="o">.</span><span class="n">errorhandler</span><span class="p">(</span><span class="n">ValidationError</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">handle_validation_error</span><span class="p">(</span><span class="n">e</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">jsonify</span><span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">messages</span><span class="p">),</span> <span class="mi">400</span>
+</code></pre></div>
+
+
+
+</details>
+
+<h3 id="pitfall-4-exposing-internal-errors">Pitfall 4: Exposing Internal Errors<a class="headerlink" href="#pitfall-4-exposing-internal-errors" title="Permanent link">&para;</a></h3>
+<p><strong>Question</strong>: What's wrong with this error handler?</p>
+<div class="codehilite"><pre><span></span><code><span class="nd">@app</span><span class="o">.</span><span class="n">errorhandler</span><span class="p">(</span><span class="mi">500</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">handle_500</span><span class="p">(</span><span class="n">e</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">jsonify</span><span class="p">({</span><span class="s2">&quot;error&quot;</span><span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">)}),</span> <span class="mi">500</span>  <span class="c1"># Exposing internal details!</span>
+</code></pre></div>
+
+<details>
+<summary>Click to see answer</summary>
+
+**Answer**: **NEVER expose internal errors to users!** This leaks:
+
+- Database schema details
+- File paths
+- Stack traces
+- Library versions
+
+Attackers use this information!
+
+**Fix**:
+
+
+<div class="codehilite"><pre><span></span><code><span class="nd">@app</span><span class="o">.</span><span class="n">errorhandler</span><span class="p">(</span><span class="mi">500</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">handle_500</span><span class="p">(</span><span class="n">e</span><span class="p">):</span>
+    <span class="c1"># Log internally</span>
+    <span class="n">app</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Internal error: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+    <span class="c1"># Return generic message to user</span>
+    <span class="k">return</span> <span class="n">jsonify</span><span class="p">({</span><span class="s2">&quot;error&quot;</span><span class="p">:</span> <span class="s2">&quot;Internal server error&quot;</span><span class="p">}),</span> <span class="mi">500</span>
+</code></pre></div>
+
+
+
+</details>
+
+<h3 id="pitfall-5-wrong-schema-for-different-operations">Pitfall 5: Wrong Schema for Different Operations<a class="headerlink" href="#pitfall-5-wrong-schema-for-different-operations" title="Permanent link">&para;</a></h3>
+<p><strong>Question</strong>: How do you handle different requirements for registration vs login?</p>
+<div class="codehilite"><pre><span></span><code><span class="c1"># Registration needs: username, email, password</span>
+<span class="c1"># Login needs: email, password (no username)</span>
+<span class="c1"># Using same schema for both?</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">UserSchema</span><span class="p">(</span><span class="n">ma</span><span class="o">.</span><span class="n">Schema</span><span class="p">):</span>
+    <span class="n">username</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">email</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">password</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</code></pre></div>
+
+<details>
+<summary>Click to see answer</summary>
+
+**Answer**: Use **different schemas** for different operations!
+
+**Fix**:
+
+
+<div class="codehilite"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">UserRegistrationSchema</span><span class="p">(</span><span class="n">ma</span><span class="o">.</span><span class="n">Schema</span><span class="p">):</span>
+    <span class="n">username</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">email</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">password</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">UserLoginSchema</span><span class="p">(</span><span class="n">ma</span><span class="o">.</span><span class="n">Schema</span><span class="p">):</span>
+    <span class="n">email</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">password</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="c1"># No username needed for login</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">UserResponseSchema</span><span class="p">(</span><span class="n">ma</span><span class="o">.</span><span class="n">SQLAlchemyAutoSchema</span><span class="p">):</span>
+    <span class="k">class</span><span class="w"> </span><span class="nc">Meta</span><span class="p">:</span>
+        <span class="n">model</span> <span class="o">=</span> <span class="n">User</span>
+        <span class="n">exclude</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;password_hash&quot;</span><span class="p">,)</span>  <span class="c1"># Never return password</span>
+
+<span class="c1"># Use appropriate schema</span>
+<span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;/register&#39;</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;POST&#39;</span><span class="p">])</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">register</span><span class="p">():</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">UserRegistrationSchema</span><span class="p">()</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">get_json</span><span class="p">())</span>
+    <span class="c1"># ...</span>
+
+<span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;/login&#39;</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;POST&#39;</span><span class="p">])</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">login</span><span class="p">():</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">UserLoginSchema</span><span class="p">()</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">get_json</span><span class="p">())</span>
+    <span class="c1"># ...</span>
+</code></pre></div>
+
+
+
+</details>
+
 <h2 id="trivia">Trivia<a class="headerlink" href="#trivia" title="Permanent link">&para;</a></h2>
 <h3 id="question-1">Question 1<a class="headerlink" href="#question-1" title="Permanent link">&para;</a></h3>
 <p><strong>What is the method to convert an Object to JSON using Marshmallow?</strong></p>

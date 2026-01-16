@@ -447,14 +447,14 @@
   
   
     <li class="md-nav__item">
-      <a href="09_LEVEL_5_EXTENSIONS.html" class="md-nav__link">
+      <a href="10_TEST_TASK_3.html" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Level 5 – Extensions & Advanced Topics
+    Test Task 3
   
 
     
@@ -474,14 +474,14 @@
   
   
     <li class="md-nav__item">
-      <a href="10_TEST_TASK_3.html" class="md-nav__link">
+      <a href="ERROR_TRACKING.html" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Test Task 3
+    Error Tracking
   
 
     
@@ -717,6 +717,45 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Windows">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#option-1-windows-1011-built-in" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Option 1: Windows 10/11 (Built-in)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#option-2-download" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Option 2: Download
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#option-3-using-chocolatey" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Option 3: Using Chocolatey
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
       </ul>
@@ -838,6 +877,45 @@
       
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="POST Request with JSON">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#option-1-single-line-recommended-for-beginners" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Option 1: Single Line (Recommended for Beginners)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#option-2-multi-line-with-backtick" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Option 2: Multi-line with Backtick
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#option-3-using-here-string-cleanest" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Option 3: Using Here-String (Cleanest)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -1442,17 +1520,17 @@ curl<span class="w"> </span>--version
 </code></pre></div>
 
 <h3 id="windows">Windows<a class="headerlink" href="#windows" title="Permanent link">&para;</a></h3>
-<p><strong>Option 1: Windows 10/11 (Built-in)</strong></p>
+<h4 id="option-1-windows-1011-built-in">Option 1: Windows 10/11 (Built-in)<a class="headerlink" href="#option-1-windows-1011-built-in" title="Permanent link">&para;</a></h4>
 <ul>
 <li>cURL is included in Windows 10 version 1803 and later</li>
 <li>Open PowerShell or Command Prompt and type: <code>curl --version</code></li>
 </ul>
-<p><strong>Option 2: Download</strong></p>
+<h4 id="option-2-download">Option 2: Download<a class="headerlink" href="#option-2-download" title="Permanent link">&para;</a></h4>
 <ul>
 <li>Download from <a href="https://curl.se/windows/">curl.se/windows/</a></li>
 <li>Or use Git Bash (includes cURL)</li>
 </ul>
-<p><strong>Option 3: Using Chocolatey</strong></p>
+<h4 id="option-3-using-chocolatey">Option 3: Using Chocolatey<a class="headerlink" href="#option-3-using-chocolatey" title="Permanent link">&para;</a></h4>
 <div class="codehilite"><pre><span></span><code>choco<span class="w"> </span>install<span class="w"> </span>curl
 </code></pre></div>
 
@@ -1555,17 +1633,17 @@ curl<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </spa
 </code></pre></div>
 
 <h3 id="post-request-with-json">POST Request with JSON<a class="headerlink" href="#post-request-with-json" title="Permanent link">&para;</a></h3>
-<p><strong>Option 1: Single Line (Recommended for Beginners)</strong></p>
+<h4 id="option-1-single-line-recommended-for-beginners">Option 1: Single Line (Recommended for Beginners)<a class="headerlink" href="#option-1-single-line-recommended-for-beginners" title="Permanent link">&para;</a></h4>
 <div class="codehilite"><pre><span></span><code><span class="nb">curl </span><span class="n">-X</span> <span class="n">POST</span> <span class="n">http</span><span class="p">://</span><span class="n">127</span><span class="p">.</span><span class="n">0</span><span class="p">.</span><span class="n">0</span><span class="p">.</span><span class="n">1</span><span class="p">:</span><span class="n">5000</span><span class="p">/</span><span class="n">api</span><span class="p">/</span><span class="n">tasks</span><span class="p">/</span> <span class="n">-H</span> <span class="s2">&quot;Content-Type: application/json&quot;</span> <span class="n">-d</span> <span class="s2">&quot;{</span><span class="se">`&quot;</span><span class="s2">title</span><span class="se">`&quot;</span><span class="s2">:</span><span class="se">`&quot;</span><span class="s2">Learn Flask</span><span class="se">`&quot;</span><span class="s2">,</span><span class="se">`&quot;</span><span class="s2">completed</span><span class="se">`&quot;</span><span class="s2">:false}&quot;</span>
 </code></pre></div>
 
-<p><strong>Option 2: Multi-line with Backtick</strong></p>
+<h4 id="option-2-multi-line-with-backtick">Option 2: Multi-line with Backtick<a class="headerlink" href="#option-2-multi-line-with-backtick" title="Permanent link">&para;</a></h4>
 <div class="codehilite"><pre><span></span><code><span class="nb">curl </span><span class="n">-X</span> <span class="n">POST</span> <span class="n">http</span><span class="p">://</span><span class="n">127</span><span class="p">.</span><span class="n">0</span><span class="p">.</span><span class="n">0</span><span class="p">.</span><span class="n">1</span><span class="p">:</span><span class="n">5000</span><span class="p">/</span><span class="n">api</span><span class="p">/</span><span class="n">tasks</span><span class="p">/</span> <span class="p">`</span>
   <span class="n">-H</span> <span class="s2">&quot;Content-Type: application/json&quot;</span> <span class="p">`</span>
   <span class="n">-d</span> <span class="s2">&quot;{</span><span class="se">`&quot;</span><span class="s2">title</span><span class="se">`&quot;</span><span class="s2">:</span><span class="se">`&quot;</span><span class="s2">Learn Flask</span><span class="se">`&quot;</span><span class="s2">,</span><span class="se">`&quot;</span><span class="s2">completed</span><span class="se">`&quot;</span><span class="s2">:false}&quot;</span>
 </code></pre></div>
 
-<p><strong>Option 3: Using Here-String (Cleanest)</strong></p>
+<h4 id="option-3-using-here-string-cleanest">Option 3: Using Here-String (Cleanest)<a class="headerlink" href="#option-3-using-here-string-cleanest" title="Permanent link">&para;</a></h4>
 <div class="codehilite"><pre><span></span><code><span class="nv">$json</span> <span class="p">=</span> <span class="sh">@&quot;</span>
 <span class="sh">{</span>
 <span class="sh">  &quot;title&quot;: &quot;Learn Flask&quot;,</span>

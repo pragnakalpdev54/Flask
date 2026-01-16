@@ -799,14 +799,14 @@
   
   
     <li class="md-nav__item">
-      <a href="09_LEVEL_5_EXTENSIONS.html" class="md-nav__link">
+      <a href="10_TEST_TASK_3.html" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Level 5 – Extensions & Advanced Topics
+    Test Task 3
   
 
     
@@ -826,14 +826,14 @@
   
   
     <li class="md-nav__item">
-      <a href="10_TEST_TASK_3.html" class="md-nav__link">
+      <a href="ERROR_TRACKING.html" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Test Task 3
+    Error Tracking
   
 
     
@@ -972,6 +972,19 @@
 
 
 <h1 id="flask-learning-guide">Flask Learning Guide<a class="headerlink" href="#flask-learning-guide" title="Permanent link">&para;</a></h1>
+<blockquote>
+<p>[!CAUTION]
+<strong>Read All Code Carefully Before Copy-Pasting</strong></p>
+<p>This documentation is designed to teach you proper debugging skills. Some code examples may contain intentional mistakes that you must identify and fix using the debugging techniques taught in Level 0.</p>
+<p><strong>Always:</strong></p>
+<ul>
+<li>Read the entire code example before copying</li>
+<li>Understand what each line does</li>
+<li>Test your code and debug any errors</li>
+<li>Use the Flask debugger when things break</li>
+</ul>
+<p>Blindly copy-pasting code will lead to errors. This is intentional. Debugging is a core skill.</p>
+</blockquote>
 <h2 id="welcome">Welcome! 👋<a class="headerlink" href="#welcome" title="Permanent link">&para;</a></h2>
 <p>This comprehensive guide will take you from a complete beginner to an expert in <strong>Flask</strong>. Whether you're new to Python web development or have some experience, this structured learning path will help you master building scalable, RESTful APIs with Flask.</p>
 <h2 id="learning-path-overview">📚 Learning Path Overview<a class="headerlink" href="#learning-path-overview" title="Permanent link">&para;</a></h2>
@@ -983,14 +996,13 @@
 <li><strong>Level 2B: Serialization</strong> - Marshmallow Schemas and Global Error Handling</li>
 <li><strong>Level 3: Authentication</strong> - JWTs, Security, and Password Hashing</li>
 <li><strong>Level 4: Scalable</strong> - Application Factory, Blueprints, and Circular Imports</li>
-<li><strong>Level 5: Expert</strong> - Swagger Documentation (Restx) and Admin Panels</li>
 </ul>
 <h2 id="phases-overview-oop-expectations">Phases Overview (OOP Expectations)<a class="headerlink" href="#phases-overview-oop-expectations" title="Permanent link">&para;</a></h2>
 <p>To keep things beginner-friendly, the Flask track is split into <strong>phases</strong> with clear expectations about Object-Oriented Programming (OOP):</p>
 <ul>
-<li><strong>Phase 1 – Levels 0–1 (No OOP Required)</strong><br />
+<li><strong>Phase 1 – Levels 0–1 (No OOP Required)</strong>
   You only write <strong>functions</strong>. You do not need to know or use <code>class</code> at all.</li>
-<li><strong>Phase 2 – Levels 2–5 (Light <code>class</code> Usage)</strong><br />
+<li><strong>Phase 2 – Levels 2–4 (Light <code>class</code> Usage)</strong>
   We use <code>class</code> mainly for <strong>models</strong>, <strong>schemas</strong>, and <strong>services</strong> as <strong>namespaces / configuration</strong>. You can treat them as patterns and <em>Magic Boxes</em> and still succeed without deep OOP theory.</li>
 </ul>
 <h2 id="time-estimates">⏱️ Time Estimates<a class="headerlink" href="#time-estimates" title="Permanent link">&para;</a></h2>
@@ -1033,14 +1045,9 @@
 <td>8-12 hours</td>
 <td>⭐⭐⭐ Advanced</td>
 </tr>
-<tr>
-<td>Level 5</td>
-<td>5-10 hours</td>
-<td>⭐⭐⭐ Expert</td>
-</tr>
 </tbody>
 </table>
-<p><strong>Total Estimated Time: 45-70 hours</strong> (approximately 1-2 months of part-time study)</p>
+<p><strong>Total Estimated Time: 40-60 hours</strong> (approximately 1-2 months of part-time study)</p>
 <h2 id="prerequisites">📋 Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">&para;</a></h2>
 <h3 id="required-knowledge">Required Knowledge<a class="headerlink" href="#required-knowledge" title="Permanent link">&para;</a></h3>
 <p>Before starting <strong>Level 0</strong>, you should have:</p>
@@ -1067,7 +1074,7 @@
 <p>Many beginners get stuck because they think they need to master Classes and Objects before learning Flask. You do not.</p>
 <ul>
 <li><strong>Phase 1 (Levels 0-1)</strong>: Purely functional. You write functions. No OOP knowledge is required.</li>
-<li><strong>Phase 2 (Levels 2-5)</strong>: We use <code>class</code> keywords, but only as "containers", <strong>namespaces</strong>, or <strong>configuration</strong>. You rarely write complex OOP logic.</li>
+<li><strong>Phase 2 (Levels 2-4)</strong>: We use <code>class</code> keywords, but only as "containers", <strong>namespaces</strong>, or <strong>configuration</strong>. You rarely write complex OOP logic.</li>
 </ul>
 <blockquote>
 <p>[!TIP]
@@ -1076,15 +1083,15 @@ We have added specific notes in each level to explain exactly what you need to k
 <h3 id="faq-classes-objects-and-when-to-care">FAQ: Classes, Objects, and When to Care<a class="headerlink" href="#faq-classes-objects-and-when-to-care" title="Permanent link">&para;</a></h3>
 <ul>
 <li>
-<p><strong>Do I need to understand classes before starting Level 0?</strong><br />
+<p><strong>Do I need to understand classes before starting Level 0?</strong>
   No. You can complete <strong>Phase 1 (Levels 0–1)</strong> using only functions and modules.</p>
 </li>
 <li>
-<p><strong>When will I actually need OOP knowledge?</strong><br />
-  Mainly when you want to go beyond this track and design more advanced architectures (custom domain models, inheritance, interfaces). You can safely finish Levels 0–5 first.</p>
+<p><strong>When will I actually need OOP knowledge?</strong>
+  Mainly when you want to go beyond this track and design more advanced architectures (custom domain models, inheritance, interfaces). You can safely finish Levels 0–4 first.</p>
 </li>
 <li>
-<p><strong>What does <code>class UserService</code> really mean in this course?</strong><br />
+<p><strong>What does <code>class UserService</code> really mean in this course?</strong>
   It is just a <strong>namespace</strong> (a folder for related functions). You typically call <code>UserService.create_user(...)</code> without worrying about constructing objects or writing <code>__init__</code> methods.</p>
 </li>
 </ul>
@@ -1095,7 +1102,7 @@ We have added specific notes in each level to explain exactly what you need to k
 <li><strong>STOP at Checkpoints</strong>: There are <strong>3 Test Tasks</strong>. You <em>must</em> complete them before moving on. They are the gatekeepers.<ul>
 <li><a href="03_TEST_TASK_1.html">Test Task 1</a> (After Level 1)</li>
 <li><a href="07_TEST_TASK_2.html">Test Task 2</a> (After Level 3)</li>
-<li><a href="10_TEST_TASK_3.html">Test Task 3</a> (After Level 5)</li>
+<li><a href="10_TEST_TASK_3.html">Test Task 3</a> (After Level 4)</li>
 </ul>
 </li>
 <li><strong>Code Along</strong>: Reading is not enough. Type the code.</li>
@@ -1115,7 +1122,6 @@ We have added specific notes in each level to explain exactly what you need to k
 <li>Database layer: <code>SQLAlchemy</code>, <code>Flask-Migrate</code></li>
 <li>Serialization and validation: <code>Flask-Marshmallow</code>, <code>Marshmallow</code></li>
 <li>Auth tooling: <code>flask-bcrypt</code>, <code>flask-jwt-extended</code></li>
-<li>API documentation and admin: <code>Flask-Restx</code>, <code>Flask-Admin</code></li>
 </ul>
 <blockquote>
 <p>[!TIP]
@@ -1145,7 +1151,6 @@ When you see a <strong>Magic Box</strong> callout in the levels, it means: “Fo
 <h3 id="phase-3-advanced-architecture">Phase 3: Advanced Architecture<a class="headerlink" href="#phase-3-advanced-architecture" title="Permanent link">&para;</a></h3>
 <ul>
 <li><strong><a href="08_LEVEL_4_SCALABLE.html">Level 4: Scalable Structure</a></strong>: <strong>Blueprints</strong>, Application Factory, Solving Circular Imports. <em>(Focus on project structure and imports, not deep OOP.)</em></li>
-<li><strong><a href="09_LEVEL_5_EXTENSIONS.html">Level 5: Extensions</a></strong>: Flask-Restx (Swagger), Flask-Admin. <em>(Framework classes like <code>Resource</code> as patterns you can copy.)</em></li>
 </ul>
 <blockquote>
 <p>[!IMPORTANT]
@@ -1175,15 +1180,15 @@ When you see a <strong>Magic Box</strong> callout in the levels, it means: “Fo
 <h3 id="common-class-related-errors-beginner-edition">Common Class-Related Errors (Beginner Edition)<a class="headerlink" href="#common-class-related-errors-beginner-edition" title="Permanent link">&para;</a></h3>
 <ul>
 <li>
-<p><strong><code>AttributeError: 'function' object has no attribute '...'</code></strong><br />
+<p><strong><code>AttributeError: 'function' object has no attribute '...'</code></strong>
   Usually means you treated a <strong>function</strong> like an object. Example: calling <code>user_service.create_user(...)</code> when <code>user_service</code> is a function, or forgetting to import <code>UserService</code> correctly.</p>
 </li>
 <li>
-<p><strong><code>TypeError: create_user() missing 1 required positional argument: 'self'</code></strong><br />
+<p><strong><code>TypeError: create_user() missing 1 required positional argument: 'self'</code></strong>
   This often appears if you define a method on a class without <code>@staticmethod</code> but call it like <code>UserService.create_user(...)</code>. In this course, we almost always mark service methods as <code>@staticmethod</code> so you never need <code>self</code>.</p>
 </li>
 <li>
-<p><strong>Import-related <code>NameError</code> for classes like <code>UserService</code> or <code>AuthService</code></strong><br />
+<p><strong>Import-related <code>NameError</code> for classes like <code>UserService</code> or <code>AuthService</code></strong>
   Usually a sign the import path is wrong or there is a circular import. Double-check you are importing from <code>services.user_service</code> or <code>services.auth_service</code>, and see <strong>Level 4</strong> for how <code>extensions.py</code> helps avoid circular imports.</p>
 </li>
 </ul>
@@ -1220,11 +1225,10 @@ When you see a <strong>Magic Box</strong> callout in the levels, it means: “Fo
 <p>[ ] <strong>Test Task 2 Completed</strong></p>
 </li>
 <li>
-<p>[ ] <strong>Level 4 &amp; 5: Architecture (classes as patterns and configuration)</strong></p>
+<p>[ ] <strong>Level 4: Architecture (classes as patterns and configuration)</strong></p>
 </li>
 <li>[ ] App Factory implemented</li>
 <li>[ ] Blueprints set up</li>
-<li>[ ] Swagger Docs visible</li>
 <li>[ ] <strong>Test Task 3 Completed</strong></li>
 </ul>
 <h2 id="ready-to-start">🚀 Ready to Start?<a class="headerlink" href="#ready-to-start" title="Permanent link">&para;</a></h2>

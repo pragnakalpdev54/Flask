@@ -820,10 +820,93 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#problem-2-calculator-api-extended" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Problem 2: Calculator API (Extended)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#problem-3-query-params" class="md-nav__link">
     <span class="md-ellipsis">
       
         Problem 3: Query Params
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#common-pitfalls-quiz" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Common Pitfalls Quiz
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Common Pitfalls Quiz">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pitfall-1-using-wrong-http-method" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pitfall 1: Using Wrong HTTP Method
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pitfall-2-not-validating-request-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pitfall 2: Not Validating Request Data
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pitfall-3-not-handling-file-errors" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pitfall 3: Not Handling File Errors
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pitfall-4-forgetting-to-validate-uuid-format" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pitfall 4: Forgetting to Validate UUID Format
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pitfall-5-using-get-with-requestget_json" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pitfall 5: Using GET with request.get_json()
       
     </span>
   </a>
@@ -1051,14 +1134,14 @@
   
   
     <li class="md-nav__item">
-      <a href="09_LEVEL_5_EXTENSIONS.html" class="md-nav__link">
+      <a href="10_TEST_TASK_3.html" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Level 5 – Extensions & Advanced Topics
+    Test Task 3
   
 
     
@@ -1078,14 +1161,14 @@
   
   
     <li class="md-nav__item">
-      <a href="10_TEST_TASK_3.html" class="md-nav__link">
+      <a href="ERROR_TRACKING.html" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Test Task 3
+    Error Tracking
   
 
     
@@ -2010,8 +2093,269 @@
 <code>{"operation": "add", "x": 10, "y": 5}</code>
 And returns: <code>{"result": 15}</code>.
 Support add, subtract, multiply, divide. Return 400 for invalid operations.</p>
+<h3 id="problem-2-calculator-api-extended">Problem 2: Calculator API (Extended)<a class="headerlink" href="#problem-2-calculator-api-extended" title="Permanent link">&para;</a></h3>
+<p>Build on the calculator from earlier. Create a <code>/calculate</code> endpoint that:</p>
+<ol>
+<li>Takes JSON: <code>{"operation": "add", "x": 10, "y": 5}</code></li>
+<li>Returns: <code>{"result": 15}</code></li>
+<li>Supports: <code>add</code>, <code>subtract</code>, <code>multiply</code>, <code>divide</code></li>
+<li>Returns 400 for invalid operations</li>
+</ol>
+<p><strong>Starter code</strong>:</p>
+<div class="codehilite"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">flask</span><span class="w"> </span><span class="kn">import</span> <span class="n">Flask</span><span class="p">,</span> <span class="n">request</span>
+
+<span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+
+<span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;/calculate&#39;</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;POST&#39;</span><span class="p">])</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">calculate</span><span class="p">():</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">get_json</span><span class="p">()</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">data</span> <span class="ow">or</span> <span class="s1">&#39;operation&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">jsonify</span><span class="p">({</span><span class="s2">&quot;error&quot;</span><span class="p">:</span> <span class="s2">&quot;Missing operation&quot;</span><span class="p">}),</span> <span class="mi">400</span>
+
+    <span class="n">operation</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;operation&#39;</span><span class="p">]</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">operation</span> <span class="o">==</span> <span class="s1">&#39;add&#39;</span><span class="p">:</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span>
+    <span class="k">elif</span> <span class="n">operation</span> <span class="o">==</span> <span class="s1">&#39;subtract&#39;</span><span class="p">:</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">x</span> <span class="o">-</span> <span class="n">y</span>
+    <span class="k">elif</span> <span class="n">operation</span> <span class="o">==</span> <span class="s1">&#39;multiply&#39;</span><span class="p">:</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">x</span> <span class="o">*</span> <span class="n">y</span>
+    <span class="k">elif</span> <span class="n">operation</span> <span class="o">==</span> <span class="s1">&#39;divide&#39;</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">y</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">jsonify</span><span class="p">({</span><span class="s2">&quot;error&quot;</span><span class="p">:</span> <span class="s2">&quot;Cannot divide by zero&quot;</span><span class="p">}),</span> <span class="mi">400</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">x</span> <span class="o">/</span> <span class="n">y</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">jsonify</span><span class="p">({</span><span class="s2">&quot;error&quot;</span><span class="p">:</span> <span class="s2">&quot;Invalid operation&quot;</span><span class="p">}),</span> <span class="mi">400</span>
+
+    <span class="k">return</span> <span class="n">jsonify</span><span class="p">({</span><span class="s2">&quot;result&quot;</span><span class="p">:</span> <span class="n">result</span><span class="p">}),</span> <span class="mi">200</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">debug</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</code></pre></div>
+
 <h3 id="problem-3-query-params">Problem 3: Query Params<a class="headerlink" href="#problem-3-query-params" title="Permanent link">&para;</a></h3>
 <p>Create a route <code>/search</code> that takes a query param <code>q</code>. If <code>q</code> is missing, return error 400. If present, return <code>{"query": q}</code>.</p>
+<h2 id="common-pitfalls-quiz">Common Pitfalls Quiz<a class="headerlink" href="#common-pitfalls-quiz" title="Permanent link">&para;</a></h2>
+<p>Test your understanding of common mistakes juniors make with Flask routing and request handling:</p>
+<h3 id="pitfall-1-using-wrong-http-method">Pitfall 1: Using Wrong HTTP Method<a class="headerlink" href="#pitfall-1-using-wrong-http-method" title="Permanent link">&para;</a></h3>
+<p><strong>Question</strong>: Why does this update endpoint fail when called correctly?</p>
+<div class="codehilite"><pre><span></span><code><span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;/users/&lt;int:id&gt;&#39;</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;GET&#39;</span><span class="p">])</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">update_user</span><span class="p">(</span><span class="nb">id</span><span class="p">):</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">get_json</span><span class="p">()</span>
+    <span class="c1"># Update logic here</span>
+    <span class="k">return</span> <span class="n">jsonify</span><span class="p">({</span><span class="s2">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;Updated&quot;</span><span class="p">}),</span> <span class="mi">200</span>
+</code></pre></div>
+
+<p>Client sends: <code>PATCH /users/1</code> with JSON body</p>
+<details>
+<summary>Click to see answer</summary>
+
+**Answer**: The route only accepts **GET** requests, but updating data should use **PATCH** or **PUT**.
+
+**Fix**:
+
+
+<div class="codehilite"><pre><span></span><code><span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;/users/&lt;int:id&gt;&#39;</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;PATCH&#39;</span><span class="p">])</span>  <span class="c1"># Or [&#39;PUT&#39;]</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">update_user</span><span class="p">(</span><span class="nb">id</span><span class="p">):</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">get_json</span><span class="p">()</span>
+    <span class="c1"># Update logic here</span>
+    <span class="k">return</span> <span class="n">jsonify</span><span class="p">({</span><span class="s2">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;Updated&quot;</span><span class="p">}),</span> <span class="mi">200</span>
+</code></pre></div>
+
+
+
+**Remember**:
+
+* GET = Read
+* POST = Create
+* PUT/PATCH = Update
+* DELETE = Delete
+
+</details>
+
+<h3 id="pitfall-2-not-validating-request-data">Pitfall 2: Not Validating Request Data<a class="headerlink" href="#pitfall-2-not-validating-request-data" title="Permanent link">&para;</a></h3>
+<p><strong>Question</strong>: What's wrong with this code?</p>
+<div class="codehilite"><pre><span></span><code><span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;/users&#39;</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;POST&#39;</span><span class="p">])</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">create_user</span><span class="p">():</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">get_json</span><span class="p">()</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span>  <span class="c1"># What if &#39;name&#39; doesn&#39;t exist?</span>
+    <span class="n">email</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;email&#39;</span><span class="p">]</span>  <span class="c1"># What if data is None?</span>
+    <span class="c1"># ... create user ...</span>
+    <span class="k">return</span> <span class="n">jsonify</span><span class="p">({</span><span class="s2">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;Created&quot;</span><span class="p">}),</span> <span class="mi">201</span>
+</code></pre></div>
+
+<details>
+<summary>Click to see answer</summary>
+
+**Answer**: No validation! This will crash if:
+
+1. Client doesn't send JSON (data is None)
+2. Client sends JSON but missing 'name' or 'email' fields
+
+**Fix**:
+
+
+<div class="codehilite"><pre><span></span><code><span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;/users&#39;</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;POST&#39;</span><span class="p">])</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">create_user</span><span class="p">():</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">get_json</span><span class="p">()</span>
+
+    <span class="c1"># Validate data exists</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">data</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">jsonify</span><span class="p">({</span><span class="s2">&quot;error&quot;</span><span class="p">:</span> <span class="s2">&quot;Request body required&quot;</span><span class="p">}),</span> <span class="mi">400</span>
+
+    <span class="c1"># Validate required fields</span>
+    <span class="k">if</span> <span class="s1">&#39;name&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">jsonify</span><span class="p">({</span><span class="s2">&quot;error&quot;</span><span class="p">:</span> <span class="s2">&quot;Missing &#39;name&#39; field&quot;</span><span class="p">}),</span> <span class="mi">400</span>
+
+    <span class="k">if</span> <span class="s1">&#39;email&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">jsonify</span><span class="p">({</span><span class="s2">&quot;error&quot;</span><span class="p">:</span> <span class="s2">&quot;Missing &#39;email&#39; field&quot;</span><span class="p">}),</span> <span class="mi">400</span>
+
+    <span class="c1"># Now safe to access</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span>
+    <span class="n">email</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;email&#39;</span><span class="p">]</span>
+    <span class="c1"># ... create user ...</span>
+    <span class="k">return</span> <span class="n">jsonify</span><span class="p">({</span><span class="s2">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;Created&quot;</span><span class="p">}),</span> <span class="mi">201</span>
+</code></pre></div>
+
+
+
+**Better approach using .get()**:
+
+
+<div class="codehilite"><pre><span></span><code><span class="n">name</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">)</span>
+<span class="k">if</span> <span class="ow">not</span> <span class="n">name</span><span class="p">:</span>
+    <span class="k">return</span> <span class="n">jsonify</span><span class="p">({</span><span class="s2">&quot;error&quot;</span><span class="p">:</span> <span class="s2">&quot;Missing &#39;name&#39; field&quot;</span><span class="p">}),</span> <span class="mi">400</span>
+</code></pre></div>
+
+
+
+</details>
+
+<h3 id="pitfall-3-not-handling-file-errors">Pitfall 3: Not Handling File Errors<a class="headerlink" href="#pitfall-3-not-handling-file-errors" title="Permanent link">&para;</a></h3>
+<p><strong>Question</strong>: What happens if <code>users.json</code> doesn't exist?</p>
+<div class="codehilite"><pre><span></span><code><span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;/users&#39;</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;GET&#39;</span><span class="p">])</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">get_users</span><span class="p">():</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;users.json&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">jsonify</span><span class="p">(</span><span class="n">data</span><span class="p">),</span> <span class="mi">200</span>
+</code></pre></div>
+
+<details>
+<summary>Click to see answer</summary>
+
+**Answer**: `FileNotFoundError` crash! User sees HTML error page instead of JSON.
+
+**Fix**:
+
+
+<div class="codehilite"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
+
+<span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;/users&#39;</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;GET&#39;</span><span class="p">])</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">get_users</span><span class="p">():</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;users.json&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+            <span class="n">data</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">jsonify</span><span class="p">(</span><span class="n">data</span><span class="p">),</span> <span class="mi">200</span>
+    <span class="k">except</span> <span class="ne">FileNotFoundError</span><span class="p">:</span>
+        <span class="c1"># File doesn&#39;t exist yet, return empty list</span>
+        <span class="k">return</span> <span class="n">jsonify</span><span class="p">({</span><span class="s2">&quot;users&quot;</span><span class="p">:</span> <span class="p">[]}),</span> <span class="mi">200</span>
+    <span class="k">except</span> <span class="n">json</span><span class="o">.</span><span class="n">JSONDecodeError</span><span class="p">:</span>
+        <span class="c1"># File is corrupted</span>
+        <span class="k">return</span> <span class="n">jsonify</span><span class="p">({</span><span class="s2">&quot;error&quot;</span><span class="p">:</span> <span class="s2">&quot;Internal server error&quot;</span><span class="p">}),</span> <span class="mi">500</span>
+</code></pre></div>
+
+
+
+</details>
+
+<h3 id="pitfall-4-forgetting-to-validate-uuid-format">Pitfall 4: Forgetting to Validate UUID Format<a class="headerlink" href="#pitfall-4-forgetting-to-validate-uuid-format" title="Permanent link">&para;</a></h3>
+<p><strong>Question</strong>: What happens when a user visits <code>/users/invalid-id</code>?</p>
+<div class="codehilite"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">uuid</span>
+
+<span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;/users/&lt;user_id&gt;&#39;</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;GET&#39;</span><span class="p">])</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">get_user</span><span class="p">(</span><span class="n">user_id</span><span class="p">):</span>
+    <span class="n">users</span> <span class="o">=</span> <span class="n">load_users</span><span class="p">()</span>  <span class="c1"># Load from file</span>
+    <span class="n">user</span> <span class="o">=</span> <span class="nb">next</span><span class="p">((</span><span class="n">u</span> <span class="k">for</span> <span class="n">u</span> <span class="ow">in</span> <span class="n">users</span> <span class="k">if</span> <span class="n">u</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">user_id</span><span class="p">),</span> <span class="kc">None</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">user</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">jsonify</span><span class="p">({</span><span class="s2">&quot;error&quot;</span><span class="p">:</span> <span class="s2">&quot;User not found&quot;</span><span class="p">}),</span> <span class="mi">404</span>
+
+    <span class="k">return</span> <span class="n">jsonify</span><span class="p">(</span><span class="n">user</span><span class="p">),</span> <span class="mi">200</span>
+</code></pre></div>
+
+<details>
+<summary>Click to see answer</summary>
+
+**Answer**: It returns 404 even for invalid UUIDs, which is misleading. The client should get 400 (Bad Request) for invalid format.
+
+**Fix**:
+
+
+<div class="codehilite"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">uuid</span>
+
+<span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;/users/&lt;user_id&gt;&#39;</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;GET&#39;</span><span class="p">])</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">get_user</span><span class="p">(</span><span class="n">user_id</span><span class="p">):</span>
+    <span class="c1"># Validate UUID format first</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">uuid</span><span class="o">.</span><span class="n">UUID</span><span class="p">(</span><span class="n">user_id</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">jsonify</span><span class="p">({</span><span class="s2">&quot;error&quot;</span><span class="p">:</span> <span class="s2">&quot;Invalid UUID format&quot;</span><span class="p">}),</span> <span class="mi">400</span>
+
+    <span class="n">users</span> <span class="o">=</span> <span class="n">load_users</span><span class="p">()</span>
+    <span class="n">user</span> <span class="o">=</span> <span class="nb">next</span><span class="p">((</span><span class="n">u</span> <span class="k">for</span> <span class="n">u</span> <span class="ow">in</span> <span class="n">users</span> <span class="k">if</span> <span class="n">u</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">user_id</span><span class="p">),</span> <span class="kc">None</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">user</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">jsonify</span><span class="p">({</span><span class="s2">&quot;error&quot;</span><span class="p">:</span> <span class="s2">&quot;User not found&quot;</span><span class="p">}),</span> <span class="mi">404</span>
+
+    <span class="k">return</span> <span class="n">jsonify</span><span class="p">(</span><span class="n">user</span><span class="p">),</span> <span class="mi">200</span>
+</code></pre></div>
+
+
+
+**Why this matters**: Proper error codes help clients debug:
+
+* 400 = Client sent bad data (invalid UUID)
+* 404 = valid UUID but user doesn't exist
+
+</details>
+
+<h3 id="pitfall-5-using-get-with-requestget_json">Pitfall 5: Using  GET with request.get_json()<a class="headerlink" href="#pitfall-5-using-get-with-requestget_json" title="Permanent link">&para;</a></h3>
+<p><strong>Question</strong>: Why is data always None?</p>
+<p>in```python
+@app.route('/search', methods=['GET'])
+def search():
+    data = request.get_json()
+    query = data.get('query')  # None!
+    return jsonify({"query": query})</p>
+<div class="codehilite"><pre><span></span><code><span class="nt">&lt;details&gt;</span>
+<span class="nt">&lt;summary&gt;</span>Click<span class="w"> </span>to<span class="w"> </span>see<span class="w"> </span>answer<span class="nt">&lt;/summary&gt;</span>
+
+**Answer**:<span class="w"> </span>**GET<span class="w"> </span>requests<span class="w"> </span>don&#39;t<span class="w"> </span>have<span class="w"> </span>request<span class="w"> </span>bodies!**<span class="w"> </span>Use<span class="w"> </span>query<span class="w"> </span>parameters<span class="w"> </span>instead.
+
+**Fix**:
+
+```python
+@app.route(&#39;/search&#39;,<span class="w"> </span>methods=[&#39;GET&#39;])
+def<span class="w"> </span>search():
+<span class="w">    </span>#<span class="w"> </span>Use<span class="w"> </span>request.args<span class="w"> </span>for<span class="w"> </span>query<span class="w"> </span>parameters
+<span class="w">    </span>query<span class="w"> </span>=<span class="w"> </span>request.args.get(&#39;query&#39;)
+
+<span class="w">    </span>if<span class="w"> </span>not<span class="w"> </span>query:
+<span class="w">        </span>return<span class="w"> </span>jsonify({&quot;error&quot;:<span class="w"> </span>&quot;Missing<span class="w"> </span>&#39;query&#39;<span class="w"> </span>parameter&quot;}),<span class="w"> </span>400
+
+<span class="w">    </span>return<span class="w"> </span>jsonify({&quot;query&quot;:<span class="w"> </span>query})
+</code></pre></div>
+
+<p><strong>Call like</strong>: <code>GET /search?query=flask</code></p>
+<p><strong>Remember</strong>:</p>
+<ul>
+<li>GET = Use <code>request.args</code> (query params)</li>
+<li>POST/PUT/PATCH = Use <code>request.get_json()</code> (body)</li>
+</ul>
+</details>
 <h2 id="trivia">Trivia<a class="headerlink" href="#trivia" title="Permanent link">&para;</a></h2>
 <h3 id="question-1">Question 1<a class="headerlink" href="#question-1" title="Permanent link">&para;</a></h3>
 <p><strong>How do you access the JSON body sent by a client?</strong></p>

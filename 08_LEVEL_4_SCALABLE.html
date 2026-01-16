@@ -14,7 +14,7 @@
         <link rel="prev" href="07_TEST_TASK_2.html">
       
       
-        <link rel="next" href="09_LEVEL_5_EXTENSIONS.html">
+        <link rel="next" href="10_TEST_TASK_3.html">
       
       
         
@@ -688,6 +688,45 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#common-pitfalls-quiz" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Common Pitfalls Quiz
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Common Pitfalls Quiz">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pitfall-1-circular-imports-in-blueprints" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pitfall 1: Circular Imports in Blueprints
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pitfall-2-forgetting-to-register-blueprints" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pitfall 2: Forgetting to Register Blueprints
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#practice-problems" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -802,14 +841,14 @@
   
   
     <li class="md-nav__item">
-      <a href="09_LEVEL_5_EXTENSIONS.html" class="md-nav__link">
+      <a href="10_TEST_TASK_3.html" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Level 5 – Extensions & Advanced Topics
+    Test Task 3
   
 
     
@@ -829,14 +868,14 @@
   
   
     <li class="md-nav__item">
-      <a href="10_TEST_TASK_3.html" class="md-nav__link">
+      <a href="ERROR_TRACKING.html" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Test Task 3
+    Error Tracking
   
 
     
@@ -977,7 +1016,7 @@
 <h1 id="level-4-scalable-structure-the-application-factory">Level 4: Scalable Structure &amp; The Application Factory<a class="headerlink" href="#level-4-scalable-structure-the-application-factory" title="Permanent link">&para;</a></h1>
 <blockquote>
 <p><strong>Prerequisites</strong>: <a href="07_TEST_TASK_2.html">Test Task 2</a>
-<strong>Next Level</strong>: <a href="09_LEVEL_5_EXTENSIONS.html">Level 5: Extensions</a></p>
+<strong>Next Step</strong>: <a href="10_TEST_TASK_3.html">Test Task 3 (Conclusion)</a></p>
 <p>[!NOTE]
 <strong>OOP Level</strong>: Medium. The "Application Factory" (<code>create_app</code>) is a function that creates an object (<code>app</code>). You still do not write new classes here—this level is about <strong>project structure and imports</strong>, not advanced OOP.</p>
 </blockquote>
@@ -1142,6 +1181,34 @@
 </code></pre></div>
 
 <p>Then pass it to the factory: <code>create_app(DevConfig)</code></p>
+<h2 id="common-pitfalls-quiz">Common Pitfalls Quiz<a class="headerlink" href="#common-pitfalls-quiz" title="Permanent link">&para;</a></h2>
+<h3 id="pitfall-1-circular-imports-in-blueprints">Pitfall 1: Circular Imports in Blueprints<a class="headerlink" href="#pitfall-1-circular-imports-in-blueprints" title="Permanent link">&para;</a></h3>
+<p><strong>Question</strong>: Why ImportError?</p>
+<div class="codehilite"><pre><span></span><code><span class="c1"># app.py imports blueprint</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">routes.user_routes</span><span class="w"> </span><span class="kn">import</span> <span class="n">user_bp</span>
+<span class="c1"># routes.py imports app</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">app</span><span class="w"> </span><span class="kn">import</span> <span class="n">app</span>  <span class="c1"># Circular!</span>
+</code></pre></div>
+
+<details>
+<summary>Click to see answer</summary>
+
+**Answer**: Use extensions.py to break the cycle!
+
+</details>
+
+<h3 id="pitfall-2-forgetting-to-register-blueprints">Pitfall 2: Forgetting to Register Blueprints<a class="headerlink" href="#pitfall-2-forgetting-to-register-blueprints" title="Permanent link">&para;</a></h3>
+<p><strong>Question</strong>: Why is /users giving 404?</p>
+<div class="codehilite"><pre><span></span><code><span class="c1"># Created blueprint but never called app.register_blueprint(user_bp)</span>
+</code></pre></div>
+
+<details>
+<summary>Click to see answer</summary>
+
+**Answer**: Must register: `app.register_blueprint(user_bp)`
+
+</details>
+
 <h2 id="practice-problems">Practice Problems<a class="headerlink" href="#practice-problems" title="Permanent link">&para;</a></h2>
 <h3 id="problem-1-refactor-to-factory">Problem 1: Refactor to Factory<a class="headerlink" href="#problem-1-refactor-to-factory" title="Permanent link">&para;</a></h3>
 <p>Take your code from Level 3.</p>
@@ -1151,6 +1218,26 @@
 <li>Create <code>wsgi.py</code>.</li>
 <li>Run it!</li>
 </ol>
+<p><strong>Starter code for app/</strong>init<strong>.py</strong>:</p>
+<div class="codehilite"><pre><span></span><code><span class="c1"># app/__init__.py  </span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">flask</span><span class="w"> </span><span class="kn">import</span> <span class="n">Flask</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">extensions</span><span class="w"> </span><span class="kn">import</span> <span class="n">db</span><span class="p">,</span> <span class="n">jwt</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">routes.user_routes</span><span class="w"> </span><span class="kn">import</span> <span class="n">user_bp</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">create_app</span><span class="p">():</span>
+    <span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+    <span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;SQLALCHEMY_DATABASE_URI&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;sqlite:///app.db&#39;</span>
+    <span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;JWT_SECRET_KEY&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;your-secret-key&#39;</span>
+
+    <span class="c1"># Initialize extensions</span>
+    <span class="n">db</span><span class="o">.</span><span class="n">init_app</span><span class="p">(</span><span class="n">app</span><span class="p">)</span>
+    <span class="n">jwt</span><span class="o">.</span><span class="n">init_app</span><span class="p">(</span><span class="n">app</span><span class="p">)</span>
+
+    <span class="c1"># Note: Is something missing here with the blueprint?</span>
+
+    <span class="k">return</span> <span class="n">app</span>
+</code></pre></div>
+
 <h3 id="problem-2-circular-import-fix">Problem 2: Circular Import Fix<a class="headerlink" href="#problem-2-circular-import-fix" title="Permanent link">&para;</a></h3>
 <p>Intentionally create a circular import (e.g., import <code>app</code> inside <code>extensions.py</code>). Observe the error. Then fix it by following the pattern above.</p>
 <h3 id="problem-3-environment-config">Problem 3: Environment Config<a class="headerlink" href="#problem-3-environment-config" title="Permanent link">&para;</a></h3>
@@ -1217,7 +1304,7 @@
   
 
   
-  <a href="09_LEVEL_5_EXTENSIONS.html"
+  <a href="10_TEST_TASK_3.html"
      class="pill-btn pill-next"
      aria-label="Next page">
     <span class="pill-text">NEXT</span>
